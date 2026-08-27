@@ -250,7 +250,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "Thread vs process?",
-    "answer": "<strong>Quick Answer:</strong> A <strong>Process</strong> is an independent executing program with its own dedicated memory space, whereas a <strong>Thread</strong> is an execution unit within a process that shares memory and resources with sibling threads.\n\n<ul>\n  <li><strong>Memory & Isolation:</strong> Processes are isolated by the OS; process crash doesn't affect others. Threads share Heap and Method Area; an unhandled exception in a thread can destabilize the process.</li>\n  <li><strong>Context Switching:</strong> Switching between threads is faster than switching between processes because virtual memory mappings don't need to be swapped.</li>\n  <li><strong>Communication:</strong> Inter-thread communication occurs via shared memory variables (requiring synchronization). Inter-process communication (IPC) requires sockets, pipes, or shared files.</li>\n</ul>",
+    "answer": "<p>A <strong>Process</strong> and a <strong>Thread</strong> are the fundamental units of execution in operating systems and JVM environments, but they operate at different levels of resource isolation:</p><br/><p><strong>Process — Independent Program Execution</strong></p><p><strong>Concept:</strong> An isolated instance of an executing program with its own private virtual memory space (Heap, Stack, Code, and File Descriptors).</p><p><strong>Isolation:</strong> Heavy isolation provided by the Operating System. If one process crashes, other processes remain unaffected.</p><p><strong>Communication:</strong> Inter-Process Communication (IPC) is required (e.g., sockets, pipes, HTTP, message queues).</p><br/><p><strong>Thread — Lightweight Execution Unit</strong></p><p><strong>Concept:</strong> An execution path within a process. Multiple threads within the same process share the process's Heap memory, Method Area, and file handles, but each thread maintains its own private Call Stack and Program Counter (PC).</p><p><strong>Isolation:</strong> Low isolation. An unhandled exception or memory leak in one thread can crash or degrade the entire process.</p><p><strong>Communication:</strong> Inter-Thread Communication is fast via shared heap memory, but requires synchronization mechanisms (locks, <code>volatile</code>, atomic variables) to prevent race conditions.</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Attribute</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Process</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Thread</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'>Memory Allocation</td><td style='padding:8px;border:1px solid var(--border-color)'>Dedicated private memory space</td><td style='padding:8px;border:1px solid var(--border-color)'>Shares heap &amp; code with process</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Creation Cost</td><td style='padding:8px;border:1px solid var(--border-color)'>Heavy (OS context allocation)</td><td style='padding:8px;border:1px solid var(--border-color)'>Lightweight</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'>Context Switch Time</td><td style='padding:8px;border:1px solid var(--border-color)'>Slow (flushes CPU caches &amp; TLB)</td><td style='padding:8px;border:1px solid var(--border-color)'>Fast (shares address space)</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Fault Tolerance</td><td style='padding:8px;border:1px solid var(--border-color)'>High (isolated)</td><td style='padding:8px;border:1px solid var(--border-color)'>Low (shared memory space)</td></tr></tbody></table>",
     "difficulty": "Easy",
     "tags": [
       "Thread"
@@ -261,7 +261,14 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "synchronized vs Lock?",
-    "answer": "<strong>Quick Answer:</strong> <code>synchronized</code> is an implicit, language-level locking mechanism with automatic lock release, whereas the <code>java.util.concurrent.locks.Lock</code> interface provides explicit, advanced locking capabilities.\n\n<table border=\"1\" cellpadding=\"6\" style=\"border-collapse:collapse; width:100%; margin:10px 0;\">\n  <tr style=\"background:var(--bg-tertiary)\"><th>Capability</th><th>synchronized</th><th>Lock (ReentrantLock)</th></tr>\n  <tr><td>Lock Release</td><td>Automatic when block/method exits</td><td>Manual (MUST call <code>unlock()</code> in <code>finally</code>)</td></tr>\n  <tr><td>Non-blocking Try</td><td>No (threads block indefinitely)</td><td>Yes (<code>tryLock(timeout, unit)</code>)</td></tr>\n  <tr><td>Interruptibility</td><td>Cannot interrupt waiting thread</td><td>Yes (<code>lockInterruptibly()</code>)</td></tr>\n  <tr><td>Fairness</td><td>Non-fair lock allocation</td><td>Supports Fair ordering option</td></tr>\n</table>\n\n<pre><code>Lock lock = new ReentrantLock();\nlock.lock();\ntry {\n    // Critical Section\n} finally {\n    lock.unlock(); // Guaranteed cleanup\n}</code></pre>",
+    "answer": "<p>Java provides two primary techniques for mutual exclusion: the built-in <code>synchronized</code> keyword and the flexible <code>java.util.concurrent.locks.Lock</code> API (e.g., <code>ReentrantLock</code>).</p><br/><p><strong><code>synchronized</code> Keyword</strong></p><p><strong>Mechanism:</strong> Language-level intrinsic monitor lock built into every Java object. Lock acquisition and release are automatic and block-structured.</p><p><strong>Pros:</strong> Simple syntax, impossible to forget lock release, optimized by JVM (Lock Coarsening, Biased Locking, Lock Elision).</p><p><strong>Cons:</strong> Unfair by default, non-interruptible, cannot attempt non-blocking lock acquisition (<code>tryLock</code>).</p><br/><p><strong><code>Lock</code> API (<code>ReentrantLock</code>)</strong></p><p><strong>Mechanism:</strong> Class-based locking framework from <code>j.u.c.locks</code> built on AbstractQueuedSynchronizer (AQS).</p><p><strong>Pros:</strong> Supports <code>tryLock(timeout)</code>, interruptible lock acquisition (<code>lockInterruptibly()</code>), fair ordering options, and multiple condition variables per lock (<code>newCondition()</code>).</p><p><strong>Requirement:</strong> MUST explicitly release lock in a <code>finally</code> block to avoid permanent deadlocks!</p><br/><pre><code>// ReentrantLock Standard Idiom:
+Lock lock = new ReentrantLock();
+lock.lock();
+try {
+    // Critical Section
+} finally {
+    lock.unlock(); // Always release in finally block
+}</code></pre><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>synchronized</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>ReentrantLock</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'>Lock Release</td><td style='padding:8px;border:1px solid var(--border-color)'>Automatic (scope exit)</td><td style='padding:8px;border:1px solid var(--border-color)'>Manual (must use <code>finally</code>)</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Non-blocking try</td><td style='padding:8px;border:1px solid var(--border-color)'>❌ No</td><td style='padding:8px;border:1px solid var(--border-color)'>✅ <code>tryLock()</code></td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'>Interruptible</td><td style='padding:8px;border:1px solid var(--border-color)'>❌ No</td><td style='padding:8px;border:1px solid var(--border-color)'>✅ <code>lockInterruptibly()</code></td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Fairness option</td><td style='padding:8px;border:1px solid var(--border-color)'>❌ Always non-fair</td><td style='padding:8px;border:1px solid var(--border-color)'>✅ <code>new ReentrantLock(true)</code></td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "Lock"
@@ -272,7 +279,9 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "What is a race condition?",
-    "answer": "<strong>Quick Answer:</strong> A <strong>Race Condition</strong> occurs when multiple threads concurrently read and write shared data without synchronization, making the final result dependent on unpredictable thread execution timing.\n\n<p><strong>Example:</strong> Non-atomic compound operation <code>count++</code> performs 3 distinct steps: Read count -> Add 1 -> Write back count. If two threads execute this simultaneously, one increment can be overwritten and lost.</p>\n\n<p><strong>Prevention Techniques:</strong></p>\n<ul>\n  <li>Use <code>synchronized</code> methods or blocks.</li>\n  <li>Use atomic variables from <code>java.util.concurrent.atomic</code> (e.g., <code>AtomicInteger</code>).</li>\n  <li>Use explicit locks (<code>ReentrantLock</code>).</li>\n  <li>Design stateless or immutable objects.</li>\n</ul>",
+    "answer": "<p>A <strong>Race Condition</strong> occurs in concurrent software when the correctness of a program depends on the relative timing or interleaving of multiple threads executing shared mutable operations.</p><br/><p><strong>The Classic Counter Example:</strong></p><p>The expression <code>count++</code> appears to be a single operation, but is actually a <strong>3-step non-atomic sequence</strong>:</p><ol><li><strong>Read:</strong> Read current value of <code>count</code> from main memory into CPU register.</li><li><strong>Modify:</strong> Increment the register value by 1.</li><li><strong>Write:</strong> Write the incremented register value back to <code>count</code> in main memory.</li></ol><br/><pre><code>Thread A: Read count (10) ----&gt; Increment (11) ------------&gt; Write count (11)
+Thread B: ----- Read count (10) -------&gt; Increment (11) -&gt; Write count (11)
+// Result: count is 11 instead of expected 12! (Lost Update)</code></pre><br/><p><strong>Prevention Strategies:</strong></p><ul><li><strong>Synchronization:</strong> Protect state using <code>synchronized</code> or <code>ReentrantLock</code>.</li><li><strong>Atomic Classes:</strong> Use lock-free primitives like <code>AtomicInteger</code>, <code>AtomicLong</code>, <code>AtomicReference</code> (utilizes hardware CAS instructions).</li><li><strong>Immutability:</strong> Make objects immutable so state cannot be modified after construction.</li><li><strong>Thread Local:</strong> Confine variables to a single thread using <code>ThreadLocal</code>.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Thread"
@@ -283,7 +292,11 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "What is deadlock?",
-    "answer": "<strong>Quick Answer:</strong> A <strong>Deadlock</strong> is a situation where two or more threads are blocked forever, waiting for locks held by each other in a circular dependency chain.\n\n<p><strong>4 Necessary Conditions for Deadlock:</strong> Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait.</p>\n\n<p><strong>Deadlock Prevention Strategies:</strong></p>\n<ul>\n  <li><strong>Lock Ordering:</strong> Always acquire locks in a global, consistent order across all threads.</li>\n  <li><strong>Lock Timeout:</strong> Use <code>tryLock(timeout, unit)</code> instead of blocking indefinitely.</li>\n  <li><strong>Minimize Lock Scope:</strong> Keep critical sections as short as possible and avoid calling external methods while holding locks.</li>\n</ul>",
+    "answer": "<p>A <strong>Deadlock</strong> is a concurrency failure where two or more threads are permanently blocked, each waiting for a lock or resource currently held by another thread in the group.</p><br/><p><strong>The Four Coffman Conditions (All must hold for a deadlock to occur):</strong></p><ol><li><strong>Mutual Exclusion:</strong> Resources cannot be shared simultaneously.</li><li><strong>Hold and Wait:</strong> A thread holding a resource is waiting to acquire another.</li><li><strong>No Preemption:</strong> Resources cannot be forcibly taken from a thread.</li><li><strong>Circular Wait:</strong> A closed chain of threads exists, each waiting for a resource held by the next.</li></ol><br/><pre><code>// Classic Deadlock Scenario:
+// Thread 1 acquires Lock A, then tries to acquire Lock B
+// Thread 2 acquires Lock B, then tries to acquire Lock A
+Thread 1: synchronized(lockA) { synchronized(lockB) { ... } }
+Thread 2: synchronized(lockB) { synchronized(lockA) { ... } }</code></pre><br/><p><strong>Best Practices for Deadlock Prevention:</strong></p><ul><li><strong>Lock Ordering:</strong> Always acquire locks in a globally defined, consistent order across all threads.</li><li><strong>Lock Timeout:</strong> Use <code>tryLock(timeout, unit)</code> from <code>ReentrantLock</code> instead of indefinite blocking.</li><li><strong>Minimize Lock Scope:</strong> Hold locks for the shortest possible duration; avoid calling external/unknown code inside locked blocks.</li><li><strong>Detection Tools:</strong> Use <code>jcmd</code>, <code>jstack</code>, or ThreadMXBean (<code>findDeadlockedThreads()</code>) to diagnose deadlocks in production.</li></ul>",
     "difficulty": "Hard",
     "tags": [
       "Lock"
@@ -294,7 +307,18 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "What does volatile do?",
-    "answer": "<strong>Quick Answer:</strong> The <code>volatile</code> keyword guarantees <strong>Visibility</strong> and <strong>Instruction Reordering Prevention</strong> for variables across threads, but does NOT guarantee atomicity.\n\n<ul>\n  <li><strong>Visibility:</strong> Forces thread reads/writes to go directly to main CPU memory (bypassing thread-local CPU L1/L2 caches).</li>\n  <li><strong>Happens-Before Relationship:</strong> Prevents compiler and CPU instruction reordering around volatile reads/writes.</li>\n  <li><strong>Limitation:</strong> Doesn't make <code>count++</code> atomic! Use <code>AtomicInteger</code> for atomic operations.</li>\n</ul>",
+    "answer": "<p>The <code>volatile</code> keyword in Java provides two core guarantees for thread communication without relying on mutual exclusion locks:</p><br/><p><strong>1. Memory Visibility Guarantee</strong></p><p>Forces all reads and writes of a <code>volatile</code> variable to go directly to <strong>main CPU RAM</strong> rather than thread-local CPU L1/L2 caches. When Thread A updates a <code>volatile</code> field, Thread B is guaranteed to see the updated value immediately on its next read.</p><br/><p><strong>2. Instruction Reordering Prevention (Happens-Before Relationship)</strong></p><p>Prevents the compiler, JIT engine, and CPU hardware from reordering memory reads/writes around the <code>volatile</code> variable. Writing to a <code>volatile</code> variable creates a memory barrier that flushes prior writes.</p><br/><p><strong>Crucial Limitation: No Atomicity for Compound Operations!</strong></p><p><code>volatile</code> does <strong>NOT</strong> make compound operations (e.g., <code>count++</code> or <code>if (value == 5) value = 6</code>) thread-safe or atomic. For compound operations, use <code>AtomicInteger</code> or <code>synchronized</code>.</p><br/><pre><code>// Ideal Use Case: Flag / Shutdown Signal
+public class WorkerRunnable implements Runnable {
+    private volatile boolean running = true; // Visibility across threads
+
+    public void stop() { running = false; }
+
+    public void run() {
+        while (running) {
+            // Do work...
+        }
+    }
+}</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "Concurrency & JVM"
@@ -305,7 +329,13 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "ExecutorService vs manual threads?",
-    "answer": "<strong>Quick Answer:</strong> <code>ExecutorService</code> decouples task submission from thread management, preventing unmanaged thread creation spam and providing resource pooling, queues, and task cancellation.\n\n<ul>\n  <li><strong>Manual Threads:</strong> Creating <code>new Thread(runnable).start()</code> per request consumes heavy OS stack memory (typically 1MB per thread), degrades CPU performance through context switching, and risks OutOfMemoryError under traffic spikes.</li>\n  <li><strong>ExecutorService:</strong> Reuses a fixed/bounded pool of worker threads to process tasks from a blocking queue efficiently.</li>\n</ul>",
+    "answer": "<p>In production Java applications, managing concurrency via the <code>ExecutorService</code> framework is heavily preferred over creating manual <code>new Thread()</code> instances.</p><br/><p><strong>Manual Threads (Anti-Pattern in Enterprise Apps)</strong></p><p>Creating <code>new Thread(runnable).start()</code> per request has severe drawbacks:</p><ul><li><strong>High Resource Overhead:</strong> Each native OS thread allocates ~1MB stack memory. Creating 1,000 threads consumes ~1GB RAM just for thread stacks.</li><li><strong>Unbounded Thread Creation:</strong> Under traffic spikes, creating threads endlessly triggers <code>java.lang.OutOfMemoryError: unable to create new native thread</code>.</li><li><strong>Heavy Context Switching:</strong> Managing thousands of active threads causes CPU core trashing and degraded throughput.</li></ul><br/><p><strong>ExecutorService (Thread Pooling)</strong></p><p>Decouples <strong>task submission</strong> from <strong>thread execution and lifecycle management</strong>.</p><ul><li><strong>Resource Reuse:</strong> Reuses a fixed/bounded pool of worker threads.</li><li><strong>Work Queueing:</strong> Incoming tasks beyond pool capacity wait safely in a thread-safe blocking queue.</li><li><strong>Graceful Lifecycle:</strong> Provides structured shutdown (<code>shutdown()</code>, <code>shutdownNow()</code>) and task cancellation via <code>Future</code>.</li></ul><br/><pre><code>// Recommended Production Setup:
+ExecutorService executor = Executors.newFixedThreadPool(10);
+Future&lt;String&gt; future = executor.submit(() -&gt; {
+    return \"Task completed\";
+});
+String result = future.get(); // Blocking wait for result
+executor.shutdown();</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "Thread"
@@ -316,7 +346,14 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "What is a thread pool?",
-    "answer": "<strong>Quick Answer:</strong> A <strong>Thread Pool</strong> is a managed pool of reusable worker threads that execute queued tasks, controlling concurrency levels and minimizing thread allocation overhead.\n\n<pre><code>// Core Thread Pool Configuration\nExecutorService executor = new ThreadPoolExecutor(\n    10,                        // corePoolSize\n    50,                        // maximumPoolSize\n    60L, TimeUnit.SECONDS,     // keepAliveTime\n    new ArrayBlockingQueue<>(500), // workQueue\n    new ThreadPoolExecutor.CallerRunsPolicy() // Rejection Policy\n);</code></pre>",
+    "answer": "<p>A <strong>Thread Pool</strong> is a managed collection of pre-allocated worker threads that execute tasks asynchronously from a shared work queue.</p><br/><p><strong>Core Components of ThreadPoolExecutor:</strong></p><ol><li><strong>corePoolSize:</strong> Minimum number of threads kept alive in the pool, even if idle.</li><li><strong>maximumPoolSize:</strong> Maximum allowable threads when the queue fills up.</li><li><strong>keepAliveTime:</strong> Duration idle non-core threads wait before terminating.</li><li><strong>workQueue:</strong> <code>BlockingQueue&lt;Runnable&gt;</code> holding pending tasks (e.g., <code>ArrayBlockingQueue</code>, <code>LinkedBlockingQueue</code>).</li><li><strong>RejectedExecutionHandler:</strong> Policy triggered when the queue is full and <code>maximumPoolSize</code> is reached.</li></ol><br/><pre><code>// Production Configured ThreadPoolExecutor:
+ThreadPoolExecutor executor = new ThreadPoolExecutor(
+    10,                                  // Core threads
+    50,                                  // Max threads
+    60L, TimeUnit.SECONDS,               // Keep alive
+    new ArrayBlockingQueue&lt;&gt;(1000),      // Bounded Work Queue
+    new ThreadPoolExecutor.CallerRunsPolicy() // Rejection Policy (Backpressure)
+);</code></pre><br/><p><strong>Common Rejection Policies:</strong></p><ul><li><code>AbortPolicy</code> (Default): Throws <code>RejectedExecutionException</code>.</li><li><code>CallerRunsPolicy</code>: Forces the submitting thread to execute the task (creates natural backpressure).</li><li><code>DiscardPolicy</code>: Silently drops the task.</li><li><code>DiscardOldestPolicy</code>: Drops the oldest unhandled task in queue and retries.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Thread"
@@ -327,7 +364,18 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "Callable and Future?",
-    "answer": "<strong>Quick Answer:</strong> <code>Callable&lt;V&gt;</code> is a task interface that returns a value and can throw checked exceptions, whereas <code>Future&lt;V&gt;</code> represents the asynchronous result handle of a submitted task.\n\n<ul>\n  <li><strong>Runnable vs Callable:</strong> <code>Runnable.run()</code> returns <code>void</code> and cannot throw checked exceptions; <code>Callable.call()</code> returns type <code>V</code> and throws <code>Exception</code>.</li>\n  <li><strong>Future API:</strong> <code>future.get()</code> blocks until computation completes, <code>future.cancel()</code> cancels task, and <code>future.isDone()</code> checks status.</li>\n</ul>",
+    "answer": "<p>In Java concurrency, <code>Callable&lt;V&gt;</code> and <code>Future&lt;V&gt;</code> are the modern abstractions for asynchronous task execution with return values.</p><br/><p><strong><code>Runnable</code> vs <code>Callable</code></strong></p><p><code>Runnable.run()</code> takes no parameters, returns <code>void</code>, and cannot throw checked exceptions. <code>Callable&lt;V&gt;.call()</code> returns a generic result of type <code>V</code> and can throw checked exceptions.</p><br/><p><strong><code>Future&lt;V&gt;</code> API Key Methods</strong></p><ul><li><code>get()</code>: Blocks until computation finishes, then returns the result.</li><li><code>get(timeout, unit)</code>: Blocks up to specified timeout; throws <code>TimeoutException</code> if exceeded.</li><li><code>cancel(mayInterruptIfRunning)</code>: Attempts to cancel execution of the task.</li><li><code>isDone()</code>: Returns <code>true</code> if task completed (normally, via exception, or cancelled).</li></ul><br/><pre><code>Callable&lt;Integer&gt; task = () -&gt; {
+    Thread.sleep(1000);
+    return 42;
+};
+
+ExecutorService executor = Executors.newSingleThreadExecutor();
+Future&lt;Integer&gt; future = executor.submit(task);
+
+// Non-blocking work can happen here...
+
+Integer result = future.get(2, TimeUnit.SECONDS); // 42
+executor.shutdown();</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "Concurrency & JVM"
@@ -338,7 +386,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "Heap vs stack?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Stack Memory</strong> stores thread execution frames, local primitive variables, and object references per thread, whereas <strong>Heap Memory</strong> stores all instantiated Java Objects and is shared across all threads.\n\n<table border=\"1\" cellpadding=\"6\" style=\"border-collapse:collapse; width:100%; margin:10px 0;\">\n  <tr style=\"background:var(--bg-tertiary)\"><th>Property</th><th>Stack Memory</th><th>Heap Memory</th></tr>\n  <tr><td>Scope</td><td>Private to each thread</td><td>Shared across entire JVM application</td></tr>\n  <tr><td>Lifecycle</td><td>Automated pushed/popped with method call stack</td><td>Managed by Garbage Collector</td></tr>\n  <tr><td>Out of Memory Error</td><td><code>StackOverflowError</code> (deep recursion)</td><td><code>OutOfMemoryError: Java heap space</code></td></tr>\n</table>",
+    "answer": "<p>JVM memory management divides memory primarily into <strong>Stack Memory</strong> and <strong>Heap Memory</strong>:</p><br/><p><strong>Stack Memory — Per-Thread Execution Stack</strong></p><ul><li><strong>Scope:</strong> Private to each thread. Thread A cannot access Thread B's stack.</li><li><strong>Contents:</strong> Local primitive variables and reference pointers pointing to objects residing on the Heap.</li><li><strong>Lifecycle:</strong> LIFO stack frame allocation per method invocation. Pushed on method entry, popped on method return. Automatically reclaimed.</li><li><strong>Error:</strong> Deep or infinite recursion causes <code>java.lang.StackOverflowError</code>.</li></ul><br/><p><strong>Heap Memory — Shared Object Store</strong></p><ul><li><strong>Scope:</strong> Global across the entire JVM instance, shared by all threads.</li><li><strong>Contents:</strong> All Java object instances and instance variables (e.g., <code>new User()</code>, <code>new String()</code>).</li><li><strong>Lifecycle:</strong> Reclaimed automatically by the Garbage Collector when objects become unreachable.</li><li><strong>Error:</strong> Exhaustion of memory causes <code>java.lang.OutOfMemoryError: Java heap space</code>.</li></ul><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Stack Memory</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Heap Memory</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'>Thread Access</td><td style='padding:8px;border:1px solid var(--border-color)'>Thread-private</td><td style='padding:8px;border:1px solid var(--border-color)'>Shared across all threads</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Speed</td><td style='padding:8px;border:1px solid var(--border-color)'>Extremely fast (push/pop)</td><td style='padding:8px;border:1px solid var(--border-color)'>Slower (allocation &amp; GC)</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'>Lifetime</td><td style='padding:8px;border:1px solid var(--border-color)'>Method call duration</td><td style='padding:8px;border:1px solid var(--border-color)'>Until garbage collected</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Error Type</td><td style='padding:8px;border:1px solid var(--border-color)'><code>StackOverflowError</code></td><td style='padding:8px;border:1px solid var(--border-color)'><code>OutOfMemoryError</code></td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "Thread"
@@ -349,7 +397,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "threads",
     "category": "Concurrency & JVM",
     "question": "How does Garbage Collection work?",
-    "answer": "<strong>Quick Answer:</strong> Java Garbage Collection (GC) automatically reclaims memory occupied by unreferenced objects using Generational Hypothesis algorithms.\n\n<p><strong>Generational Memory Structure:</strong></p>\n<ul>\n  <li><strong>Young Generation (Eden + Survivor Spaces S0/S1):</strong> Where new objects are allocated. Minor GC collects short-lived objects quickly.</li>\n  <li><strong>Old (Tenured) Generation:</strong> Stores long-surviving objects promoted from Young Gen. Major/Full GC runs here.</li>\n  <li><strong>Modern Collectors:</strong> <strong>G1 GC</strong> (garbage-first region collector), <strong>ZGC</strong> (ultra-low pause time under 1ms), and <strong>Shenandoah</strong>.</li>\n</ul>",
+    "answer": "<p>Garbage Collection (GC) in Java automatically manages heap memory by identifying unreachable objects and reclaiming their memory space.</p><br/><p><strong>The Weak Generational Hypothesis</strong></p><p>JVM GC algorithms rely on two empirical observations:</p><ol><li>Most objects die young (short lived, e.g., temporary variables in a request loop).</li><li>Objects that survive past a threshold rarely die soon after.</li></ol><br/><p><strong>Generational Memory Subdivisions:</strong></p><ul><li><strong>Young Generation:</strong> Subdivided into <strong>Eden Space</strong> and two <strong>Survivor Spaces (S0, S1)</strong>. New objects are created in Eden. Minor GC runs frequently here to clean dead objects.</li><li><strong>Old (Tenured) Generation:</strong> Objects that survive multiple Minor GC cycles are promoted to Old Gen. Major/Full GC runs here less frequently.</li><li><strong>Metaspace (Java 8+):</strong> Stores class metadata in native OS memory (replacing old PermGen).</li></ul><br/><p><strong>Modern GC Collectors in Production:</strong></p><ul><li><strong>G1 GC (Garbage-First):</strong> Region-based collector for large heaps (4GB+), designed to meet target pause times.</li><li><strong>ZGC (Z Garbage Collector):</strong> Ultra-low latency collector (pause times under 1ms regardless of heap size up to terabytes).</li></ul>",
     "difficulty": "Hard",
     "tags": [
       "GC"
@@ -360,7 +408,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "What is Spring Framework?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Spring Framework</strong> is an enterprise Java container framework centered around Dependency Injection (DI) and Inversion of Control (IoC), offering abstractions for web (Spring MVC), transactions, data access, and security.\n\n<ul>\n  <li><strong>Key Modules:</strong> Spring Core, Spring Beans, Spring Context, Spring AOP, Spring ORM/Data, Spring Web MVC.</li>\n  <li><strong>Primary Goal:</strong> Loose coupling via interface-driven dependency injection and boilerplate-free application infrastructure.</li>\n</ul>",
+    "answer": "<p><strong>Spring Framework</strong> is the industry-standard, open-source Java enterprise framework centered around <strong>Inversion of Control (IoC)</strong> and <strong>Dependency Injection (DI)</strong>.</p><br/><p><strong>Core Objectives:</strong></p><ul><li>Promote loose coupling through interface-driven design.</li><li>Eliminate boilerplate infrastructure code (database connection setup, transaction management, web mapping).</li><li>Enable non-invasive programming model (POJOs — Plain Old Java Objects).</li></ul><br/><p><strong>Key Spring Modules:</strong></p><ul><li><strong>Spring Core &amp; Beans:</strong> Provides the IoC container and bean management.</li><li><strong>Spring MVC:</strong> Web application framework for REST APIs and HTML views.</li><li><strong>Spring Data:</strong> Simplified persistence layer (JPA, JDBC, Mongo, Redis).</li><li><strong>Spring Security:</strong> Enterprise authentication and authorization framework.</li><li><strong>Spring AOP:</strong> Aspect-Oriented Programming for cross-cutting concerns (logging, transactions).</li></ul>",
     "difficulty": "Easy",
     "tags": [
       "Spring"
@@ -371,7 +419,20 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "What is Dependency Injection?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Dependency Injection (DI)</strong> is a design pattern where an object's dependencies are injected by an external container (Spring IoC) rather than being constructed directly inside the class using <code>new</code>.\n\n<pre><code>// Bad: Hardcoded coupling\npublic class UserService {\n    private UserRepository repo = new UserRepositoryImpl(); \n}\n\n// Good: Constructor Injection\n@Service\npublic class UserService {\n    private final UserRepository repo;\n    \n    public UserService(UserRepository repo) {\n        this.repo = repo;\n    }\n}</code></pre>",
+    "answer": "<p><strong>Dependency Injection (DI)</strong> is a design pattern implementing Inversion of Control, where an object's dependencies are <em>injected</em> by an external container (Spring IoC) rather than being created inside the class using the <code>new</code> operator.</p><br/><p><strong>Comparison: Hardcoded vs Injected</strong></p><pre><code>// ❌ Bad: Tightly Coupled (hard to unit test)
+public class UserService {
+    private UserRepository repo = new UserRepositoryImpl();
+}
+
+// ✅ Good: Loose Coupling via Constructor Injection
+@Service
+public class UserService {
+    private final UserRepository repo;
+
+    public UserService(UserRepository repo) {
+        this.repo = repo;
+    }
+}</code></pre><br/><p><strong>Benefits of DI:</strong></p><ul><li><strong>Testability:</strong> Mock implementations can easily be passed into constructors during unit tests.</li><li><strong>Flexibility:</strong> Swap implementations (e.g., <code>JpaUserRepository</code> to <code>MongoUserRepository</code>) by changing configuration without modifying business logic.</li><li><strong>Single Responsibility:</strong> Classes focus on their core logic, not on constructing sub-objects.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring Core"
@@ -382,7 +443,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "Explain IoC.",
-    "answer": "<strong>Quick Answer:</strong> <strong>Inversion of Control (IoC)</strong> is a design principle where control of object creation, dependency management, and lifecycle execution is transferred from application code to the Spring Container (<code>ApplicationContext</code>).\n\n<p>Instead of your code calling the container, the container manages your code's lifecycle callbacks (<code>@PostConstruct</code>, <code>@PreDestroy</code>) and injects dependencies automatically.</p>",
+    "answer": "<p><strong>Inversion of Control (IoC)</strong> is an architectural principle where the control of object creation, dependency wiring, and lifecycle management is inverted: transferred from custom application code to the Spring IoC Container (<code>ApplicationContext</code>).</p><br/><p><strong>The Traditional Flow vs IoC Flow:</strong></p><ul><li><strong>Traditional:</strong> Your code controls the flow — calling constructors, initializing dependencies, and managing object lifecycle.</li><li><strong>IoC:</strong> The framework controls the flow (\"Hollywood Principle: Don't call us, we'll call you\"). Spring instantiates components, injects dependencies, and triggers lifecycle hooks (<code>@PostConstruct</code>, <code>@PreDestroy</code>).</li></ul><br/><p><strong>Spring IoC Containers:</strong></p><ul><li><code>BeanFactory</code>: Basic container providing configuration framework and basic bean management.</li><li><code>ApplicationContext</code>: Enterprise container extending <code>BeanFactory</code> with AOP integration, i18n message resolution, event publication, and web context capabilities.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -393,7 +454,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "Component vs Service vs Repository vs Controller?",
-    "answer": "<strong>Quick Answer:</strong> All four are stereotype annotations derived from <code>@Component</code>, indicating that a class is a Spring-managed bean, but each serves a specific architectural layer:\n\n<ul>\n  <li><code>@Component</code>: Generic archetype annotation for any Spring-managed component.</li>\n  <li><code>@Service</code>: Marks business logic service layer components.</li>\n  <li><code>@Repository</code>: Marks persistence/DAO layer components. Converts low-level SQL/JPA exceptions into Spring's <code>DataAccessException</code> hierarchy.</li>\n  <li><code>@Controller</code> / <code>@RestController</code>: Marks web layer components handling HTTP requests.</li>\n</ul>",
+    "answer": "<p>All four annotations are stereotype annotations derived from <code>@Component</code>. They register a class as a Spring-managed Bean, but communicate specific architectural roles and carry specialized framework behaviors:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Annotation</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Architectural Layer</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Special Framework Behavior</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>@Component</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Generic Spring Bean</td><td style='padding:8px;border:1px solid var(--border-color)'>Basic bean candidate for component scanning</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>@Service</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Business Logic Layer</td><td style='padding:8px;border:1px solid var(--border-color)'>Semantic marker for business services &amp; transactions</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>@Repository</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Persistence / DAO Layer</td><td style='padding:8px;border:1px solid var(--border-color)'>Translates native SQL/JPA exceptions into Spring's <code>DataAccessException</code></td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>@Controller</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Web Presentation Layer</td><td style='padding:8px;border:1px solid var(--border-color)'>Handles HTTP requests; returns view names or REST data (via <code>@ResponseBody</code>)</td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -404,7 +465,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "Why prefer constructor injection?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Constructor Injection</strong> is preferred over Field Injection (<code>@Autowired</code> on fields) for 4 major reasons:\n\n<ol>\n  <li><strong>Immutability:</strong> Allows dependency fields to be declared <code>final</code>.</li>\n  <li><strong>Valid State Guarantee:</strong> Prevents NullPointerExceptions by ensuring objects cannot be instantiated without required dependencies.</li>\n  <li><strong>Testability:</strong> Enables easy unit testing without needing Spring Reflection/Mocks context.</li>\n  <li><strong>Circular Dependency Detection:</strong> Spring detects circular dependencies at application startup rather than runtime.</li>\n</ol>",
+    "answer": "<p>Spring supports 3 types of dependency injection (Constructor, Field via <code>@Autowired</code>, Setter). <strong>Constructor Injection</strong> is strongly recommended by the Spring team for 4 critical reasons:</p><br/><ol><li><strong>Immutability:</strong> Allows dependency fields to be declared as <code>final</code>, ensuring they cannot be mutated after bean construction.</li><li><strong>Null-Safety Guarantee:</strong> Ensures a bean cannot be instantiated in an incomplete or invalid state — all required dependencies must be provided at construction.</li><li><strong>Ease of Unit Testing:</strong> Allows easy instantiation in plain JUnit tests without needing Spring container reflection or <code>@MockBean</code> annotations.</li><li><strong>Circular Dependency Prevention:</strong> Spring detects circular dependencies at startup time during constructor calls, failing fast rather than failing unexpectedly later.</li></ol>",
     "difficulty": "Medium",
     "tags": [
       "Spring Core"
@@ -415,7 +476,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "What is a Spring Bean?",
-    "answer": "<strong>Quick Answer:</strong> A <strong>Spring Bean</strong> is an object that is instantiated, configured, assembled, and managed by the Spring IoC container (ApplicationContext).\n\n<p>Beans are defined via annotations (<code>@Component</code>, <code>@Service</code>), XML configuration, or Java Config classes using <code>@Bean</code> methods.</p>",
+    "answer": "<p>A <strong>Spring Bean</strong> is an object that is instantiated, configured, assembled, and managed by the Spring Inversion of Control (IoC) container (<code>ApplicationContext</code>).</p><br/><p><strong>Bean Definition Sources:</strong></p><ul><li><strong>Component Scanning:</strong> Annotating classes with <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, or <code>@RestController</code>.</li><li><strong>Java Configuration:</strong> Methods annotated with <code>@Bean</code> inside a <code>@Configuration</code> class.</li><li><strong>XML Configuration:</strong> Legacy <code>&lt;bean id=\"...\" class=\"...\"/&gt;</code> definitions.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -426,7 +487,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "What are Bean scopes?",
-    "answer": "<strong>Quick Answer:</strong> Bean scopes dictate the lifecycle and visibility of bean instances within the container.\n\n<ul>\n  <li><code>singleton</code> (Default): One single shared bean instance per Spring ApplicationContext.</li>\n  <li><code>prototype</code>: Creates a brand new bean instance every time it is requested from the container.</li>\n  <li><code>request</code> (Web): Creates one bean instance per HTTP request lifecycle.</li>\n  <li><code>session</code> (Web): Creates one bean instance per HTTP session.</li>\n  <li><code>application</code> (Web): One bean instance per ServletContext.</li>\n</ul>",
+    "answer": "<p>Spring Bean Scopes control the lifecycle and instance creation strategy of a bean within the <code>ApplicationContext</code>:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Scope</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Description</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>singleton</code> (Default)</td><td style='padding:8px;border:1px solid var(--border-color)'>One single shared bean instance per Spring ApplicationContext. Cached for subsequent lookups.</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>prototype</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Creates a brand new bean instance every time it is requested from the container.</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>request</code> (Web)</td><td style='padding:8px;border:1px solid var(--border-color)'>One bean instance created per HTTP request lifecycle. Discarded on request completion.</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>session</code> (Web)</td><td style='padding:8px;border:1px solid var(--border-color)'>One bean instance per HTTP Session.</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>application</code> (Web)</td><td style='padding:8px;border:1px solid var(--border-color)'>One bean instance per <code>ServletContext</code>.</td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -437,7 +498,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "Explain Spring Bean lifecycle.",
-    "answer": "<strong>Quick Answer:</strong> The Spring Bean Lifecycle involves key creation, initialization, usage, and destruction phases:\n\n<ol>\n  <li><strong>Instantiation:</strong> Bean object constructed via constructor.</li>\n  <li><strong>Populate Properties:</strong> Dependencies injected into fields/constructors.</li>\n  <li><strong>Aware Interfaces:</strong> Invokes <code>BeanNameAware</code>, <code>BeanFactoryAware</code>, etc.</li>\n  <li><strong>BeanPostProcessor Before Initialization:</strong> <code>postProcessBeforeInitialization()</code>.</li>\n  <li><strong>Initialization:</strong> Calls <code>@PostConstruct</code> methods or <code>InitializingBean.afterPropertiesSet()</code>.</li>\n  <li><strong>BeanPostProcessor After Initialization:</strong> Creates proxies (AOP).</li>\n  <li><strong>Bean Usage:</strong> Ready for application execution.</li>\n  <li><strong>Destruction:</strong> Calls <code>@PreDestroy</code> or <code>DisposableBean.destroy()</code> on shutdown.</li>\n</ol>",
+    "answer": "<p>The Spring Bean Lifecycle consists of distinct creation, initialization, usage, and destruction phases managed by the container:</p><br/><ol><li><strong>Instantiation:</strong> Container constructs bean via constructor or factory method.</li><li><strong>Populate Properties:</strong> Container injects dependencies via setters/fields/constructors.</li><li><strong>Aware Callbacks:</strong> Container calls Aware interfaces if implemented (e.g., <code>BeanNameAware</code>, <code>ApplicationContextAware</code>).</li><li><strong>BeanPostProcessor (Pre-Initialization):</strong> Executes <code>postProcessBeforeInitialization()</code> across all custom processors.</li><li><strong>Initialization:</strong> Executes custom init methods (e.g., <code>@PostConstruct</code>, <code>InitializingBean.afterPropertiesSet()</code>).</li><li><strong>BeanPostProcessor (Post-Initialization):</strong> Executes <code>postProcessAfterInitialization()</code>. AOP proxies (for <code>@Transactional</code>, <code>@Async</code>) are created here!</li><li><strong>Ready for Use:</strong> Bean is fully configured and served to application code.</li><li><strong>Destruction:</strong> On container shutdown, calls <code>@PreDestroy</code> or <code>DisposableBean.destroy()</code>.</li></ol>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -448,7 +509,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "What is @Autowired?",
-    "answer": "<strong>Quick Answer:</strong> <code>@Autowired</code> instructs Spring to resolve and inject a matching bean by type into a field, setter, or constructor.\n\n<ul>\n  <li>If multiple beans of the same type exist, resolve ambiguity using <code>@Qualifier(\"beanName\")</code> or <code>@Primary</code>.</li>\n  <li>Note: As of Spring 4.3, classes with a single constructor do NOT require explicit <code>@Autowired</code> annotations.</li>\n</ul>",
+    "answer": "<p><code>@Autowired</code> is an annotation that instructs Spring's dependency injection engine to automatically wire a matching bean by type into a constructor, setter method, or field.</p><br/><p><strong>Resolving Ambiguity:</strong></p><p>If multiple beans implement the target interface, Spring throws an <code>NoUniqueBeanDefinitionException</code>. Resolve ambiguity using:</p><ul><li><code>@Qualifier(\"beanName\")</code>: Specifies exact bean name to inject.</li><li><code>@Primary</code>: Marks a bean class as default choice among candidates.</li></ul><p><em>Note: Since Spring 4.3, classes with a single constructor do not require an explicit <code>@Autowired</code> annotation.</em></p>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -459,7 +520,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "spring",
     "category": "Spring Core",
     "question": "What is Spring AOP?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Spring AOP (Aspect-Oriented Programming)</strong> complements OOP by separating cross-cutting concerns (logging, security, transactions, metrics) from business logic using dynamic proxy proxies.\n\n<ul>\n  <li><strong>Aspect:</strong> A module encapsulating a cross-cutting concern (e.g., TransactionAspect).</li>\n  <li><strong>Join Point:</strong> Point of execution (e.g., method execution).</li>\n  <li><strong>Advice:</strong> Action taken (<code>@Before</code>, <code>@After</code>, <code>@Around</code>, <code>@AfterReturning</code>, <code>@AfterThrowing</code>).</li>\n  <li><strong>Pointcut:</strong> Expression matching Join Points (e.g., <code>execution(* com.service.*.*(..))</code>).</li>\n</ul>",
+    "answer": "<p><strong>Aspect-Oriented Programming (AOP)</strong> complements Object-Oriented Programming by separating cross-cutting concerns (logging, security checks, transaction management, performance metrics) from core business logic using dynamic proxy wrapping.</p><br/><p><strong>Key AOP Terminology:</strong></p><ul><li><strong>Aspect:</strong> A module encapsulating a cross-cutting concern (e.g., <code>LoggingAspect</code>).</li><li><strong>Join Point:</strong> A point during program execution (in Spring AOP, always a method execution).</li><li><strong>Advice:</strong> Action taken by an aspect at a Join Point (<code>@Before</code>, <code>@After</code>, <code>@Around</code>, <code>@AfterReturning</code>, <code>@AfterThrowing</code>).</li><li><strong>Pointcut:</strong> A predicate expression matching Join Points (e.g., <code>execution(* com.service.*.*(..))</code>).</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -470,7 +531,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "Spring vs Spring Boot?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Spring Framework</strong> provides core abstractions and manual configuration modules, whereas <strong>Spring Boot</strong> is an opinionated layer built on top of Spring to enable auto-configuration, starters, and embedded servers for rapid development.\n\n<table border=\"1\" cellpadding=\"6\" style=\"border-collapse:collapse; width:100%; margin:10px 0;\">\n  <tr style=\"background:var(--bg-tertiary)\"><th>Aspect</th><th>Spring Framework</th><th>Spring Boot</th></tr>\n  <tr><td>Configuration</td><td>Requires extensive XML or Java <code>@Configuration</code> setup</td><td>Auto-configuration with sensible defaults</td></tr>\n  <tr><td>Server</td><td>Deploy WAR to external Tomcat/GlassFish</td><td>Embedded Tomcat/Jetty Executable JAR</td></tr>\n  <tr><td>Dependencies</td><td>Manual version management per library</td><td>Starter POMs with curated dependency versions</td></tr>\n</table>",
+    "answer": "<p><strong>Spring Framework</strong> provides core enterprise infrastructure (DI, IoC, AOP, Data, MVC), while <strong>Spring Boot</strong> is an opinionated framework built on top of Spring to eliminate boilerplate configuration and streamline application bootstrap.</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Spring Framework</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Spring Boot</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'>Configuration</td><td style='padding:8px;border:1px solid var(--border-color)'>Manual Java/XML configuration required</td><td style='padding:8px;border:1px solid var(--border-color)'>Auto-configuration based on classpath JARs</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Server Deployment</td><td style='padding:8px;border:1px solid var(--border-color)'>Export WAR &amp; deploy to external Tomcat/WildFly</td><td style='padding:8px;border:1px solid var(--border-color)'>Embedded server (Tomcat/Jetty) → Executable JAR</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'>Dependency Management</td><td style='padding:8px;border:1px solid var(--border-color)'>Manual specification of individual library versions</td><td style='padding:8px;border:1px solid var(--border-color)'>Starter dependencies with curated version BOMs</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Production Metrics</td><td style='padding:8px;border:1px solid var(--border-color)'>Must configure metrics/health manually</td><td style='padding:8px;border:1px solid var(--border-color)'>Built-in Actuator endpoints (health, metrics, env)</td></tr></tbody></table>",
     "difficulty": "Easy",
     "tags": [
       "Spring"
@@ -481,7 +542,13 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "What does @SpringBootApplication contain?",
-    "answer": "<strong>Quick Answer:</strong> <code>@SpringBootApplication</code> is a convenience meta-annotation combining three essential Spring Boot annotations:\n\n<ul>\n  <li><code>@SpringBootConfiguration</code>: Indicates that the class provides Spring Boot context configuration (a specialized <code>@Configuration</code>).</li>\n  <li><code>@EnableAutoConfiguration</code>: Enables Spring Boot's auto-configuration engine to configure beans based on classpath dependencies.</li>\n  <li><code>@ComponentScan</code>: Scans the current package and sub-packages for Spring components (<code>@Service</code>, <code>@RestController</code>, etc.).</li>\n</ul>",
+    "answer": "<p><code>@SpringBootApplication</code> is a meta-annotation that combines three core Spring annotations into a single convenience declaration on the main application class:</p><br/><ul><li><code>@SpringBootConfiguration</code>: A specialized form of <code>@Configuration</code> designating the class as a primary source of bean definitions.</li><li><code>@EnableAutoConfiguration</code>: Activates Spring Boot's auto-configuration mechanism, analyzing classpath dependencies to automatically register beans.</li><li><code>@ComponentScan</code>: Scans the current package and all sub-packages for Spring components (<code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, <code>@RestController</code>).</li></ul><br/><pre><code>// Standard Spring Boot Entry Point:
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
@@ -492,7 +559,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "What is auto-configuration?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Auto-configuration</strong> automatically configures Spring application beans based on JAR dependencies present on the classpath, system properties, and existing custom bean definitions.\n\n<p>It uses <code>@Conditional</code> annotations such as <code>@ConditionalOnClass</code>, <code>@ConditionalOnMissingBean</code>, and <code>@ConditionalOnProperty</code> defined in <code>spring.factories</code> / <code>org.springframework.boot.autoconfigure.AutoConfiguration.imports</code>.</p>",
+    "answer": "<p><strong>Auto-configuration</strong> is Spring Boot's mechanism for automatically configuring application beans based on JAR dependencies present on the classpath, system properties, and existing user-defined beans.</p><br/><p><strong>How Auto-Configuration Works:</strong></p><ol><li>Spring Boot inspects <code>AutoConfiguration.imports</code> (or legacy <code>META-INF/spring.factories</code>) from starter JARs.</li><li>Evaluates conditional annotations to determine if a bean should be registered:<ul><li><code>@ConditionalOnClass</code>: Executes only if a specific class is present on the classpath (e.g., <code>HikariDataSource.class</code>).</li><li><code>@ConditionalOnMissingBean</code>: Executes only if the user hasn't already declared a custom bean of that type (allows user overrides!).</li><li><code>@ConditionalOnProperty</code>: Executes only if a configuration property matches (e.g., <code>spring.datasource.url</code>).</li></ul></li></ol>",
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
@@ -503,7 +570,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "What are Spring Boot starters?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Spring Boot Starters</strong> are pre-packaged dependency descriptors that group related libraries and versions into a single dependency import.\n\n<ul>\n  <li><code>spring-boot-starter-web</code>: Tomcat, Spring MVC, REST support, Jackson JSON.</li>\n  <li><code>spring-boot-starter-data-jpa</code>: Hibernate, JPA, HikariCP connection pool, Spring Data JPA.</li>\n  <li><code>spring-boot-starter-security</code>: Spring Security core and Web filter configurations.</li>\n</ul>",
+    "answer": "<p><strong>Spring Boot Starters</strong> are curated dependency descriptors that bundle related libraries, transitive dependencies, and version management into a single convenient import for build tools (Maven/Gradle).</p><br/><p><strong>Popular Official Starters:</strong></p><ul><li><code>spring-boot-starter-web</code>: Spring MVC, REST controllers, Jackson JSON, and embedded Tomcat.</li><li><code>spring-boot-starter-data-jpa</code>: Spring Data JPA, Hibernate ORM, HikariCP connection pool, and Jakarta Persistence.</li><li><code>spring-boot-starter-security</code>: Spring Security core filters, password encoders, and authentication configs.</li><li><code>spring-boot-starter-test</code>: JUnit 5, Mockito, AssertJ, Hamcrest, and Spring Test context.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring",
@@ -515,7 +582,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "How does embedded Tomcat work?",
-    "answer": "<strong>Quick Answer:</strong> Embedded Tomcat is bundled inside the application executable JAR file via <code>spring-boot-starter-web</code>.\n\n<p>When <code>main()</code> executes, Spring Boot starts an embedded Servlet Container programmatically via <code>TomcatServletWebServerFactory</code>, listening on port 8080 without needing external WAR deployment.</p>",
+    "answer": "<p>Spring Boot packages an embedded Servlet container (Tomcat by default via <code>spring-boot-starter-web</code>) directly inside the executable JAR file.</p><br/><p><strong>Under the Hood Execution Flow:</strong></p><ol><li>When <code>main()</code> runs, <code>SpringApplication.run()</code> initializes a <code>ServletWebServerApplicationContext</code>.</li><li>It detects <code>TomcatServletWebServerFactory</code> on the classpath.</li><li>Spring programmatically instantiates Tomcat, configures HTTP ports, registers the <code>DispatcherServlet</code>, and starts the server instance.</li><li>The application runs as a standalone Java process without needing external application server installation (WAR deployment).</li></ol>",
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
@@ -526,7 +593,26 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "How do you create a REST API?",
-    "answer": "<strong>Quick Answer:</strong> Creating a production REST API involves controller mapping, DTO models, service boundaries, and error advice:\n\n<pre><code>@RestController\n@RequestMapping(\"/api/v1/users\")\npublic className UserController {\n    private final UserService userService;\n\n    public UserController(UserService userService) {\n        this.userService = userService;\n    }\n\n    @PostMapping\n    public ResponseEntity&lt;UserDTO&gt; createUser(@Valid @RequestBody CreateUserRequest request) {\n        UserDTO user = userService.createUser(request);\n        return ResponseEntity.status(HttpStatus.CREATED).body(user);\n    }\n}</code></pre>",
+    "answer": "<p>A production-ready Spring Boot REST API incorporates controller mapping, request validation, service delegation, and DTO responses:</p><br/><pre><code>@RestController
+@RequestMapping(\"/api/v1/users\")
+public class UserController {
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PostMapping
+    public ResponseEntity&lt;UserDTO&gt; createUser(@Valid @RequestBody CreateUserRequest request) {
+        UserDTO response = userService.createUser(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping(\"/{id}\")
+    public ResponseEntity&lt;UserDTO&gt; getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUserById(id));
+    }
+}</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "REST"
@@ -537,7 +623,10 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "@Controller vs @RestController?",
-    "answer": "<strong>Quick Answer:</strong> <code>@Controller</code> is used for traditional Spring MVC web applications returning HTML views (JSP/Thymeleaf), whereas <code>@RestController</code> combines <code>@Controller</code> and <code>@ResponseBody</code> to return serialized JSON/XML HTTP response data.\n\n<pre><code>// @RestController equivalent:\n@Controller\n@ResponseBody\npublic class ApiController { ... }</code></pre>",
+    "answer": "<p>Both annotations mark web controllers in Spring MVC, but differ in their default response serialization model:</p><br/><ul><li><code>@Controller</code>: Designed for traditional web applications. Controller methods return a <code>String</code> representing a view name (e.g., Thymeleaf/JSP template path).</li><li><code>@RestController</code>: A convenience meta-annotation that combines <code>@Controller</code> and <code>@ResponseBody</code>. Methods return domain objects or <code>ResponseEntity</code> directly serialized to JSON/XML by Jackson.</li></ul><br/><pre><code>// @RestController is syntactic sugar for:
+@Controller
+@ResponseBody
+public class UserApiController { ... }</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "JSON"
@@ -548,7 +637,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "@RequestParam vs @PathVariable vs @RequestBody?",
-    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>@RequestParam</code>: Extracts query parameters from the URI (e.g., <code>/users?page=1&limit=10</code>).</li>\n  <li><code>@PathVariable</code>: Extracts path variable values from URI template paths (e.g., <code>/users/{id}</code>).</li>\n  <li><code>@RequestBody</code>: Deserializes the incoming HTTP payload (JSON/XML) into a Java Object using Jackson.</li>\n</ul>",
+    "answer": "<p>These three annotations extract different parts of an incoming HTTP request into method parameters:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Annotation</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Source Location</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Example URI / Payload</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>@PathVariable</code></td><td style='padding:8px;border:1px solid var(--border-color)'>URI Template path segments</td><td style='padding:8px;border:1px solid var(--border-color)'><code>/users/{id}</code> → <code>/users/42</code></td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>@RequestParam</code></td><td style='padding:8px;border:1px solid var(--border-color)'>URL query parameters</td><td style='padding:8px;border:1px solid var(--border-color)'><code>/users?page=1&amp;size=10</code></td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>@RequestBody</code></td><td style='padding:8px;border:1px solid var(--border-color)'>HTTP request body payload</td><td style='padding:8px;border:1px solid var(--border-color)'>JSON object <code>{\"name\": \"Alice\"}</code></td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "JSON"
@@ -559,7 +648,28 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "How handle exceptions globally?",
-    "answer": "<strong>Quick Answer:</strong> Handle exceptions globally using <code>@RestControllerAdvice</code> paired with <code>@ExceptionHandler</code> methods to return standardized JSON error response models.\n\n<pre><code>@RestControllerAdvice\npublic class GlobalExceptionHandler {\n\n    @ExceptionHandler(UserNotFoundException.class)\n    public ResponseEntity&lt;ErrorDTO&gt; handleNotFound(UserNotFoundException ex) {\n        ErrorDTO error = new ErrorDTO(\"NOT_FOUND\", ex.getMessage(), LocalDateTime.now());\n        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);\n    }\n}</code></pre>",
+    "answer": "<p>In Spring Boot, handle exceptions centrally across all controllers using <code>@RestControllerAdvice</code> paired with <code>@ExceptionHandler</code> methods:</p><br/><pre><code>@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity&lt;ErrorResponse&gt; handleNotFound(UserNotFoundException ex) {
+        ErrorResponse error = new ErrorResponse(
+            \"NOT_FOUND\",
+            ex.getMessage(),
+            LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;Map&lt;String, String&gt;&gt; handleValidation(MethodArgumentNotValidException ex) {
+        Map&lt;String, String&gt; errors = new HashMap&lt;&gt;();
+        ex.getBindingResult().getFieldErrors().forEach(err -&gt;
+            errors.put(err.getField(), err.getDefaultMessage())
+        );
+        return ResponseEntity.badRequest().body(errors);
+    }
+}</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
@@ -570,7 +680,7 @@ private Optional&lt;String&gt; name; // Use String + @Nullable annotation instea
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "What is @ControllerAdvice?",
-    "answer": "<strong>Quick Answer:</strong> <code>@ControllerAdvice</code> is a specialized component that allows cross-cutting controller behavior (global exception handling, model attributes, and data binder configuration) to be applied across all controllers. <code>@RestControllerAdvice</code> adds <code>@ResponseBody</code> semantics automatically.",
+    "answer": "<p><code>@ControllerAdvice</code> is a component annotation for intercepting and applying cross-cutting logic across all controllers in a Spring application.</p><br/><p><strong>Capabilities:</strong></p><ul><li><strong>Global Exception Handling:</strong> <code>@ExceptionHandler</code> methods.</li><li><strong>Global Model Attributes:</strong> <code>@ModelAttribute</code> methods to add common data to all view models.</li><li><strong>Global Init Binder:</strong> <code>@InitBinder</code> methods to customize data binding and formatting globally.</li></ul><p><code>@RestControllerAdvice</code> is simply <code>@ControllerAdvice</code> + <code>@ResponseBody</code>.</p>",
     "difficulty": "Medium",
     "tags": [
       "REST"
