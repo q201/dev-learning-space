@@ -862,7 +862,7 @@ public class SecurityConfig {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "How implement refresh tokens?",
-    "answer": "<strong>Quick Answer:</strong> Implement Refresh Tokens by issuing a short-lived Access Token (15 mins) and a long-lived Refresh Token (7 days). Store the refresh token securely in a database (hashed) with revocation flags and device metadata to allow forced remote logouts.",
+    "answer": "<p>A robust Refresh Token architecture decouples short-lived access authorization from long-lived session management:</p><br/><ol><li><strong>Token Pair Generation:</strong> Upon successful login, the auth server issues a short-lived <strong>Access Token</strong> (15 mins) and a cryptographically secure <strong>Refresh Token</strong> (7 days).</li><li><strong>Secure Storage:</strong> Store the Refresh Token in a database table containing <code>user_id</code>, <code>hashed_token</code>, <code>device_info</code>, <code>ip_address</code>, <code>expires_at</code>, and <code>is_revoked</code>.</li><li><strong>Token Rotation:</strong> Every time a Refresh Token is used to get a new Access Token, invalidate the old Refresh Token and issue a brand new pair.</li><li><strong>Remote Revocation:</strong> If a Refresh Token is reused after revocation (signaling theft), immediately revoke ALL active refresh tokens for that user account.</li></ol>",
     "difficulty": "Medium",
     "tags": [
       "Security & Auth"
@@ -873,7 +873,7 @@ public class SecurityConfig {
     "categoryId": "sql",
     "category": "SQL & Databases",
     "question": "INNER JOIN vs LEFT JOIN vs RIGHT JOIN?",
-    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>INNER JOIN</code>: Returns rows where keys match in BOTH tables.</li>\n  <li><code>LEFT JOIN</code>: Returns ALL rows from the left table and matching rows from the right table (filling <code>NULL</code> for non-matches).</li>\n  <li><code>RIGHT JOIN</code>: Returns ALL rows from the right table and matching rows from the left table.</li>\n</ul>",
+    "answer": "<p>SQL JOIN operations combine rows from two or more tables based on a related matching key column:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>JOIN Type</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Returned Rows</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Unmatched Rows Behavior</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>INNER JOIN</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Only matching rows from BOTH tables</td><td style='padding:8px;border:1px solid var(--border-color)'>Discarded from result set</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>LEFT JOIN</code></td><td style='padding:8px;border:1px solid var(--border-color)'>ALL rows from Left table + matching Right table rows</td><td style='padding:8px;border:1px solid var(--border-color)'>Fills <code>NULL</code> for unmatched Right columns</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>RIGHT JOIN</code></td><td style='padding:8px;border:1px solid var(--border-color)'>ALL rows from Right table + matching Left table rows</td><td style='padding:8px;border:1px solid var(--border-color)'>Fills <code>NULL</code> for unmatched Left columns</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>FULL OUTER JOIN</code></td><td style='padding:8px;border:1px solid var(--border-color)'>ALL rows from BOTH tables</td><td style='padding:8px;border:1px solid var(--border-color)'>Fills <code>NULL</code> whenever a match is absent</td></tr></tbody></table>",
     "difficulty": "Easy",
     "tags": [
       "SQL & Databases"
@@ -884,7 +884,7 @@ public class SecurityConfig {
     "categoryId": "sql",
     "category": "SQL & Databases",
     "question": "What is an index?",
-    "answer": "<strong>Quick Answer:</strong> A database <strong>Index</strong> is a B-Tree or Hash data structure that speeds up row retrieval queries without scanning every table page, at the expense of extra storage and slower Write (INSERT/UPDATE/DELETE) performance.",
+    "answer": "<p>A database <strong>Index</strong> is a specialized data structure (typically a <strong>B+ Tree</strong> or <strong>Hash Index</strong>) maintained alongside a database table to accelerate data retrieval operations.</p><br/><p><strong>Analogy:</strong> Similar to an index at the back of a textbook — allows finding specific topics directly without reading every page from start to finish (Table Scan).</p><br/><p><strong>Key Advantages:</strong></p><ul><li>Transforms full table scans (O(N) sequential reads) into fast logarithmic lookups (O(log N) tree traversals).</li><li>Enforces data uniqueness (Unique Indexes).</li><li>Accelerates <code>JOIN</code>, <code>WHERE</code>, <code>ORDER BY</code>, and <code>GROUP BY</code> clauses.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Index"
@@ -895,7 +895,7 @@ public class SecurityConfig {
     "categoryId": "sql",
     "category": "SQL & Databases",
     "question": "When can an index hurt performance?",
-    "answer": "<strong>Quick Answer:</strong> Indexes degrade performance when:\n<ul>\n  <li>There are excessive indexes on high-frequency WRITE (insert/update) tables.</li>\n  <li>Columns have low selectivity (e.g., <code>gender</code> boolean column where 50% rows match).</li>\n  <li>The index is fragmented or composite columns don't match query WHERE clause order.</li>\n</ul>",
+    "answer": "<p>While indexes speed up reads, improper indexing can severely degrade database performance:</p><br/><ul><li><strong>Write Overhead:</strong> Every <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> must update both the table data pages and all associated index B+ Trees. Too many indexes slow down write operations.</li><li><strong>Low Selectivity Columns:</strong> Indexing columns with few unique values (e.g., <code>gender</code> or <code>status_flag</code>) causes the query planner to ignore the index in favor of sequential scans.</li><li><strong>Storage Overhead:</strong> Indexes consume disk space and RAM buffer pool space.</li><li><strong>Overlapping / Duplicate Composite Indexes:</strong> Indexing <code>(A, B)</code> makes a standalone index on <code>(A)</code> redundant due to the Leftmost Prefix Rule.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Index"
@@ -906,7 +906,7 @@ public class SecurityConfig {
     "categoryId": "sql",
     "category": "SQL & Databases",
     "question": "Explain ACID.",
-    "answer": "<strong>Quick Answer:</strong> <strong>ACID</strong> guarantees transactional database reliability:\n<ul>\n  <li><strong>Atomicity:</strong> All operations in a transaction succeed together or all roll back (All-or-Nothing).</li>\n  <li><strong>Consistency:</strong> Transaction moves database from one valid state preserving constraints to another.</li>\n  <li><strong>Isolation:</strong> Concurrent transactions execute without dirty reads/interference based on isolation level.</li>\n  <li><strong>Durability:</strong> Committed transaction data persists permanently even after power loss/crashes.</li>\n</ul>",
+    "answer": "<p><strong>ACID</strong> defines the four core properties guaranteed by relational database transaction management engines (e.g., InnoDB, PostgreSQL):</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Property</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Definition</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Implementation Mechanism</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><strong>Atomicity</strong></td><td style='padding:8px;border:1px solid var(--border-color)'>\"All or Nothing\" — every statement in a transaction succeeds or all are rolled back.</td><td style='padding:8px;border:1px solid var(--border-color)'>Undo Log</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><strong>Consistency</strong></td><td style='padding:8px;border:1px solid var(--border-color)'>Database transitions from one valid state to another, upholding all constraints &amp; foreign keys.</td><td style='padding:8px;border:1px solid var(--border-color)'>Schema validation &amp; constraints</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><strong>Isolation</strong></td><td style='padding:8px;border:1px solid var(--border-color)'>Concurrent transactions execute without dirty reads or interference.</td><td style='padding:8px;border:1px solid var(--border-color)'>Locks &amp; MVCC (Multi-Version Concurrency Control)</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><strong>Durability</strong></td><td style='padding:8px;border:1px solid var(--border-color)'>Once committed, changes survive permanently even during power outages or system crashes.</td><td style='padding:8px;border:1px solid var(--border-color)'>Redo Log / Write-Ahead Logging (WAL)</td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "ACID"
@@ -917,7 +917,7 @@ public class SecurityConfig {
     "categoryId": "sql",
     "category": "SQL & Databases",
     "question": "What is normalization?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Normalization</strong> organizes relational tables to reduce data redundancy and eliminate update/delete anomalies (1NF, 2NF, 3NF, BCNF). Controlled <em>Denormalization</em> is used in analytics/read-heavy systems to avoid expensive multi-table JOINs.",
+    "answer": "<p><strong>Database Normalization</strong> is the process of structuring relational database schemas to eliminate data redundancy and prevent data modification anomalies (Insert, Update, Delete anomalies).</p><br/><ul><li><strong>1NF (First Normal Form):</strong> Atomic values (no multi-valued columns or nested arrays).</li><li><strong>2NF (Second Normal Form):</strong> Meets 1NF + all non-key columns fully depend on the entire Primary Key (eliminates partial dependency).</li><li><strong>3NF (Third Normal Form):</strong> Meets 2NF + no non-key column depends on another non-key column (eliminates transitive dependency).</li></ul><br/><p><strong>Denormalization:</strong> Intentionally introducing redundant data in read-heavy or analytical systems (data warehouses) to eliminate expensive <code>JOIN</code> operations and boost read speeds.</p>",
     "difficulty": "Medium",
     "tags": [
       "SQL & Databases"
@@ -928,7 +928,11 @@ public class SecurityConfig {
     "categoryId": "sql",
     "category": "SQL & Databases",
     "question": "What is a transaction?",
-    "answer": "<strong>Quick Answer:</strong> A <strong>Database Transaction</strong> is a logical unit of work consisting of one or more SQL statements executed atomically under ACID semantics, ended by <code>COMMIT</code> or <code>ROLLBACK</code>.",
+    "answer": "<p>A <strong>Database Transaction</strong> is a sequence of SQL operations executed as a single, indivisible logical unit of work that upholds ACID properties.</p><br/><pre><code>BEGIN TRANSACTION;
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT; -- Both updates saved atomically!
+-- If an error occurs, ROLLBACK reverts all changes.</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "ACID",
@@ -940,7 +944,11 @@ public class SecurityConfig {
     "categoryId": "sql",
     "category": "SQL & Databases",
     "question": "WHERE vs HAVING?",
-    "answer": "<strong>Quick Answer:</strong> <code>WHERE</code> filters individual table rows BEFORE <code>GROUP BY</code> aggregation occurs, whereas <code>HAVING</code> filters aggregated group results AFTER <code>GROUP BY</code>.",
+    "answer": "<p>Both clauses filter data in SQL queries, but operate at different stages of query execution:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Clause</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Filtering Stage</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Aggregate Functions Allowed?</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>WHERE</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Filters individual rows <em>BEFORE</em> <code>GROUP BY</code> aggregation.</td><td style='padding:8px;border:1px solid var(--border-color)'>❌ Cannot contain aggregates (e.g., <code>COUNT()</code>, <code>SUM()</code>)</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>HAVING</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Filters aggregated groups <em>AFTER</em> <code>GROUP BY</code> aggregation.</td><td style='padding:8px;border:1px solid var(--border-color)'>✅ Can filter aggregate values (e.g., <code>HAVING COUNT(*) &gt; 5</code>)</td></tr></tbody></table><br/><pre><code>SELECT department_id, COUNT(*) 
+FROM employees 
+WHERE status = 'ACTIVE'       -- 1. Filter rows first
+GROUP BY department_id 
+HAVING COUNT(*) &gt; 10;        -- 2. Filter aggregated groups second</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "SQL & Databases"
