@@ -1,0 +1,1227 @@
+[
+  {
+    "id": 1,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "What are the main principles of OOP?",
+    "answer": "Encapsulation hides state behind methods; inheritance reuses behavior; polymorphism lets one interface have multiple implementations; abstraction exposes essential behavior while hiding details. Prefer composition over inheritance when reuse is not a true \u201cis-a\u201d relationship.",
+    "difficulty": "Easy",
+    "tags": [
+      "OOP"
+    ]
+  },
+  {
+    "id": 2,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "Abstract class vs interface?",
+    "answer": "An abstract class can hold instance state, constructors and implemented methods, and a class can extend only one class. An interface defines a contract and supports multiple implementation; modern interfaces can also contain default/static methods. Use an interface for capabilities/contracts and an abstract class for shared base behavior/state.",
+    "difficulty": "Easy",
+    "tags": [
+      "Core Language"
+    ]
+  },
+  {
+    "id": 3,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "Difference between == and equals()?",
+    "answer": "For objects, <code>==</code> compares references; <code>equals()</code> compares logical equality when the class overrides it. For primitives, <code>==</code> compares values. Example: two different String objects can be logically equal even if their references differ.",
+    "difficulty": "Easy",
+    "tags": [
+      "String"
+    ]
+  },
+  {
+    "id": 4,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "Why override hashCode() with equals()?",
+    "answer": "Hash-based collections require equal objects to have equal hash codes. If <code>equals()</code> says two keys are equal but their hash codes differ, a HashMap/HashSet may fail to find the object correctly. The contract is: equal objects must produce the same hash code.",
+    "difficulty": "Medium",
+    "tags": [
+      "HashMap"
+    ]
+  },
+  {
+    "id": 5,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "Why is String immutable?",
+    "answer": "Immutability makes Strings safe to share, supports the String pool, makes cached hash codes practical, and helps with security-sensitive values such as class names and URLs. Operations that appear to modify a String actually create a new String.",
+    "difficulty": "Medium",
+    "tags": [
+      "String"
+    ]
+  },
+  {
+    "id": 6,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "String vs StringBuilder vs StringBuffer?",
+    "answer": "String is immutable. StringBuilder is mutable and normally preferred for repeated concatenation in single-threaded code. StringBuffer is mutable and synchronized, so it can be safer for shared concurrent use but often has more overhead.",
+    "difficulty": "Medium",
+    "tags": [
+      "String"
+    ]
+  },
+  {
+    "id": 7,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "How does HashMap work internally?",
+    "answer": "A HashMap hashes the key, maps the hash to a bucket, then uses equality to find the correct key. Average lookup is O(1). Collisions are handled within buckets; in modern Java, heavily populated buckets can be treeified. The map resizes when its load threshold is reached.",
+    "difficulty": "Hard",
+    "tags": [
+      "HashMap"
+    ]
+  },
+  {
+    "id": 8,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "What if two keys have the same hash code?",
+    "answer": "That is a hash collision. Both entries can still exist if the keys are not equal. HashMap uses <code>equals()</code> after locating the bucket to distinguish them.",
+    "difficulty": "Medium",
+    "tags": [
+      "HashMap"
+    ]
+  },
+  {
+    "id": 9,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "HashMap vs ConcurrentHashMap vs Hashtable?",
+    "answer": "HashMap is not thread-safe. ConcurrentHashMap supports concurrent access with much better scalability than globally synchronizing a map. Hashtable is legacy synchronized collection and is generally avoided in new code.",
+    "difficulty": "Medium",
+    "tags": [
+      "HashMap",
+      "Thread"
+    ]
+  },
+  {
+    "id": 10,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "ArrayList vs LinkedList?",
+    "answer": "ArrayList uses a dynamic array and gives fast indexed access, usually making it the default list. LinkedList uses linked nodes, making arbitrary indexed access O(n); its insertion/removal advantage applies only when you already have the relevant node/iterator position.",
+    "difficulty": "Medium",
+    "tags": [
+      "Core Language"
+    ]
+  },
+  {
+    "id": 11,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "HashSet vs LinkedHashSet vs TreeSet?",
+    "answer": "HashSet provides no guaranteed iteration order and typically O(1) average operations. LinkedHashSet preserves insertion order. TreeSet maintains sorted order and typically O(log n) operations.",
+    "difficulty": "Medium",
+    "tags": [
+      "Core Language"
+    ]
+  },
+  {
+    "id": 12,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "Checked vs unchecked exceptions?",
+    "answer": "Checked exceptions must be caught or declared and generally represent conditions callers are expected to handle. RuntimeException subclasses are unchecked and commonly represent programming errors or invalid state. Choose exceptions based on whether recovery is realistically expected.",
+    "difficulty": "Medium",
+    "tags": [
+      "Core Language"
+    ]
+  },
+  {
+    "id": 13,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "final vs finally vs finalize()?",
+    "answer": "<code>final</code> prevents reassignment/overriding/inheritance depending on use. <code>finally</code> is a block used for cleanup after try/catch. <code>finalize()</code> was a deprecated/obsolete GC-related mechanism and should not be used for resource management.",
+    "difficulty": "Medium",
+    "tags": [
+      "GC"
+    ]
+  },
+  {
+    "id": 14,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "Explain Java Streams: map, filter, flatMap, reduce.",
+    "answer": "<code>filter</code> keeps matching elements; <code>map</code> transforms each element; <code>flatMap</code> transforms and flattens nested streams; <code>reduce</code> combines elements into a result. Streams encourage declarative data processing and are lazily evaluated until a terminal operation runs.",
+    "difficulty": "Medium",
+    "tags": [
+      "Core Language"
+    ]
+  },
+  {
+    "id": 15,
+    "categoryId": "core",
+    "category": "Core Language",
+    "question": "What is Optional?",
+    "answer": "Optional represents a value that may be absent and can make return contracts clearer. Use it mainly for return values rather than fields/parameters. Avoid blindly calling <code>get()</code>; prefer <code>map</code>, <code>orElse</code>, <code>orElseGet</code>, or explicit handling.",
+    "difficulty": "Medium",
+    "tags": [
+      "Core Language"
+    ]
+  },
+  {
+    "id": 16,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "Thread vs process?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Process</strong> is an independent executing program with its own dedicated memory space, whereas a <strong>Thread</strong> is an execution unit within a process that shares memory and resources with sibling threads.\n\n<ul>\n  <li><strong>Memory & Isolation:</strong> Processes are isolated by the OS; process crash doesn't affect others. Threads share Heap and Method Area; an unhandled exception in a thread can destabilize the process.</li>\n  <li><strong>Context Switching:</strong> Switching between threads is faster than switching between processes because virtual memory mappings don't need to be swapped.</li>\n  <li><strong>Communication:</strong> Inter-thread communication occurs via shared memory variables (requiring synchronization). Inter-process communication (IPC) requires sockets, pipes, or shared files.</li>\n</ul>",
+    "difficulty": "Easy",
+    "tags": [
+      "Thread"
+    ]
+  },
+  {
+    "id": 17,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "synchronized vs Lock?",
+    "answer": "<strong>Quick Answer:</strong> <code>synchronized</code> is an implicit, language-level locking mechanism with automatic lock release, whereas the <code>java.util.concurrent.locks.Lock</code> interface provides explicit, advanced locking capabilities.\n\n<table border=\"1\" cellpadding=\"6\" style=\"border-collapse:collapse; width:100%; margin:10px 0;\">\n  <tr style=\"background:var(--bg-tertiary)\"><th>Capability</th><th>synchronized</th><th>Lock (ReentrantLock)</th></tr>\n  <tr><td>Lock Release</td><td>Automatic when block/method exits</td><td>Manual (MUST call <code>unlock()</code> in <code>finally</code>)</td></tr>\n  <tr><td>Non-blocking Try</td><td>No (threads block indefinitely)</td><td>Yes (<code>tryLock(timeout, unit)</code>)</td></tr>\n  <tr><td>Interruptibility</td><td>Cannot interrupt waiting thread</td><td>Yes (<code>lockInterruptibly()</code>)</td></tr>\n  <tr><td>Fairness</td><td>Non-fair lock allocation</td><td>Supports Fair ordering option</td></tr>\n</table>\n\n<pre><code>Lock lock = new ReentrantLock();\nlock.lock();\ntry {\n    // Critical Section\n} finally {\n    lock.unlock(); // Guaranteed cleanup\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Lock"
+    ]
+  },
+  {
+    "id": 18,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "What is a race condition?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Race Condition</strong> occurs when multiple threads concurrently read and write shared data without synchronization, making the final result dependent on unpredictable thread execution timing.\n\n<p><strong>Example:</strong> Non-atomic compound operation <code>count++</code> performs 3 distinct steps: Read count -> Add 1 -> Write back count. If two threads execute this simultaneously, one increment can be overwritten and lost.</p>\n\n<p><strong>Prevention Techniques:</strong></p>\n<ul>\n  <li>Use <code>synchronized</code> methods or blocks.</li>\n  <li>Use atomic variables from <code>java.util.concurrent.atomic</code> (e.g., <code>AtomicInteger</code>).</li>\n  <li>Use explicit locks (<code>ReentrantLock</code>).</li>\n  <li>Design stateless or immutable objects.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Thread"
+    ]
+  },
+  {
+    "id": 19,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "What is deadlock?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Deadlock</strong> is a situation where two or more threads are blocked forever, waiting for locks held by each other in a circular dependency chain.\n\n<p><strong>4 Necessary Conditions for Deadlock:</strong> Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait.</p>\n\n<p><strong>Deadlock Prevention Strategies:</strong></p>\n<ul>\n  <li><strong>Lock Ordering:</strong> Always acquire locks in a global, consistent order across all threads.</li>\n  <li><strong>Lock Timeout:</strong> Use <code>tryLock(timeout, unit)</code> instead of blocking indefinitely.</li>\n  <li><strong>Minimize Lock Scope:</strong> Keep critical sections as short as possible and avoid calling external methods while holding locks.</li>\n</ul>",
+    "difficulty": "Hard",
+    "tags": [
+      "Lock"
+    ]
+  },
+  {
+    "id": 20,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "What does volatile do?",
+    "answer": "<strong>Quick Answer:</strong> The <code>volatile</code> keyword guarantees <strong>Visibility</strong> and <strong>Instruction Reordering Prevention</strong> for variables across threads, but does NOT guarantee atomicity.\n\n<ul>\n  <li><strong>Visibility:</strong> Forces thread reads/writes to go directly to main CPU memory (bypassing thread-local CPU L1/L2 caches).</li>\n  <li><strong>Happens-Before Relationship:</strong> Prevents compiler and CPU instruction reordering around volatile reads/writes.</li>\n  <li><strong>Limitation:</strong> Doesn't make <code>count++</code> atomic! Use <code>AtomicInteger</code> for atomic operations.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Concurrency & JVM"
+    ]
+  },
+  {
+    "id": 21,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "ExecutorService vs manual threads?",
+    "answer": "<strong>Quick Answer:</strong> <code>ExecutorService</code> decouples task submission from thread management, preventing unmanaged thread creation spam and providing resource pooling, queues, and task cancellation.\n\n<ul>\n  <li><strong>Manual Threads:</strong> Creating <code>new Thread(runnable).start()</code> per request consumes heavy OS stack memory (typically 1MB per thread), degrades CPU performance through context switching, and risks OutOfMemoryError under traffic spikes.</li>\n  <li><strong>ExecutorService:</strong> Reuses a fixed/bounded pool of worker threads to process tasks from a blocking queue efficiently.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Thread"
+    ]
+  },
+  {
+    "id": 22,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "What is a thread pool?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Thread Pool</strong> is a managed pool of reusable worker threads that execute queued tasks, controlling concurrency levels and minimizing thread allocation overhead.\n\n<pre><code>// Core Thread Pool Configuration\nExecutorService executor = new ThreadPoolExecutor(\n    10,                        // corePoolSize\n    50,                        // maximumPoolSize\n    60L, TimeUnit.SECONDS,     // keepAliveTime\n    new ArrayBlockingQueue<>(500), // workQueue\n    new ThreadPoolExecutor.CallerRunsPolicy() // Rejection Policy\n);</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Thread"
+    ]
+  },
+  {
+    "id": 23,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "Callable and Future?",
+    "answer": "<strong>Quick Answer:</strong> <code>Callable&lt;V&gt;</code> is a task interface that returns a value and can throw checked exceptions, whereas <code>Future&lt;V&gt;</code> represents the asynchronous result handle of a submitted task.\n\n<ul>\n  <li><strong>Runnable vs Callable:</strong> <code>Runnable.run()</code> returns <code>void</code> and cannot throw checked exceptions; <code>Callable.call()</code> returns type <code>V</code> and throws <code>Exception</code>.</li>\n  <li><strong>Future API:</strong> <code>future.get()</code> blocks until computation completes, <code>future.cancel()</code> cancels task, and <code>future.isDone()</code> checks status.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Concurrency & JVM"
+    ]
+  },
+  {
+    "id": 24,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "Heap vs stack?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Stack Memory</strong> stores thread execution frames, local primitive variables, and object references per thread, whereas <strong>Heap Memory</strong> stores all instantiated Java Objects and is shared across all threads.\n\n<table border=\"1\" cellpadding=\"6\" style=\"border-collapse:collapse; width:100%; margin:10px 0;\">\n  <tr style=\"background:var(--bg-tertiary)\"><th>Property</th><th>Stack Memory</th><th>Heap Memory</th></tr>\n  <tr><td>Scope</td><td>Private to each thread</td><td>Shared across entire JVM application</td></tr>\n  <tr><td>Lifecycle</td><td>Automated pushed/popped with method call stack</td><td>Managed by Garbage Collector</td></tr>\n  <tr><td>Out of Memory Error</td><td><code>StackOverflowError</code> (deep recursion)</td><td><code>OutOfMemoryError: Java heap space</code></td></tr>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "Thread"
+    ]
+  },
+  {
+    "id": 25,
+    "categoryId": "threads",
+    "category": "Concurrency & JVM",
+    "question": "How does Garbage Collection work?",
+    "answer": "<strong>Quick Answer:</strong> Java Garbage Collection (GC) automatically reclaims memory occupied by unreferenced objects using Generational Hypothesis algorithms.\n\n<p><strong>Generational Memory Structure:</strong></p>\n<ul>\n  <li><strong>Young Generation (Eden + Survivor Spaces S0/S1):</strong> Where new objects are allocated. Minor GC collects short-lived objects quickly.</li>\n  <li><strong>Old (Tenured) Generation:</strong> Stores long-surviving objects promoted from Young Gen. Major/Full GC runs here.</li>\n  <li><strong>Modern Collectors:</strong> <strong>G1 GC</strong> (garbage-first region collector), <strong>ZGC</strong> (ultra-low pause time under 1ms), and <strong>Shenandoah</strong>.</li>\n</ul>",
+    "difficulty": "Hard",
+    "tags": [
+      "GC"
+    ]
+  },
+  {
+    "id": 26,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "What is Spring Framework?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Spring Framework</strong> is an enterprise Java container framework centered around Dependency Injection (DI) and Inversion of Control (IoC), offering abstractions for web (Spring MVC), transactions, data access, and security.\n\n<ul>\n  <li><strong>Key Modules:</strong> Spring Core, Spring Beans, Spring Context, Spring AOP, Spring ORM/Data, Spring Web MVC.</li>\n  <li><strong>Primary Goal:</strong> Loose coupling via interface-driven dependency injection and boilerplate-free application infrastructure.</li>\n</ul>",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 27,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "What is Dependency Injection?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Dependency Injection (DI)</strong> is a design pattern where an object's dependencies are injected by an external container (Spring IoC) rather than being constructed directly inside the class using <code>new</code>.\n\n<pre><code>// Bad: Hardcoded coupling\npublic class UserService {\n    private UserRepository repo = new UserRepositoryImpl(); \n}\n\n// Good: Constructor Injection\n@Service\npublic class UserService {\n    private final UserRepository repo;\n    \n    public UserService(UserRepository repo) {\n        this.repo = repo;\n    }\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Core"
+    ]
+  },
+  {
+    "id": 28,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "Explain IoC.",
+    "answer": "<strong>Quick Answer:</strong> <strong>Inversion of Control (IoC)</strong> is a design principle where control of object creation, dependency management, and lifecycle execution is transferred from application code to the Spring Container (<code>ApplicationContext</code>).\n\n<p>Instead of your code calling the container, the container manages your code's lifecycle callbacks (<code>@PostConstruct</code>, <code>@PreDestroy</code>) and injects dependencies automatically.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 29,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "Component vs Service vs Repository vs Controller?",
+    "answer": "<strong>Quick Answer:</strong> All four are stereotype annotations derived from <code>@Component</code>, indicating that a class is a Spring-managed bean, but each serves a specific architectural layer:\n\n<ul>\n  <li><code>@Component</code>: Generic archetype annotation for any Spring-managed component.</li>\n  <li><code>@Service</code>: Marks business logic service layer components.</li>\n  <li><code>@Repository</code>: Marks persistence/DAO layer components. Converts low-level SQL/JPA exceptions into Spring's <code>DataAccessException</code> hierarchy.</li>\n  <li><code>@Controller</code> / <code>@RestController</code>: Marks web layer components handling HTTP requests.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 30,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "Why prefer constructor injection?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Constructor Injection</strong> is preferred over Field Injection (<code>@Autowired</code> on fields) for 4 major reasons:\n\n<ol>\n  <li><strong>Immutability:</strong> Allows dependency fields to be declared <code>final</code>.</li>\n  <li><strong>Valid State Guarantee:</strong> Prevents NullPointerExceptions by ensuring objects cannot be instantiated without required dependencies.</li>\n  <li><strong>Testability:</strong> Enables easy unit testing without needing Spring Reflection/Mocks context.</li>\n  <li><strong>Circular Dependency Detection:</strong> Spring detects circular dependencies at application startup rather than runtime.</li>\n</ol>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Core"
+    ]
+  },
+  {
+    "id": 31,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "What is a Spring Bean?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Spring Bean</strong> is an object that is instantiated, configured, assembled, and managed by the Spring IoC container (ApplicationContext).\n\n<p>Beans are defined via annotations (<code>@Component</code>, <code>@Service</code>), XML configuration, or Java Config classes using <code>@Bean</code> methods.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 32,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "What are Bean scopes?",
+    "answer": "<strong>Quick Answer:</strong> Bean scopes dictate the lifecycle and visibility of bean instances within the container.\n\n<ul>\n  <li><code>singleton</code> (Default): One single shared bean instance per Spring ApplicationContext.</li>\n  <li><code>prototype</code>: Creates a brand new bean instance every time it is requested from the container.</li>\n  <li><code>request</code> (Web): Creates one bean instance per HTTP request lifecycle.</li>\n  <li><code>session</code> (Web): Creates one bean instance per HTTP session.</li>\n  <li><code>application</code> (Web): One bean instance per ServletContext.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 33,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "Explain Spring Bean lifecycle.",
+    "answer": "<strong>Quick Answer:</strong> The Spring Bean Lifecycle involves key creation, initialization, usage, and destruction phases:\n\n<ol>\n  <li><strong>Instantiation:</strong> Bean object constructed via constructor.</li>\n  <li><strong>Populate Properties:</strong> Dependencies injected into fields/constructors.</li>\n  <li><strong>Aware Interfaces:</strong> Invokes <code>BeanNameAware</code>, <code>BeanFactoryAware</code>, etc.</li>\n  <li><strong>BeanPostProcessor Before Initialization:</strong> <code>postProcessBeforeInitialization()</code>.</li>\n  <li><strong>Initialization:</strong> Calls <code>@PostConstruct</code> methods or <code>InitializingBean.afterPropertiesSet()</code>.</li>\n  <li><strong>BeanPostProcessor After Initialization:</strong> Creates proxies (AOP).</li>\n  <li><strong>Bean Usage:</strong> Ready for application execution.</li>\n  <li><strong>Destruction:</strong> Calls <code>@PreDestroy</code> or <code>DisposableBean.destroy()</code> on shutdown.</li>\n</ol>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 34,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "What is @Autowired?",
+    "answer": "<strong>Quick Answer:</strong> <code>@Autowired</code> instructs Spring to resolve and inject a matching bean by type into a field, setter, or constructor.\n\n<ul>\n  <li>If multiple beans of the same type exist, resolve ambiguity using <code>@Qualifier(\"beanName\")</code> or <code>@Primary</code>.</li>\n  <li>Note: As of Spring 4.3, classes with a single constructor do NOT require explicit <code>@Autowired</code> annotations.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 35,
+    "categoryId": "spring",
+    "category": "Spring Core",
+    "question": "What is Spring AOP?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Spring AOP (Aspect-Oriented Programming)</strong> complements OOP by separating cross-cutting concerns (logging, security, transactions, metrics) from business logic using dynamic proxy proxies.\n\n<ul>\n  <li><strong>Aspect:</strong> A module encapsulating a cross-cutting concern (e.g., TransactionAspect).</li>\n  <li><strong>Join Point:</strong> Point of execution (e.g., method execution).</li>\n  <li><strong>Advice:</strong> Action taken (<code>@Before</code>, <code>@After</code>, <code>@Around</code>, <code>@AfterReturning</code>, <code>@AfterThrowing</code>).</li>\n  <li><strong>Pointcut:</strong> Expression matching Join Points (e.g., <code>execution(* com.service.*.*(..))</code>).</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 36,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "Spring vs Spring Boot?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Spring Framework</strong> provides core abstractions and manual configuration modules, whereas <strong>Spring Boot</strong> is an opinionated layer built on top of Spring to enable auto-configuration, starters, and embedded servers for rapid development.\n\n<table border=\"1\" cellpadding=\"6\" style=\"border-collapse:collapse; width:100%; margin:10px 0;\">\n  <tr style=\"background:var(--bg-tertiary)\"><th>Aspect</th><th>Spring Framework</th><th>Spring Boot</th></tr>\n  <tr><td>Configuration</td><td>Requires extensive XML or Java <code>@Configuration</code> setup</td><td>Auto-configuration with sensible defaults</td></tr>\n  <tr><td>Server</td><td>Deploy WAR to external Tomcat/GlassFish</td><td>Embedded Tomcat/Jetty Executable JAR</td></tr>\n  <tr><td>Dependencies</td><td>Manual version management per library</td><td>Starter POMs with curated dependency versions</td></tr>\n</table>",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 37,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "What does @SpringBootApplication contain?",
+    "answer": "<strong>Quick Answer:</strong> <code>@SpringBootApplication</code> is a convenience meta-annotation combining three essential Spring Boot annotations:\n\n<ul>\n  <li><code>@SpringBootConfiguration</code>: Indicates that the class provides Spring Boot context configuration (a specialized <code>@Configuration</code>).</li>\n  <li><code>@EnableAutoConfiguration</code>: Enables Spring Boot's auto-configuration engine to configure beans based on classpath dependencies.</li>\n  <li><code>@ComponentScan</code>: Scans the current package and sub-packages for Spring components (<code>@Service</code>, <code>@RestController</code>, etc.).</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 38,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "What is auto-configuration?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Auto-configuration</strong> automatically configures Spring application beans based on JAR dependencies present on the classpath, system properties, and existing custom bean definitions.\n\n<p>It uses <code>@Conditional</code> annotations such as <code>@ConditionalOnClass</code>, <code>@ConditionalOnMissingBean</code>, and <code>@ConditionalOnProperty</code> defined in <code>spring.factories</code> / <code>org.springframework.boot.autoconfigure.AutoConfiguration.imports</code>.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 39,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "What are Spring Boot starters?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Spring Boot Starters</strong> are pre-packaged dependency descriptors that group related libraries and versions into a single dependency import.\n\n<ul>\n  <li><code>spring-boot-starter-web</code>: Tomcat, Spring MVC, REST support, Jackson JSON.</li>\n  <li><code>spring-boot-starter-data-jpa</code>: Hibernate, JPA, HikariCP connection pool, Spring Data JPA.</li>\n  <li><code>spring-boot-starter-security</code>: Spring Security core and Web filter configurations.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "JPA"
+    ]
+  },
+  {
+    "id": 40,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "How does embedded Tomcat work?",
+    "answer": "<strong>Quick Answer:</strong> Embedded Tomcat is bundled inside the application executable JAR file via <code>spring-boot-starter-web</code>.\n\n<p>When <code>main()</code> executes, Spring Boot starts an embedded Servlet Container programmatically via <code>TomcatServletWebServerFactory</code>, listening on port 8080 without needing external WAR deployment.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 41,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "How do you create a REST API?",
+    "answer": "<strong>Quick Answer:</strong> Creating a production REST API involves controller mapping, DTO models, service boundaries, and error advice:\n\n<pre><code>@RestController\n@RequestMapping(\"/api/v1/users\")\npublic className UserController {\n    private final UserService userService;\n\n    public UserController(UserService userService) {\n        this.userService = userService;\n    }\n\n    @PostMapping\n    public ResponseEntity&lt;UserDTO&gt; createUser(@Valid @RequestBody CreateUserRequest request) {\n        UserDTO user = userService.createUser(request);\n        return ResponseEntity.status(HttpStatus.CREATED).body(user);\n    }\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "REST"
+    ]
+  },
+  {
+    "id": 42,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "@Controller vs @RestController?",
+    "answer": "<strong>Quick Answer:</strong> <code>@Controller</code> is used for traditional Spring MVC web applications returning HTML views (JSP/Thymeleaf), whereas <code>@RestController</code> combines <code>@Controller</code> and <code>@ResponseBody</code> to return serialized JSON/XML HTTP response data.\n\n<pre><code>// @RestController equivalent:\n@Controller\n@ResponseBody\npublic class ApiController { ... }</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "JSON"
+    ]
+  },
+  {
+    "id": 43,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "@RequestParam vs @PathVariable vs @RequestBody?",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>@RequestParam</code>: Extracts query parameters from the URI (e.g., <code>/users?page=1&limit=10</code>).</li>\n  <li><code>@PathVariable</code>: Extracts path variable values from URI template paths (e.g., <code>/users/{id}</code>).</li>\n  <li><code>@RequestBody</code>: Deserializes the incoming HTTP payload (JSON/XML) into a Java Object using Jackson.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "JSON"
+    ]
+  },
+  {
+    "id": 44,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "How handle exceptions globally?",
+    "answer": "<strong>Quick Answer:</strong> Handle exceptions globally using <code>@RestControllerAdvice</code> paired with <code>@ExceptionHandler</code> methods to return standardized JSON error response models.\n\n<pre><code>@RestControllerAdvice\npublic class GlobalExceptionHandler {\n\n    @ExceptionHandler(UserNotFoundException.class)\n    public ResponseEntity&lt;ErrorDTO&gt; handleNotFound(UserNotFoundException ex) {\n        ErrorDTO error = new ErrorDTO(\"NOT_FOUND\", ex.getMessage(), LocalDateTime.now());\n        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);\n    }\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 45,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "What is @ControllerAdvice?",
+    "answer": "<strong>Quick Answer:</strong> <code>@ControllerAdvice</code> is a specialized component that allows cross-cutting controller behavior (global exception handling, model attributes, and data binder configuration) to be applied across all controllers. <code>@RestControllerAdvice</code> adds <code>@ResponseBody</code> semantics automatically.",
+    "difficulty": "Medium",
+    "tags": [
+      "REST"
+    ]
+  },
+  {
+    "id": 46,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "How perform validation?",
+    "answer": "<strong>Quick Answer:</strong> Perform request input validation by annotating DTO request objects with Bean Validation constraints and adding <code>@Valid</code> or <code>@Validated</code> on controller method parameters.\n\n<pre><code>public class CreateUserRequest {\n    @NotBlank(message = \"Name is required\")\n    private String name;\n\n    @Email(message = \"Invalid email format\")\n    private String email;\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 47,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "What are @Valid and validation annotations?",
+    "answer": "<strong>Quick Answer:</strong> <code>@Valid</code> triggers standard JSR-380 (Hibernate Validator) constraint validation. Key constraints include:\n<ul>\n  <li><code>@NotNull</code>: Value must not be null.</li>\n  <li><code>@NotBlank</code>: String must not be null and trimmed length > 0.</li>\n  <li><code>@Size(min=2, max=50)</code>: Collection or String size boundaries.</li>\n  <li><code>@Min</code> / <code>@Max</code>: Numeric bounds.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 48,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "How configure dev/test/prod?",
+    "answer": "<strong>Quick Answer:</strong> Configure multi-environment settings using Spring Profiles (<code>application-dev.yml</code>, <code>application-prod.yml</code>) activated via <code>SPRING_PROFILES_ACTIVE=prod</code> or environment variables.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 49,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "application.properties vs YAML?",
+    "answer": "<strong>Quick Answer:</strong> <code>application.properties</code> uses key-value pairs, whereas <code>application.yml</code> uses hierarchical indentation. YAML is cleaner for complex nested structures, but both compile to equivalent property keys.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 50,
+    "categoryId": "boot",
+    "category": "Spring Boot",
+    "question": "What is Actuator?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Spring Boot Actuator</strong> exposes production-ready operational management endpoints for monitoring application health, metrics, environment properties, thread dumps, and HTTP traces.\n\n<pre><code>management:\n  endpoints:\n    web:\n      exposure:\n        include: \"health,metrics,prometheus,info\"</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 51,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "Authentication vs authorization?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Authentication</strong> verifies <em>WHO</em> a user is (e.g., verifying username/password or JWT signature), whereas <strong>Authorization</strong> determines <em>WHAT</em> an authenticated user is permitted to do (e.g., checking role permissions for `/admin`).",
+    "difficulty": "Easy",
+    "tags": [
+      "Security & Auth"
+    ]
+  },
+  {
+    "id": 52,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "How does JWT authentication work?",
+    "answer": "<strong>Quick Answer:</strong> JWT (JSON Web Token) authentication is a stateless token mechanism:\n\n<ol>\n  <li>User sends credentials to <code>/api/auth/login</code>.</li>\n  <li>Server validates credentials and issues a digitally signed JWT containing Claims (User ID, Roles, Expiry).</li>\n  <li>Client stores JWT and sends it in the <code>Authorization: Bearer &lt;token&gt;</code> header on subsequent requests.</li>\n  <li>Server security filter intercepts the request, verifies the secret signature, and sets the SecurityContext without querying a session database.</li>\n</ol>",
+    "difficulty": "Medium",
+    "tags": [
+      "JWT"
+    ]
+  },
+  {
+    "id": 53,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "Where should a JWT be stored?",
+    "answer": "<strong>Quick Answer:</strong> For browser applications, store sensitive tokens in <strong>HttpOnly, Secure, SameSite=Strict Cookies</strong> to mitigate XSS (Cross-Site Scripting) attacks. Avoid <code>localStorage</code> because any third-party script can access it.",
+    "difficulty": "Medium",
+    "tags": [
+      "JWT"
+    ]
+  },
+  {
+    "id": 54,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "What happens when JWT expires?",
+    "answer": "<strong>Quick Answer:</strong> When an access token expires, the server responds with <code>401 Unauthorized</code>. The client must submit a valid, long-lived <strong>Refresh Token</strong> to obtain a new short-lived Access Token without asking the user to re-enter credentials.",
+    "difficulty": "Medium",
+    "tags": [
+      "JWT"
+    ]
+  },
+  {
+    "id": 55,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "What is Security Filter Chain?",
+    "answer": "<strong>Quick Answer:</strong> <strong>SecurityFilterChain</strong> is an ordered chain of Spring Security Servlet Filters (e.g., <code>JwtAuthenticationFilter</code>, <code>UsernamePasswordAuthenticationFilter</code>, <code>ExceptionTranslationFilter</code>) that intercepts and evaluates incoming HTTP requests.",
+    "difficulty": "Hard",
+    "tags": [
+      "Security & Auth"
+    ]
+  },
+  {
+    "id": 56,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "How secure specific endpoints?",
+    "answer": "<strong>Quick Answer:</strong> Secure endpoints by configuring a <code>SecurityFilterChain</code> bean or applying method-level annotations (<code>@PreAuthorize(\"hasRole('ADMIN')\")</code>).\n\n<pre><code>@Bean\npublic SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {\n    return http\n        .csrf(csrf -> csrf.disable())\n        .authorizeHttpRequests(auth -> auth\n            .requestMatchers(\"/api/auth/**\").permitAll()\n            .requestMatchers(\"/api/admin/**\").hasRole(\"ADMIN\")\n            .anyRequest().authenticated()\n        )\n        .build();\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Security & Auth"
+    ]
+  },
+  {
+    "id": 57,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "Roles vs authorities?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Roles</strong> represent broad user groups (e.g., <code>ADMIN</code>, <code>USER</code>), whereas <strong>Authorities</strong> represent granular permissions (e.g., <code>READ_USER</code>, <code>DELETE_ORDER</code>). In Spring Security, <code>hasRole(\"ADMIN\")</code> automatically checks for authority <code>ROLE_ADMIN</code>.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 58,
+    "categoryId": "security",
+    "category": "Security & Auth",
+    "question": "How implement refresh tokens?",
+    "answer": "<strong>Quick Answer:</strong> Implement Refresh Tokens by issuing a short-lived Access Token (15 mins) and a long-lived Refresh Token (7 days). Store the refresh token securely in a database (hashed) with revocation flags and device metadata to allow forced remote logouts.",
+    "difficulty": "Medium",
+    "tags": [
+      "Security & Auth"
+    ]
+  },
+  {
+    "id": 59,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "INNER JOIN vs LEFT JOIN vs RIGHT JOIN?",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>INNER JOIN</code>: Returns rows where keys match in BOTH tables.</li>\n  <li><code>LEFT JOIN</code>: Returns ALL rows from the left table and matching rows from the right table (filling <code>NULL</code> for non-matches).</li>\n  <li><code>RIGHT JOIN</code>: Returns ALL rows from the right table and matching rows from the left table.</li>\n</ul>",
+    "difficulty": "Easy",
+    "tags": [
+      "SQL & Databases"
+    ]
+  },
+  {
+    "id": 60,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "What is an index?",
+    "answer": "<strong>Quick Answer:</strong> A database <strong>Index</strong> is a B-Tree or Hash data structure that speeds up row retrieval queries without scanning every table page, at the expense of extra storage and slower Write (INSERT/UPDATE/DELETE) performance.",
+    "difficulty": "Medium",
+    "tags": [
+      "Index"
+    ]
+  },
+  {
+    "id": 61,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "When can an index hurt performance?",
+    "answer": "<strong>Quick Answer:</strong> Indexes degrade performance when:\n<ul>\n  <li>There are excessive indexes on high-frequency WRITE (insert/update) tables.</li>\n  <li>Columns have low selectivity (e.g., <code>gender</code> boolean column where 50% rows match).</li>\n  <li>The index is fragmented or composite columns don't match query WHERE clause order.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Index"
+    ]
+  },
+  {
+    "id": 62,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "Explain ACID.",
+    "answer": "<strong>Quick Answer:</strong> <strong>ACID</strong> guarantees transactional database reliability:\n<ul>\n  <li><strong>Atomicity:</strong> All operations in a transaction succeed together or all roll back (All-or-Nothing).</li>\n  <li><strong>Consistency:</strong> Transaction moves database from one valid state preserving constraints to another.</li>\n  <li><strong>Isolation:</strong> Concurrent transactions execute without dirty reads/interference based on isolation level.</li>\n  <li><strong>Durability:</strong> Committed transaction data persists permanently even after power loss/crashes.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "ACID"
+    ]
+  },
+  {
+    "id": 63,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "What is normalization?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Normalization</strong> organizes relational tables to reduce data redundancy and eliminate update/delete anomalies (1NF, 2NF, 3NF, BCNF). Controlled <em>Denormalization</em> is used in analytics/read-heavy systems to avoid expensive multi-table JOINs.",
+    "difficulty": "Medium",
+    "tags": [
+      "SQL & Databases"
+    ]
+  },
+  {
+    "id": 64,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "What is a transaction?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Database Transaction</strong> is a logical unit of work consisting of one or more SQL statements executed atomically under ACID semantics, ended by <code>COMMIT</code> or <code>ROLLBACK</code>.",
+    "difficulty": "Medium",
+    "tags": [
+      "ACID",
+      "Transaction"
+    ]
+  },
+  {
+    "id": 65,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "WHERE vs HAVING?",
+    "answer": "<strong>Quick Answer:</strong> <code>WHERE</code> filters individual table rows BEFORE <code>GROUP BY</code> aggregation occurs, whereas <code>HAVING</code> filters aggregated group results AFTER <code>GROUP BY</code>.",
+    "difficulty": "Medium",
+    "tags": [
+      "SQL & Databases"
+    ]
+  },
+  {
+    "id": 66,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "Primary key vs foreign key vs unique key?",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><strong>Primary Key:</strong> Uniquely identifies a row; NOT NULL; exactly one per table.</li>\n  <li><strong>Foreign Key:</strong> References a Primary/Unique Key in another table, enforcing referential integrity.</li>\n  <li><strong>Unique Key:</strong> Enforces uniqueness across values in a column; allows <code>NULL</code> values depending on DB vendor.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "SQL & Databases"
+    ]
+  },
+  {
+    "id": 67,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "How optimize a slow SQL query?",
+    "answer": "<strong>Quick Answer:</strong> Optimize slow queries systematically:\n<ol>\n  <li>Inspect <code>EXPLAIN ANALYZE</code> query execution plan.</li>\n  <li>Add missing indexes on <code>JOIN</code>, <code>WHERE</code>, and <code>ORDER BY</code> columns.</li>\n  <li>Avoid <code>SELECT *</code>; request only required columns.</li>\n  <li>Eliminate N+1 queries using JOINs/fetch joins.</li>\n</ol>",
+    "difficulty": "Medium",
+    "tags": [
+      "SQL"
+    ]
+  },
+  {
+    "id": 68,
+    "categoryId": "sql",
+    "category": "SQL & Databases",
+    "question": "Database deadlock and prevention?",
+    "answer": "<strong>Quick Answer:</strong> A database deadlock occurs when Transaction A holds Lock 1 waiting for Lock 2, while Transaction B holds Lock 2 waiting for Lock 1. Prevent by accessing tables in a fixed uniform order and keeping transactions short.",
+    "difficulty": "Hard",
+    "tags": [
+      "Lock"
+    ]
+  },
+  {
+    "id": 69,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "JPA vs Hibernate?",
+    "answer": "<strong>Quick Answer:</strong> <strong>JPA (Java Persistence API)</strong> is a standard specification defining object-relational mapping interfaces, whereas <strong>Hibernate</strong> is an actual implementation library of that specification.",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "JPA",
+      "Hibernate"
+    ]
+  },
+  {
+    "id": 70,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "save vs saveAndFlush vs flush?",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>save()</code>: Persists entity into the Spring Data persistence context (SQL may be deferred until transaction commit).</li>\n  <li><code>flush()</code>: Immediately executes pending SQL statements to the database within the current transaction without committing.</li>\n  <li><code>saveAndFlush()</code>: Combines <code>save()</code> and <code>flush()</code> in one call.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "SQL",
+      "JPA",
+      "Transaction"
+    ]
+  },
+  {
+    "id": 71,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "@Entity, @Id, @GeneratedValue?",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>@Entity</code>: Marks a Java class as a JPA persistent entity mapped to a DB table.</li>\n  <li><code>@Id</code>: Designates the primary key property.</li>\n  <li><code>@GeneratedValue</code>: Configures primary key generation strategy (<code>IDENTITY</code>, <code>SEQUENCE</code>, <code>AUTO</code>).</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "JPA"
+    ]
+  },
+  {
+    "id": 72,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "One-to-One, One-to-Many, Many-to-Many?",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>@OneToOne</code>: 1 parent maps to 1 child.</li>\n  <li><code>@OneToMany</code> / <code>@ManyToOne</code>: 1 parent maps to multiple children (most common).</li>\n  <li><code>@ManyToMany</code>: Maps many-to-many via a join table. Always define ownership using <code>mappedBy</code>.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "SQL"
+    ]
+  },
+  {
+    "id": 73,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "Lazy vs Eager loading?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Lazy Loading</strong> (<code>FetchType.LAZY</code>) fetches associated entities on-demand when accessed, avoiding unnecessary data retrieval. <strong>Eager Loading</strong> (<code>FetchType.EAGER</code>) fetches associations immediately with the parent query.",
+    "difficulty": "Medium",
+    "tags": [
+      "ORM & JPA"
+    ]
+  },
+  {
+    "id": 74,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "What is N+1?",
+    "answer": "<strong>Quick Answer:</strong> The <strong>N+1 Select Problem</strong> occurs when loading 1 query for N parent entities triggers N additional separate queries to fetch related child entities, causing severe performance degradation (1 + N = 101 queries for 100 rows!).",
+    "difficulty": "Medium",
+    "tags": [
+      "ORM & JPA"
+    ]
+  },
+  {
+    "id": 75,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "How solve N+1?",
+    "answer": "<strong>Quick Answer:</strong> Solve N+1 using:\n<ul>\n  <li><code>JOIN FETCH</code> in JPQL / HQL: <code>SELECT p FROM Parent p JOIN FETCH p.children</code>.</li>\n  <li><code>@EntityGraph</code> annotation.</li>\n  <li><code>@BatchSize(size = 25)</code> on collection mappings.</li>\n</ul>",
+    "difficulty": "Hard",
+    "tags": [
+      "ORM & JPA"
+    ]
+  },
+  {
+    "id": 76,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "Hibernate first-level cache?",
+    "answer": "<strong>Quick Answer:</strong> The <strong>First-Level Cache</strong> is the Hibernate <code>Session</code> / <code>EntityManager</code> cache enabled by default. It caches entity instances within the scope of a single transaction, preventing duplicate SELECT queries for the same entity ID.",
+    "difficulty": "Medium",
+    "tags": [
+      "SQL",
+      "Hibernate",
+      "Cache"
+    ]
+  },
+  {
+    "id": 77,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "What is @Transactional?",
+    "answer": "<strong>Quick Answer:</strong> <code>@Transactional</code> marks method/class boundaries for automatic transaction management using Spring AOP proxies, opening a transaction before execution and committing/rolling back upon completion.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 78,
+    "categoryId": "jpa",
+    "category": "ORM & JPA",
+    "question": "Exception inside @Transactional?",
+    "answer": "<strong>Quick Answer:</strong> By default, Spring rolls back <code>@Transactional</code> only for <em>Unchecked Exceptions</em> (<code>RuntimeException</code> and <code>Error</code>). Checked exceptions do NOT trigger rollback unless configured with <code>@Transactional(rollbackFor = Exception.class)</code>.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "Transaction"
+    ]
+  },
+  {
+    "id": 79,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "What makes an API RESTful?",
+    "answer": "<strong>Quick Answer:</strong> A RESTful API adheres to REST architectural constraints: Resource identification via URIs, Stateless interactions, Standard HTTP verbs (GET, POST, PUT, DELETE), Proper HTTP status codes, and JSON/XML representations.",
+    "difficulty": "Easy",
+    "tags": [
+      "REST"
+    ]
+  },
+  {
+    "id": 80,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "GET vs POST vs PUT vs PATCH vs DELETE?",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>GET</code>: Read resource (Safe & Idempotent).</li>\n  <li><code>POST</code>: Create new resource (Non-Idempotent).</li>\n  <li><code>PUT</code>: Completely replace resource (Idempotent).</li>\n  <li><code>PATCH</code>: Partial update (Idempotent when implemented properly).</li>\n  <li><code>DELETE</code>: Remove resource (Idempotent).</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "APIs & Microservices"
+    ]
+  },
+  {
+    "id": 81,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "Explain 200, 201, 400, 401, 403, 404, 409, 500.",
+    "answer": "<strong>Quick Answer:</strong>\n<ul>\n  <li><code>200 OK</code>: Success.</li>\n  <li><code>201 Created</code>: Resource created.</li>\n  <li><code>400 Bad Request</code>: Invalid request validation.</li>\n  <li><code>401 Unauthorized</code>: Missing/invalid credentials.</li>\n  <li><code>403 Forbidden</code>: Authenticated but unauthorized.</li>\n  <li><code>404 Not Found</code>: Resource missing.</li>\n  <li><code>409 Conflict</code>: Unique constraint conflict.</li>\n  <li><code>500 Internal Error</code>: Unexpected server exception.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "APIs & Microservices"
+    ]
+  },
+  {
+    "id": 82,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "What is idempotency?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Idempotency</strong> means executing the exact same request multiple times produces the identical side-effect as executing it once. Use client-generated <code>Idempotency-Key</code> headers for payment endpoints.",
+    "difficulty": "Medium",
+    "tags": [
+      "APIs & Microservices"
+    ]
+  },
+  {
+    "id": 83,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "How design a scalable REST API?",
+    "answer": "<strong>Quick Answer:</strong> Scale REST APIs using Stateless application instances behind a Load Balancer, Redis caching, DB Read-Replicas, Connection Pooling (HikariCP), Offset/Cursor Pagination, and Asynchronous Queue Processing.",
+    "difficulty": "Medium",
+    "tags": [
+      "REST"
+    ]
+  },
+  {
+    "id": 84,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "How implement pagination?",
+    "answer": "<strong>Quick Answer:</strong> Implement pagination using <strong>Offset Pagination</strong> (<code>page=2&size=20</code>) for small datasets or <strong>Cursor / Keyset Pagination</strong> (<code>after_id=1050</code>) for large/changing datasets to prevent degraded OFFSET query performance.",
+    "difficulty": "Medium",
+    "tags": [
+      "APIs & Microservices"
+    ]
+  },
+  {
+    "id": 85,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "What is API versioning?",
+    "answer": "<strong>Quick Answer:</strong> Version APIs to prevent breaking changes: URI Versioning (<code>/api/v1/users</code>), Request Header (<code>X-API-Version: 1</code>), or Accept Header Media Types.",
+    "difficulty": "Medium",
+    "tags": [
+      "APIs & Microservices"
+    ]
+  },
+  {
+    "id": 86,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "Monolith vs microservices?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Monolith</strong> is built and deployed as a single application unit. <strong>Microservices</strong> decompose functionality into independent, domain-driven services that scale and deploy independently over the network.",
+    "difficulty": "Medium",
+    "tags": [
+      "Microservices"
+    ]
+  },
+  {
+    "id": 87,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "When should you NOT use microservices?",
+    "answer": "<strong>Quick Answer:</strong> Avoid microservices when:\n<ul>\n  <li>Domain boundaries are unclear or team size is small (&lt; 10 devs).</li>\n  <li>DevOps infrastructure, CI/CD, and distributed tracing observability are missing.</li>\n  <li>High distributed network latency and eventual consistency overhead cannot be tolerated.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Microservices"
+    ]
+  },
+  {
+    "id": 88,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "How do microservices communicate?",
+    "answer": "<strong>Quick Answer:</strong> Microservices communicate <strong>Synchronously</strong> via REST HTTP/gRPC (immediate response needed) or <strong>Asynchronously</strong> via Message Brokers like Apache Kafka / RabbitMQ (event-driven, decoupled).",
+    "difficulty": "Medium",
+    "tags": [
+      "Microservices"
+    ]
+  },
+  {
+    "id": 89,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "What is service discovery?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Service Discovery</strong> (e.g., Netflix Eureka, HashiCorp Consul, Kubernetes DNS) dynamically tracks network IP addresses and ports of healthy microservice instances as they scale up or down.",
+    "difficulty": "Medium",
+    "tags": [
+      "APIs & Microservices"
+    ]
+  },
+  {
+    "id": 90,
+    "categoryId": "rest",
+    "category": "APIs & Microservices",
+    "question": "Circuit breaker?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Circuit Breaker</strong> (Resilience4j) prevents cascading service failures by wrapping downstream calls. It transitions between <em>Closed</em> (normal), <em>Open</em> (failing fast without calling downstream), and <em>Half-Open</em> (testing recovery).",
+    "difficulty": "Hard",
+    "tags": [
+      "APIs & Microservices"
+    ]
+  },
+  {
+    "id": 91,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "What is Docker?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Docker</strong> packages an application and its entire runtime environment into a lightweight, portable container image that runs consistently across dev, test, and production OS environments.",
+    "difficulty": "Easy",
+    "tags": [
+      "Docker"
+    ]
+  },
+  {
+    "id": 92,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "Image vs container?",
+    "answer": "<strong>Quick Answer:</strong> A Docker <strong>Image</strong> is an immutable read-only template file containing application code and dependencies, whereas a <strong>Container</strong> is a runnable isolated instance of an image.",
+    "difficulty": "Medium",
+    "tags": [
+      "Cloud & Containers"
+    ]
+  },
+  {
+    "id": 93,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "What is a Dockerfile?",
+    "answer": "<strong>Quick Answer:</strong> A <strong>Dockerfile</strong> is a text script containing commands (<code>FROM</code>, <code>COPY</code>, <code>RUN</code>, <code>EXPOSE</code>, <code>ENTRYPOINT</code>) used to build a Docker image.\n\n<pre><code>FROM eclipse-temurin:17-jre\nWORKDIR /app\nCOPY target/app.jar app.jar\nEXPOSE 8080\nENTRYPOINT [\"java\", \"-jar\", \"app.jar\"]</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Cloud & Containers"
+    ]
+  },
+  {
+    "id": 94,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "How Dockerize Spring Boot?",
+    "answer": "<strong>Quick Answer:</strong> Dockerize Spring Boot using Multi-stage Docker builds to compile with Maven/Gradle in stage 1 and copy only the final slim JAR into a lightweight JRE base image in stage 2.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring"
+    ]
+  },
+  {
+    "id": 95,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "AWS services for Java apps?",
+    "answer": "<strong>Quick Answer:</strong> Common AWS Services for Java Apps:\n<ul>\n  <li><strong>Compute:</strong> EC2, ECS (Elastic Container Service), EKS (Kubernetes), AWS Lambda.</li>\n  <li><strong>Database:</strong> RDS (Aurora/PostgreSQL), DynamoDB.</li>\n  <li><strong>Storage & Auth:</strong> S3, IAM, Secrets Manager, CloudWatch.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "AWS"
+    ]
+  },
+  {
+    "id": 96,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "EC2 vs ECS vs Lambda?",
+    "answer": "<strong>Quick Answer:</strong> <strong>EC2</strong> = Virtual Server (Full OS Control); <strong>ECS</strong> = Container Orchestrator; <strong>Lambda</strong> = Serverless Event-driven Function with zero server management.",
+    "difficulty": "Medium",
+    "tags": [
+      "Cloud & Containers"
+    ]
+  },
+  {
+    "id": 97,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "What is S3?",
+    "answer": "<strong>Quick Answer:</strong> <strong>Amazon S3</strong> is high-durability object storage for files (images, PDFs, logs). Applications store file metadata in a relational database and stream actual file bytes to S3 buckets via Pre-signed URLs.",
+    "difficulty": "Medium",
+    "tags": [
+      "Cloud & Containers"
+    ]
+  },
+  {
+    "id": 98,
+    "categoryId": "cloud",
+    "category": "Cloud & Containers",
+    "question": "How deploy Spring Boot to AWS?",
+    "answer": "<strong>Quick Answer:</strong> Deploy Spring Boot to AWS by building a Docker image -> Pushing to AWS ECR -> Deploying container tasks to AWS ECS Fargate behind an Application Load Balancer (ALB) connected to AWS RDS PostgreSQL.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "AWS"
+    ]
+  },
+  {
+    "id": 99,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "API suddenly becomes very slow. What do you investigate?",
+    "answer": "<strong>Quick Answer:</strong> Debug slow APIs following the systematic order:\n<ol>\n  <li>Inspect APM traces/metrics to isolate latency (App vs DB vs Downstream API).</li>\n  <li>Check CPU, Memory, GC pauses, and thread pool exhaustion.</li>\n  <li>Check DB connection pool (HikariCP) and slow query logs.</li>\n</ol>",
+    "difficulty": "Medium",
+    "tags": [
+      "GC",
+      "Thread"
+    ]
+  },
+  {
+    "id": 100,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Spring Boot app uses 90% CPU. What do you check?",
+    "answer": "<strong>Quick Answer:</strong> For 90% CPU spikes: Capture thread dumps using <code>jstack</code> or async-profiler to identify busy threads, inspect GC logs for frequent Full GC pauses, and check for infinite loops or expensive regex execution.",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "GC",
+      "Thread"
+    ]
+  },
+  {
+    "id": 101,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "SQL query takes 5 seconds. How optimize?",
+    "answer": "<strong>Quick Answer:</strong> Optimize a 5-second SQL query: Capture query parameters, run <code>EXPLAIN ANALYZE</code>, add composite indexes matching WHERE/JOIN columns, avoid functions on indexed columns, and eliminate N+1 subqueries.",
+    "difficulty": "Medium",
+    "tags": [
+      "SQL"
+    ]
+  },
+  {
+    "id": 102,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "API receives 10,000 requests/sec. How scale?",
+    "answer": "<strong>Quick Answer:</strong> Scale for 10,000 req/sec: Make service stateless -> Deploy horizontal instances behind Load Balancer -> Cache hot data in Redis -> Use DB Read-Replicas -> Use Kafka for async processing.",
+    "difficulty": "Hard",
+    "tags": [
+      "Cache"
+    ]
+  },
+  {
+    "id": 103,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Two users update same record. Prevent inconsistency?",
+    "answer": "<strong>Quick Answer:</strong> Prevent concurrent update conflicts using <strong>Optimistic Locking</strong> (<code>@Version</code> column) for low-conflict scenarios or <strong>Pessimistic Locking</strong> (<code>SELECT FOR UPDATE</code>) for high-contention rules.",
+    "difficulty": "Medium",
+    "tags": [
+      "Transaction"
+    ]
+  },
+  {
+    "id": 104,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Downstream microservice is down. What should happen?",
+    "answer": "<strong>Quick Answer:</strong> When downstream services fail: Trigger Resilience4j Circuit Breakers to fail-fast, return fallback responses or cached data, and queue non-critical events asynchronously.",
+    "difficulty": "Medium",
+    "tags": [
+      "System Design & Scenarios"
+    ]
+  },
+  {
+    "id": 105,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Production 500 errors cannot be reproduced locally. Debug?",
+    "answer": "<strong>Quick Answer:</strong> Debug un-reproducible 500 errors by analyzing centralized logs (ELK/Datadog) correlated via distributed Tracing IDs (Micrometer Tracing/Zipkin) and reproducing with sanitized production-like data.",
+    "difficulty": "Medium",
+    "tags": [
+      "System Design & Scenarios"
+    ]
+  },
+  {
+    "id": 106,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Customer submits payment twice. Prevent duplicates?",
+    "answer": "<strong>Quick Answer:</strong> Prevent duplicate payments using client-supplied <strong>Idempotency Keys</strong> stored in Redis/DB with unique constraints, ensuring repeated requests return original cached transaction results.",
+    "difficulty": "Medium",
+    "tags": [
+      "System Design & Scenarios"
+    ]
+  },
+  {
+    "id": 107,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Database goes down. How should app behave?",
+    "answer": "<strong>Quick Answer:</strong> When DB goes down: Fail fast with <code>503 Service Unavailable</code>, configure HikariCP connection timeouts to prevent thread starvation, and auto-recover when DB comes back online.",
+    "difficulty": "Medium",
+    "tags": [
+      "System Design & Scenarios"
+    ]
+  },
+  {
+    "id": 108,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "OutOfMemoryError. How investigate?",
+    "answer": "<strong>Quick Answer:</strong> Investigate OutOfMemoryError by generating heap dumps (<code>-XX:+HeapDumpOnOutOfMemoryError</code>), analyzing leak suspects in Eclipse MAT, checking GC logs, and identifying memory-leaking static maps or unclosed streams.",
+    "difficulty": "Hard",
+    "tags": [
+      "GC"
+    ]
+  },
+  {
+    "id": 109,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Logging and monitoring in production?",
+    "answer": "<strong>Quick Answer:</strong> Production Observability: Structured JSON logging with traceId/spanId, Prometheus metrics for Golden Signals (Latency, Traffic, Errors, Saturation), and Grafana alerts on SLO thresholds.",
+    "difficulty": "Medium",
+    "tags": [
+      "Microservices"
+    ]
+  },
+  {
+    "id": 110,
+    "categoryId": "scenario",
+    "category": "System Design & Scenarios",
+    "question": "Design a URL shortener.",
+    "answer": "<strong>Quick Answer:</strong> URL Shortener Architecture:\n<ul>\n  <li><code>POST /shorten</code>: Takes long URL -> Generates Base62 7-char hash -> Saves (shortKey, longUrl) in DB -> Returns short link.</li>\n  <li><code>GET /{shortKey}</code>: Checks Redis Cache -> On miss queries DB -> Returns <code>302 Found</code> redirect to original long URL.</li>\n</ul>",
+    "difficulty": "Hard",
+    "tags": [
+      "Cache"
+    ]
+  }
+]
