@@ -1,19 +1,14 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import {
-  BookOpen,
   Server,
   Layout,
   Cpu,
   ArrowRight,
   CreditCard,
   BarChart3,
-  CheckCircle2,
   Sparkles,
-  Layers,
-  ShieldCheck,
-  Zap,
-  Code2
+  Zap
 } from 'lucide-react';
 
 const iconMap = {
