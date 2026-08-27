@@ -691,7 +691,26 @@ public class GlobalExceptionHandler {
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "How perform validation?",
-    "answer": "<strong>Quick Answer:</strong> Perform request input validation by annotating DTO request objects with Bean Validation constraints and adding <code>@Valid</code> or <code>@Validated</code> on controller method parameters.\n\n<pre><code>public class CreateUserRequest {\n    @NotBlank(message = \"Name is required\")\n    private String name;\n\n    @Email(message = \"Invalid email format\")\n    private String email;\n}</code></pre>",
+    "answer": "<p>Input validation in Spring Boot uses <strong>Jakarta Bean Validation (JSR-380 / Hibernate Validator)</strong> annotations on DTO fields, triggered by <code>@Valid</code> on controller methods:</p><br/><pre><code>// 1. DTO with Constraints:
+public class CreateUserRequest {
+    @NotBlank(message = \"Username is required\")
+    @Size(min = 3, max = 20, message = \"Must be 3-20 characters\")
+    private String username;
+
+    @NotBlank(message = \"Email is required\")
+    @Email(message = \"Invalid email format\")
+    private String email;
+
+    @Min(value = 18, message = \"Must be at least 18 years old\")
+    private int age;
+}
+
+// 2. Controller with @Valid:
+@PostMapping(\"/users\")
+public ResponseEntity&lt;Void&gt; createUser(@Valid @RequestBody CreateUserRequest request) {
+    userService.save(request);
+    return ResponseEntity.status(HttpStatus.CREATED).build();
+}</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
@@ -702,7 +721,7 @@ public class GlobalExceptionHandler {
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "What are @Valid and validation annotations?",
-    "answer": "<strong>Quick Answer:</strong> <code>@Valid</code> triggers standard JSR-380 (Hibernate Validator) constraint validation. Key constraints include:\n<ul>\n  <li><code>@NotNull</code>: Value must not be null.</li>\n  <li><code>@NotBlank</code>: String must not be null and trimmed length > 0.</li>\n  <li><code>@Size(min=2, max=50)</code>: Collection or String size boundaries.</li>\n  <li><code>@Min</code> / <code>@Max</code>: Numeric bounds.</li>\n</ul>",
+    "answer": "<p><code>@Valid</code> (from Jakarta Validation) triggers recursive validation on an object graph. Common constraint annotations include:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Annotation</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Constraint Description</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>@NotNull</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Value must not be <code>null</code> (allows empty strings/collections).</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>@NotEmpty</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Must not be <code>null</code> AND size/length &gt; 0.</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>@NotBlank</code></td><td style='padding:8px;border:1px solid var(--border-color)'>String must not be <code>null</code> AND trimmed length &gt; 0.</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><code>@Pattern(regex=...)</code></td><td style='padding:8px;border:1px solid var(--border-color)'>String must match specified regular expression.</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'><code>@Min</code> / <code>@Max</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Numeric value boundaries.</td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
@@ -713,7 +732,7 @@ public class GlobalExceptionHandler {
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "How configure dev/test/prod?",
-    "answer": "<strong>Quick Answer:</strong> Configure multi-environment settings using Spring Profiles (<code>application-dev.yml</code>, <code>application-prod.yml</code>) activated via <code>SPRING_PROFILES_ACTIVE=prod</code> or environment variables.",
+    "answer": "<p>Spring Boot manages multi-environment configurations using <strong>Spring Profiles</strong> (e.g., <code>dev</code>, <code>test</code>, <code>prod</code>):</p><br/><ul><li><strong>Profile Files:</strong> <code>application-dev.yml</code>, <code>application-prod.yml</code>.</li><li><strong>Activation Methods:</strong><ul><li>Environment variable: <code>SPRING_PROFILES_ACTIVE=prod</code></li><li>JVM parameter: <code>-Dspring.profiles.active=dev</code></li><li>In configuration: <code>spring.profiles.active=local</code></li></ul></li><li><strong>Conditional Beans:</strong> Annotate components with <code>@Profile(\"dev\")</code> to load beans only in specific active profiles (e.g., in-memory H2 database for dev vs PostgreSQL for prod).</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -724,7 +743,7 @@ public class GlobalExceptionHandler {
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "application.properties vs YAML?",
-    "answer": "<strong>Quick Answer:</strong> <code>application.properties</code> uses key-value pairs, whereas <code>application.yml</code> uses hierarchical indentation. YAML is cleaner for complex nested structures, but both compile to equivalent property keys.",
+    "answer": "<p>Both formats configure Spring Boot properties, but differ in syntax flexibility and features:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>application.properties</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>application.yml (YAML)</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'>Syntax</td><td style='padding:8px;border:1px solid var(--border-color)'>Flat key-value (e.g., <code>spring.db.url=...</code>)</td><td style='padding:8px;border:1px solid var(--border-color)'>Hierarchical tree with indentation</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'>Lists / Arrays</td><td style='padding:8px;border:1px solid var(--border-color)'>Indexed keys <code>servers[0]=a</code></td><td style='padding:8px;border:1px solid var(--border-color)'>Clean list bullet syntax (<code>- serverA</code>)</td></tr><tr><td style='padding:8px;border:1px solid var(--border-color)'>Multi-document</td><td style='padding:8px;border:1px solid var(--border-color)'>Requires separate files per profile</td><td style='padding:8px;border:1px solid var(--border-color)'>Multi-profile blocks in single file (<code>---</code>)</td></tr></tbody></table>",
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
@@ -735,7 +754,7 @@ public class GlobalExceptionHandler {
     "categoryId": "boot",
     "category": "Spring Boot",
     "question": "What is Actuator?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Spring Boot Actuator</strong> exposes production-ready operational management endpoints for monitoring application health, metrics, environment properties, thread dumps, and HTTP traces.\n\n<pre><code>management:\n  endpoints:\n    web:\n      exposure:\n        include: \"health,metrics,prometheus,info\"</code></pre>",
+    "answer": "<p><strong>Spring Boot Actuator</strong> provides production-ready operational management features for monitoring application health, metrics, environment details, and thread diagnostics via HTTP/JMX endpoints.</p><br/><p><strong>Key Actuator Endpoints:</strong></p><ul><li><code>/actuator/health</code>: Shows application health status (DB connectivity, disk space).</li><li><code>/actuator/metrics</code>: Exposes Micrometer metrics (JVM heap usage, HTTP response times).</li><li><code>/actuator/prometheus</code>: Formats metrics for Prometheus scraping.</li><li><code>/actuator/loggers</code>: Allows viewing and dynamically changing log levels at runtime without restarting!</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
@@ -746,7 +765,7 @@ public class GlobalExceptionHandler {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "Authentication vs authorization?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Authentication</strong> verifies <em>WHO</em> a user is (e.g., verifying username/password or JWT signature), whereas <strong>Authorization</strong> determines <em>WHAT</em> an authenticated user is permitted to do (e.g., checking role permissions for `/admin`).",
+    "answer": "<p>Security enforcement splits into two core phases:</p><br/><table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'><thead><tr style='background:var(--bg-tertiary)'><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Concept</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Core Question</th><th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Example Mechanism</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid var(--border-color)'><strong>Authentication (AuthN)</strong></td><td style='padding:8px;border:1px solid var(--border-color)'><em>Who are you?</em></td><td style='padding:8px;border:1px solid var(--border-color)'>Verifying username/password, JWT signature, OAuth2 token</td></tr><tr style='background:var(--bg-tertiary)'><td style='padding:8px;border:1px solid var(--border-color)'><strong>Authorization (AuthZ)</strong></td><td style='padding:8px;border:1px solid var(--border-color)'><em>Are you allowed to do this?</em></td><td style='padding:8px;border:1px solid var(--border-color)'>Checking if user has <code>ROLE_ADMIN</code> before allowing <code>DELETE /user/42</code></td></tr></tbody></table>",
     "difficulty": "Easy",
     "tags": [
       "Security & Auth"
@@ -757,7 +776,10 @@ public class GlobalExceptionHandler {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "How does JWT authentication work?",
-    "answer": "<strong>Quick Answer:</strong> JWT (JSON Web Token) authentication is a stateless token mechanism:\n\n<ol>\n  <li>User sends credentials to <code>/api/auth/login</code>.</li>\n  <li>Server validates credentials and issues a digitally signed JWT containing Claims (User ID, Roles, Expiry).</li>\n  <li>Client stores JWT and sends it in the <code>Authorization: Bearer &lt;token&gt;</code> header on subsequent requests.</li>\n  <li>Server security filter intercepts the request, verifies the secret signature, and sets the SecurityContext without querying a session database.</li>\n</ol>",
+    "answer": "<p><strong>JSON Web Token (JWT)</strong> is an open standard (RFC 7519) for transmitting self-contained, digitally signed claims statelessly between client and server.</p><br/><p><strong>JWT Structure (3 Base64URL-encoded parts):</strong></p><pre><code>HEADER.PAYLOAD.SIGNATURE
+// 1. Header: Algorithm &amp; Token Type ({"alg": "HS256", "typ": "JWT"})
+// 2. Payload: Claims ({"sub": "user123", "role": "ADMIN", "exp": 1700000000})
+// 3. Signature: HMACSHA256(Header + Payload, secretKey)</code></pre><br/><p><strong>Stateless Auth Flow:</strong></p><ol><li>Client sends credentials to <code>POST /api/auth/login</code>.</li><li>Server validates password, generates signed JWT, and returns it to client.</li><li>Client attaches header <code>Authorization: Bearer &lt;jwt_token&gt;</code> on future requests.</li><li>Server filter verifies signature using secret key; sets <code>SecurityContextHolder</code> without querying DB or session storage!</li></ol>",
     "difficulty": "Medium",
     "tags": [
       "JWT"
@@ -768,7 +790,7 @@ public class GlobalExceptionHandler {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "Where should a JWT be stored?",
-    "answer": "<strong>Quick Answer:</strong> For browser applications, store sensitive tokens in <strong>HttpOnly, Secure, SameSite=Strict Cookies</strong> to mitigate XSS (Cross-Site Scripting) attacks. Avoid <code>localStorage</code> because any third-party script can access it.",
+    "answer": "<p>Storage strategy directly affects vulnerability to <strong>XSS (Cross-Site Scripting)</strong> and <strong>CSRF (Cross-Site Request Forgery)</strong> attacks:</p><br/><ul><li><strong><code>localStorage</code> / <code>sessionStorage</code>:</strong> ❌ Vulnerable to XSS. Any malicious script or compromised npm package running on the domain can steal tokens from <code>localStorage</code>.</li><li><strong>HttpOnly, Secure, SameSite Cookie:</strong> ✅ Recommended for Web Apps. <code>HttpOnly</code> prevents JavaScript access (mitigating XSS theft); <code>SameSite=Strict</code> mitigates CSRF.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "JWT"
@@ -779,7 +801,7 @@ public class GlobalExceptionHandler {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "What happens when JWT expires?",
-    "answer": "<strong>Quick Answer:</strong> When an access token expires, the server responds with <code>401 Unauthorized</code>. The client must submit a valid, long-lived <strong>Refresh Token</strong> to obtain a new short-lived Access Token without asking the user to re-enter credentials.",
+    "answer": "<p>When an Access Token expires, the server returns <code>401 Unauthorized</code> with an <code>EXPIRED_TOKEN</code> error code.</p><br/><p><strong>The Refresh Token Pattern:</strong></p><ol><li><strong>Access Token:</strong> Short-lived (e.g., 15 minutes) for API authorization.</li><li><strong>Refresh Token:</strong> Long-lived (e.g., 7 days) stored securely in HttpOnly cookie or database.</li><li>When Access Token expires, the client's HTTP interceptor silently calls <code>POST /api/auth/refresh</code> with the Refresh Token to obtain a fresh Access Token without requiring user re-login.</li></ol>",
     "difficulty": "Medium",
     "tags": [
       "JWT"
@@ -790,7 +812,7 @@ public class GlobalExceptionHandler {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "What is Security Filter Chain?",
-    "answer": "<strong>Quick Answer:</strong> <strong>SecurityFilterChain</strong> is an ordered chain of Spring Security Servlet Filters (e.g., <code>JwtAuthenticationFilter</code>, <code>UsernamePasswordAuthenticationFilter</code>, <code>ExceptionTranslationFilter</code>) that intercepts and evaluates incoming HTTP requests.",
+    "answer": "<p>The <strong>SecurityFilterChain</strong> is an ordered sequence of Spring Security Servlet Filters that inspect every incoming HTTP request to handle CORS, CSRF, authentication, authorization, and session creation.</p><br/><p><strong>Key Standard Filters in Order:</strong></p><ol><li><code>CorsFilter</code>: Handles cross-origin preflight requests.</li><li><code>CsrfFilter</code>: Validates CSRF tokens.</li><li><code>UsernamePasswordAuthenticationFilter</code>: Processes form logins.</li><li><code>BearerTokenAuthenticationFilter</code> / Custom <code>JwtFilter</code>: Extracts and validates JWTs.</li><li><code>AuthorizationFilter</code>: Enforces URL-based role &amp; permission rules.</li></ol>",
     "difficulty": "Hard",
     "tags": [
       "Security & Auth"
@@ -801,7 +823,24 @@ public class GlobalExceptionHandler {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "How secure specific endpoints?",
-    "answer": "<strong>Quick Answer:</strong> Secure endpoints by configuring a <code>SecurityFilterChain</code> bean or applying method-level annotations (<code>@PreAuthorize(\"hasRole('ADMIN')\")</code>).\n\n<pre><code>@Bean\npublic SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {\n    return http\n        .csrf(csrf -> csrf.disable())\n        .authorizeHttpRequests(auth -> auth\n            .requestMatchers(\"/api/auth/**\").permitAll()\n            .requestMatchers(\"/api/admin/**\").hasRole(\"ADMIN\")\n            .anyRequest().authenticated()\n        )\n        .build();\n}</code></pre>",
+    "answer": "<p>Spring Security 5.7+ configures endpoint security via a <code>SecurityFilterChain</code> bean:</p><br/><pre><code>@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity // Enables @PreAuthorize
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+            .csrf(csrf -&gt; csrf.disable())
+            .authorizeHttpRequests(auth -&gt; auth
+                .requestMatchers(\"/api/v1/auth/**\").permitAll()
+                .requestMatchers(\"/api/v1/admin/**\").hasRole(\"ADMIN\")
+                .requestMatchers(HttpMethod.DELETE, \"/api/v1/**\").hasAuthority(\"DELETE_PERM\")
+                .anyRequest().authenticated()
+            )
+            .build();
+    }
+}</code></pre>",
     "difficulty": "Medium",
     "tags": [
       "Security & Auth"
@@ -812,7 +851,7 @@ public class GlobalExceptionHandler {
     "categoryId": "security",
     "category": "Security & Auth",
     "question": "Roles vs authorities?",
-    "answer": "<strong>Quick Answer:</strong> <strong>Roles</strong> represent broad user groups (e.g., <code>ADMIN</code>, <code>USER</code>), whereas <strong>Authorities</strong> represent granular permissions (e.g., <code>READ_USER</code>, <code>DELETE_ORDER</code>). In Spring Security, <code>hasRole(\"ADMIN\")</code> automatically checks for authority <code>ROLE_ADMIN</code>.",
+    "answer": "<p>In Spring Security, <strong>GrantedAuthority</strong> is the core interface representing individual user permissions:</p><br/><ul><li><strong>Authority (Granular Permission):</strong> Fine-grained permission strings (e.g., <code>READ_DOCUMENT</code>, <code>DELETE_USER</code>). Checked via <code>hasAuthority('READ_DOCUMENT')</code>.</li><li><strong>Role (Permission Group):</strong> A high-level group of authorities. In Spring Security, a Role is simply an authority prefixed with <code>ROLE_</code>. <code>hasRole('ADMIN')</code> automatically looks for <code>GrantedAuthority(\"ROLE_ADMIN\")</code>.</li></ul>",
     "difficulty": "Medium",
     "tags": [
       "Spring"
