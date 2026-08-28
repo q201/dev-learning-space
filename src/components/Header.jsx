@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import {
   BookOpen,
@@ -13,7 +13,9 @@ import {
   Compass,
   FileText,
   ShieldCheck,
-  ArrowLeft
+  ArrowLeft,
+  Menu,
+  X
 } from 'lucide-react';
 
 export const Header = () => {
@@ -32,6 +34,8 @@ export const Header = () => {
     topicGuides
   } = useApp();
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const totalQuestions = questions.length;
   const masteredCount = masteredIds.length;
   const bookmarkedCount = bookmarkIds.length;
@@ -44,20 +48,25 @@ export const Header = () => {
     ? activeGuideObj.title.replace('Preparation Guide', 'Guide').replace('Interview Hub', 'Hub')
     : '';
 
+  const handleNavClick = (action) => {
+    action();
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className="app-header">
       <div className="header-inner">
         {/* Brand Logo & Dynamic Breadcrumbs */}
-        <div className="brand" onClick={returnToLanding} style={{ cursor: 'pointer' }}>
+        <div className="brand" onClick={() => handleNavClick(returnToLanding)} style={{ cursor: 'pointer' }}>
           <div className="brand-icon">
             <BookOpen size={20} />
           </div>
           <div className="brand-text">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <h1 style={{ fontSize: '1.2rem', fontWeight: 800 }}>Dev Learning Space</h1>
+            <div className="brand-title-row">
+              <h1 className="brand-h1">Dev Learning Space</h1>
               {selectedTopic && activeGuideObj && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <ChevronRight size={15} color="var(--text-muted)" />
+                <div className="brand-guide-badge-wrapper">
+                  <ChevronRight size={14} color="var(--text-muted)" className="brand-chevron" />
                   <span className="brand-guide-tag">
                     {guideBadgeTitle}
                   </span>
@@ -66,17 +75,17 @@ export const Header = () => {
             </div>
             <p className="brand-subtitle">
               {selectedTopic
-                ? `${totalQuestions} Questions & Active Recall Flashcards`
-                : 'Software Engineering Interview & Technical Knowledge Portal'}
+                ? `${totalQuestions} Questions & Active Recall`
+                : 'Software Engineering Interview & Technical Portal'}
             </p>
           </div>
         </div>
 
-        {/* Header Action Controls */}
+        {/* Desktop Header Actions */}
         <div className="header-actions">
           {/* Main Top Navigation (Only on non-topic pages) */}
           {!selectedTopic && (
-            <nav className="header-nav-links">
+            <nav className="header-nav-links desktop-only-nav">
               <button
                 className={`header-nav-item ${currentPage === 'home' ? 'active' : ''}`}
                 onClick={() => navigateTo('home')}
@@ -98,7 +107,7 @@ export const Header = () => {
                 onClick={() => navigateTo('privacy')}
               >
                 <ShieldCheck size={15} />
-                <span className="hide-mobile">Privacy</span>
+                <span>Privacy</span>
               </button>
 
               <button
@@ -106,7 +115,7 @@ export const Header = () => {
                 onClick={() => navigateTo('terms')}
               >
                 <FileText size={15} />
-                <span className="hide-mobile">Terms</span>
+                <span>Terms</span>
               </button>
             </nav>
           )}
@@ -116,7 +125,7 @@ export const Header = () => {
             <>
               {/* Return to Catalog Button */}
               <button
-                className="header-nav-item"
+                className="header-nav-item desktop-only-nav"
                 onClick={returnToLanding}
                 style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)' }}
                 title="Return to Catalog"
@@ -126,14 +135,14 @@ export const Header = () => {
               </button>
 
               {/* Study Mode Switchers (Browse, Flashcards, Analytics) */}
-              <div className="study-mode-group">
+              <div className="study-mode-group desktop-only-nav">
                 <button
                   className={`mode-btn ${viewMode === 'list' ? 'active' : ''}`}
                   onClick={() => setViewMode('list')}
                   title="Browse Questions List"
                 >
                   <Layers size={15} />
-                  <span className="hide-mobile">Browse</span>
+                  <span>Browse</span>
                 </button>
                 <button
                   className={`mode-btn ${viewMode === 'flashcards' ? 'active' : ''}`}
@@ -141,7 +150,7 @@ export const Header = () => {
                   title="Active Recall Flashcards Mode"
                 >
                   <CreditCard size={15} />
-                  <span className="hide-mobile">Flashcards</span>
+                  <span>Flashcards</span>
                 </button>
                 <button
                   className={`mode-btn ${viewMode === 'stats' ? 'active' : ''}`}
@@ -149,7 +158,7 @@ export const Header = () => {
                   title="Mastery Progress Analytics"
                 >
                   <BarChart3 size={15} />
-                  <span className="hide-mobile">Analytics</span>
+                  <span>Analytics</span>
                 </button>
               </div>
 
@@ -172,11 +181,99 @@ export const Header = () => {
             className="icon-btn"
             onClick={toggleTheme}
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            aria-label="Toggle Theme"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+
+          {/* Mobile Menu Hamburger Button */}
+          <button
+            className="icon-btn mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            title="Toggle Navigation Menu"
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Slide-down Navigation Drawer */}
+      {mobileMenuOpen && (
+        <div className="mobile-nav-drawer">
+          {selectedTopic && (
+            <div className="mobile-drawer-section">
+              <div className="mobile-drawer-label">Study View Mode</div>
+              <div className="mobile-mode-switcher">
+                <button
+                  className={`mobile-mode-btn ${viewMode === 'list' ? 'active' : ''}`}
+                  onClick={() => handleNavClick(() => setViewMode('list'))}
+                >
+                  <Layers size={16} />
+                  <span>Browse Questions</span>
+                </button>
+                <button
+                  className={`mobile-mode-btn ${viewMode === 'flashcards' ? 'active' : ''}`}
+                  onClick={() => handleNavClick(() => setViewMode('flashcards'))}
+                >
+                  <CreditCard size={16} />
+                  <span>Flashcards</span>
+                </button>
+                <button
+                  className={`mobile-mode-btn ${viewMode === 'stats' ? 'active' : ''}`}
+                  onClick={() => handleNavClick(() => setViewMode('stats'))}
+                >
+                  <BarChart3 size={16} />
+                  <span>Analytics</span>
+                </button>
+              </div>
+
+              <button
+                className="mobile-drawer-action-btn"
+                onClick={() => handleNavClick(returnToLanding)}
+              >
+                <ArrowLeft size={16} />
+                <span>Return to Modules Catalog</span>
+              </button>
+            </div>
+          )}
+
+          <div className="mobile-drawer-section">
+            <div className="mobile-drawer-label">Pages Navigation</div>
+            <div className="mobile-nav-grid">
+              <button
+                className={`mobile-nav-link ${currentPage === 'home' ? 'active' : ''}`}
+                onClick={() => handleNavClick(() => navigateTo('home'))}
+              >
+                <Compass size={16} />
+                <span>Catalog & Guides</span>
+              </button>
+              <button
+                className={`mobile-nav-link ${currentPage === 'about' ? 'active' : ''}`}
+                onClick={() => handleNavClick(() => navigateTo('about'))}
+              >
+                <BookOpen size={16} />
+                <span>About Platform</span>
+              </button>
+              <button
+                className={`mobile-nav-link ${currentPage === 'privacy' ? 'active' : ''}`}
+                onClick={() => handleNavClick(() => navigateTo('privacy'))}
+              >
+                <ShieldCheck size={16} />
+                <span>Privacy Policy</span>
+              </button>
+              <button
+                className={`mobile-nav-link ${currentPage === 'terms' ? 'active' : ''}`}
+                onClick={() => handleNavClick(() => navigateTo('terms'))}
+              >
+                <FileText size={16} />
+                <span>Terms of Service</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
+

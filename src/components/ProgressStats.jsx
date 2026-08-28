@@ -31,11 +31,11 @@ export const ProgressStats = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="stats-view-wrapper">
       {/* Top Stat Cards */}
       <div className="stats-container">
         <div className="stat-card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="stat-card-header">
             <span className="stat-label">Total Progress</span>
             <Award size={24} color="var(--accent-primary)" />
           </div>
@@ -46,27 +46,27 @@ export const ProgressStats = () => {
         </div>
 
         <div className="stat-card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="stat-card-header">
             <span className="stat-label">Mastered Questions</span>
             <CheckCircle2 size={24} color="var(--success)" />
           </div>
           <div className="stat-val" style={{ color: 'var(--success)' }}>
-            {masteredCount} <span style={{ fontSize: '1.1rem', color: 'var(--text-muted)' }}>/ {totalQuestions}</span>
+            {masteredCount} <span className="stat-subval">/ {totalQuestions}</span>
           </div>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <span className="stat-hint">
             {totalQuestions - masteredCount} questions remaining to review
           </span>
         </div>
 
         <div className="stat-card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="stat-card-header">
             <span className="stat-label">Bookmarked Stars</span>
             <Star size={24} color="var(--warning)" />
           </div>
           <div className="stat-val" style={{ color: 'var(--warning)' }}>
             {bookmarkedCount}
           </div>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <span className="stat-hint">
             Important questions saved for quick review
           </span>
         </div>
@@ -74,17 +74,17 @@ export const ProgressStats = () => {
 
       {/* Difficulty Breakdown */}
       <div className="stat-card">
-        <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <h3 className="stat-section-title">
           <Layers size={18} /> Mastery by Difficulty Level
         </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+        <div className="difficulty-stats-grid">
           {['Easy', 'Medium', 'Hard'].map((diff) => {
             const { total, mastered, pct } = getDifficultyStats(diff);
             return (
-              <div key={diff} style={{ background: 'var(--bg-tertiary)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, marginBottom: '0.4rem' }}>
+              <div key={diff} className="diff-stat-box">
+                <div className="diff-stat-header">
                   <span className={`diff-pill ${diff}`}>{diff}</span>
-                  <span style={{ fontSize: '0.85rem' }}>{mastered}/{total} ({pct}%)</span>
+                  <span className="diff-stat-pct">{mastered}/{total} ({pct}%)</span>
                 </div>
                 <div className="progress-track" style={{ height: '6px' }}>
                   <div className="progress-fill" style={{ width: `${pct}%` }} />
@@ -97,17 +97,17 @@ export const ProgressStats = () => {
 
       {/* Category Breakdown */}
       <div className="stat-card">
-        <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <h3 className="stat-section-title">
           <BookOpen size={18} /> Mastery by Category
         </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div className="category-stats-list">
           {categories.filter(c => c.id !== 'all').map((cat) => {
             const { catTotal, catMastered, pct } = getCategoryStats(cat.id);
             return (
-              <div key={cat.id} style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem', fontWeight: 600 }}>
-                  <span>{cat.name}</span>
-                  <span style={{ color: 'var(--text-muted)' }}>
+              <div key={cat.id} className="cat-stat-row">
+                <div className="cat-stat-meta">
+                  <span className="cat-stat-name">{cat.name}</span>
+                  <span className="cat-stat-count">
                     {catMastered} / {catTotal} ({pct}%)
                   </span>
                 </div>
@@ -122,3 +122,4 @@ export const ProgressStats = () => {
     </div>
   );
 };
+

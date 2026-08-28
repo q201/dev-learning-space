@@ -57,11 +57,11 @@ export const FlashcardView = () => {
 
   return (
     <div className="flashcard-container">
-      <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-muted)' }}>
-          Flashcard {currentIndex + 1} of {filteredQuestions.length}
+      <div className="flashcard-header-bar">
+        <span className="fc-progress-count">
+          Card {currentIndex + 1} of {filteredQuestions.length}
         </span>
-        <button className="btn-secondary" onClick={handleShuffle} style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem' }}>
+        <button className="btn-secondary btn-sm" onClick={handleShuffle}>
           <Shuffle size={14} /> Shuffle Deck
         </button>
       </div>
@@ -70,7 +70,7 @@ export const FlashcardView = () => {
         <div className={`flashcard ${isFlipped ? 'flipped' : ''}`}>
           {/* Front Face: Question */}
           <div className="card-face front">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="card-face-top">
               <span className="fc-hint">Question #{currentItem.id}</span>
               <span className="cat-pill">{currentItem.category}</span>
             </div>
@@ -85,7 +85,7 @@ export const FlashcardView = () => {
 
           {/* Back Face: Answer */}
           <div className="card-face back">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="card-face-top">
               <span className="fc-hint" style={{ color: 'var(--success)' }}>Answer</span>
               <span className={`diff-pill ${currentItem.difficulty}`}>{currentItem.difficulty}</span>
             </div>
@@ -96,30 +96,33 @@ export const FlashcardView = () => {
             />
 
             <div className="fc-tap-prompt">
-              Click card to flip back to question
+              Tap card to flip back to question
             </div>
           </div>
         </div>
       </div>
 
+      {/* Responsive Control Bar */}
       <div className="fc-controls">
-        <button className="btn-secondary" onClick={handlePrev}>
-          <ChevronLeft size={18} /> Previous
-        </button>
-
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className="btn-secondary" onClick={handleNext}>
-            <RotateCcw size={16} /> Skip
+        <div className="fc-controls-primary">
+          <button className="btn-secondary fc-nav-btn" onClick={handlePrev} title="Previous Card">
+            <ChevronLeft size={18} /> <span>Prev</span>
           </button>
-          <button className="btn-primary" onClick={handleMarkAndNext}>
-            <CheckCircle2 size={16} /> Got It!
+
+          <button className="btn-secondary fc-nav-btn" onClick={handleNext} title="Skip Card">
+            <RotateCcw size={16} /> <span>Skip</span>
+          </button>
+
+          <button className="btn-primary fc-nav-btn" onClick={handleMarkAndNext} title="Mark as Mastered and Next">
+            <CheckCircle2 size={16} /> <span>Got It!</span>
+          </button>
+
+          <button className="btn-secondary fc-nav-btn" onClick={handleNext} title="Next Card">
+            <span>Next</span> <ChevronRight size={18} />
           </button>
         </div>
-
-        <button className="btn-secondary" onClick={handleNext}>
-          Next <ChevronRight size={18} />
-        </button>
       </div>
     </div>
   );
 };
+

@@ -62,7 +62,7 @@ export const LandingPage = () => {
       {/* Hero Banner */}
       <section className="landing-hero">
         <div className="hero-badge">
-          <Sparkles size={14} /> Interactive Technical Knowledge Base
+          <Sparkles size={14} /> Interactive Knowledge Base
         </div>
         <h1 className="hero-title">Developer Learning Space</h1>
         <p className="hero-subtitle">
@@ -120,7 +120,7 @@ export const LandingPage = () => {
                   >
                     <IconComp size={24} />
                   </div>
-                  <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
                     <span className="guide-badge-level">{guide.level}</span>
                     <span
                       className={`guide-badge-status ${isFeatured ? 'active' : 'upcoming'}`}
@@ -156,25 +156,24 @@ export const LandingPage = () => {
 
                     <div className="guide-action-buttons">
                       <button
-                        className="btn-primary"
-                        style={{ flex: 1, justifyContent: 'center' }}
+                        className="btn-primary guide-start-btn"
                         onClick={() => enterTopicGuide(guide.id, 'list')}
                       >
-                        Start Study Guide <ArrowRight size={16} />
+                        Start Guide <ArrowRight size={16} />
                       </button>
                       <button
-                        className="btn-secondary"
+                        className="btn-secondary guide-icon-mode-btn"
                         onClick={() => enterTopicGuide(guide.id, 'flashcards')}
                         title="Flashcards Mode"
                       >
-                        <CreditCard size={16} /> Flashcards
+                        <CreditCard size={16} /> <span className="mobile-btn-text">Flashcards</span>
                       </button>
                       <button
-                        className="btn-secondary"
+                        className="btn-secondary guide-icon-mode-btn"
                         onClick={() => enterTopicGuide(guide.id, 'stats')}
                         title="Analytics"
                       >
-                        <BarChart3 size={16} />
+                        <BarChart3 size={16} /> <span className="mobile-btn-text">Stats</span>
                       </button>
                     </div>
                   </div>
@@ -280,3 +279,4 @@ export const LandingPage = () => {
     </div>
   );
 };
+
