@@ -10,12 +10,11 @@ import {
   Zap,
   Award,
   Users,
-  Code2,
-  CheckCircle2
+  Code2
 } from 'lucide-react';
 
 export const Footer = () => {
-  const { returnToLanding, selectedTopic, enterTopicGuide, questions, masteredIds } = useApp();
+  const { returnToLanding, enterTopicGuide } = useApp();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -55,7 +54,7 @@ export const Footer = () => {
             </div>
             <div className="stat-info">
               <span className="stat-number">12 Domains</span>
-              <span className="stat-label">Java, Spring & System Design</span>
+              <span className="stat-label">Engineering & System Design</span>
             </div>
           </div>
 
@@ -97,7 +96,7 @@ export const Footer = () => {
               </div>
             </div>
             <p className="footer-brand-desc">
-              An open-source interactive learning platform crafted for software engineers to master Java core concepts, Spring Boot microservices, multithreading, and system design interviews.
+              An open-source interactive technical knowledge portal for software engineers to master core computer science concepts, system design, multithreaded concurrency, backend architecture, and technical interview preparation.
             </p>
             <div className="footer-trust-badges">
               <span className="trust-badge"><ShieldCheck size={14} /> 100% Free & Open Source</span>
@@ -110,28 +109,28 @@ export const Footer = () => {
             <h4>Quick Links</h4>
             <ul>
               <li><button onClick={returnToLanding}>Catalog & Guides</button></li>
-              <li><button onClick={() => enterTopicGuide('java-interview-guide')}>Java Interview Guide</button></li>
+              <li><button onClick={() => enterTopicGuide('java-backend')}>Interview Preparation Guide</button></li>
               <li><a href="https://github.com/q201/dev-learning-space" target="_blank" rel="noreferrer">GitHub Repository</a></li>
-              <li><a href="#reviews">User Testimonials</a></li>
+              <li><a href="#reviews">Developer Reviews</a></li>
             </ul>
           </div>
 
           {/* Categories Quick Links */}
           <div className="footer-links-col">
-            <h4>Popular Topics</h4>
+            <h4>Popular Domains</h4>
             <ul>
-              <li><button onClick={() => enterTopicGuide('java-interview-guide')}>Core Language & OOP</button></li>
-              <li><button onClick={() => enterTopicGuide('java-interview-guide')}>Concurrency & JVM</button></li>
-              <li><button onClick={() => enterTopicGuide('java-interview-guide')}>Spring Boot & REST APIs</button></li>
-              <li><button onClick={() => enterTopicGuide('java-interview-guide')}>Security & JWT Auth</button></li>
-              <li><button onClick={() => enterTopicGuide('java-interview-guide')}>SQL & Database Indexing</button></li>
+              <li><button onClick={() => enterTopicGuide('java-backend')}>Core Language & OOP</button></li>
+              <li><button onClick={() => enterTopicGuide('java-backend')}>Concurrency & Parallelism</button></li>
+              <li><button onClick={() => enterTopicGuide('java-backend')}>Spring Boot & REST APIs</button></li>
+              <li><button onClick={() => enterTopicGuide('java-backend')}>Security & Auth Protocols</button></li>
+              <li><button onClick={() => enterTopicGuide('java-backend')}>SQL & Database Indexing</button></li>
             </ul>
           </div>
 
           {/* Newsletter Box */}
           <div className="footer-newsletter-col">
             <h4>Stay Updated</h4>
-            <p>Get weekly Java interview breakdowns, deep-dive cheatsheets, and new question updates.</p>
+            <p>Get weekly software engineering interview breakdowns, deep-dive system design cheatsheets, and new question updates.</p>
             <form onSubmit={handleSubscribe} className="newsletter-form">
               <div className="input-group">
                 <Mail size={16} className="mail-icon" />

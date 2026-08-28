@@ -66,7 +66,7 @@ export const LandingPage = () => {
         </div>
         <h1 className="hero-title">Developer Learning Space</h1>
         <p className="hero-subtitle">
-          Master senior Java core concepts, Spring Boot architecture, multithreading concurrency, and system design interviews with structured guides and active recall flashcards.
+          Master software engineering core concepts, system design, data structures, backend architecture, and technical interview preparation with interactive guides and active recall flashcards.
         </p>
 
         {/* Global Summary Stats */}
