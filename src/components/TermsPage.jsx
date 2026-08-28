@@ -38,7 +38,7 @@ export const TermsPage = () => {
             3. Open Source Contributions
           </h3>
           <p style={{ color: 'var(--text-secondary)', lineHeight: '1.65', fontSize: '0.92rem' }}>
-            We welcome community contributions, bug fixes, and new interview question pull requests on GitHub at <code>github.com/q201/dev-learning-space</code>.
+            We welcome community contributions, bug fixes, and new interview question pull requests via open-source community repositories.
           </p>
         </div>
       </div>
