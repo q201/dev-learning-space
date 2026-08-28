@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import { LandingPage } from './components/LandingPage';
 import { Sidebar } from './components/Sidebar';
 import { SearchFilterBar } from './components/SearchFilterBar';
@@ -75,6 +76,7 @@ export function App() {
       <div className="app-container">
         <Header />
         <AppBody />
+        <Footer />
       </div>
     </AppProvider>
   );

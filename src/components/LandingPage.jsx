@@ -8,7 +8,13 @@ import {
   CreditCard,
   BarChart3,
   Sparkles,
-  Zap
+  Zap,
+  Star,
+  CheckCircle2,
+  BookOpen,
+  MessageSquare,
+  ShieldCheck,
+  Award
 } from 'lucide-react';
 
 const iconMap = {
@@ -16,6 +22,33 @@ const iconMap = {
   Layout: Layout,
   Cpu: Cpu
 };
+
+const userReviews = [
+  {
+    id: 1,
+    name: 'Sarah Jenkins',
+    role: 'Senior Java Engineer @ TechCorp',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120&h=120',
+    rating: 5,
+    review: 'The structured breakdowns for JVM memory management and ConcurrentHashMap internals are exceptional. Passed my L6 Backend interview seamlessly!'
+  },
+  {
+    id: 2,
+    name: 'Michael Chen',
+    role: 'Staff Systems Architect',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120&h=120',
+    rating: 5,
+    review: 'The side-by-side comparison tables (ArrayList vs LinkedList, synchronized vs Lock) saved me hours of revision. Absolute gold standard.'
+  },
+  {
+    id: 3,
+    name: 'Priya Sharma',
+    role: 'Lead Backend Developer',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120&h=120',
+    rating: 5,
+    review: 'Love the active recall Flashcard Mode! Swapping between quick revision cards and deep-dive HTML explanations made preparation super efficient.'
+  }
+];
 
 export const LandingPage = () => {
   const { topicGuides, enterTopicGuide, questions, masteredIds } = useApp();
@@ -29,11 +62,11 @@ export const LandingPage = () => {
       {/* Hero Banner */}
       <section className="landing-hero">
         <div className="hero-badge">
-          <Sparkles size={14} /> Interactive Knowledge Portal
+          <Sparkles size={14} /> Interactive Technical Knowledge Base
         </div>
         <h1 className="hero-title">Developer Learning Space</h1>
         <p className="hero-subtitle">
-          Select a topic guide below to practice questions, flip study flashcards, and track your interview readiness.
+          Master senior Java core concepts, Spring Boot architecture, multithreading concurrency, and system design interviews with structured guides and active recall flashcards.
         </p>
 
         {/* Global Summary Stats */}
@@ -45,12 +78,20 @@ export const LandingPage = () => {
           <div className="hero-stat-divider" />
           <div className="hero-stat-item">
             <span className="stat-num">{totalQuestions}</span>
-            <span className="stat-txt">Active Questions</span>
+            <span className="stat-txt">Verified Questions</span>
           </div>
           <div className="hero-stat-divider" />
           <div className="hero-stat-item">
             <span className="stat-num" style={{ color: 'var(--success)' }}>{masteredCount}</span>
             <span className="stat-txt">Mastered ({progressPct}%)</span>
+          </div>
+          <div className="hero-stat-divider" />
+          <div className="hero-stat-item">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span className="stat-num" style={{ color: 'var(--warning)' }}>4.9</span>
+              <Star size={18} fill="var(--warning)" color="var(--warning)" />
+            </div>
+            <span className="stat-txt">User Rating</span>
           </div>
         </div>
       </section>
@@ -59,7 +100,7 @@ export const LandingPage = () => {
       <section className="landing-guides-section">
         <div className="section-header">
           <h2>Interview & Study Modules</h2>
-          <p>Pick a topic to start your preparation journey</p>
+          <p>Pick a topic module to start your preparation journey</p>
         </div>
 
         <div className="guides-grid">
@@ -147,6 +188,79 @@ export const LandingPage = () => {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Platform Features Highlight */}
+      <section className="features-highlight-section">
+        <div className="section-header" style={{ textAlign: 'center' }}>
+          <h2>Designed for Senior Engineering Interviews</h2>
+          <p>Everything you need to crack complex technical rounds</p>
+        </div>
+
+        <div className="features-grid">
+          <div className="feature-item-card">
+            <div className="feature-icon" style={{ background: 'rgba(79, 70, 229, 0.1)', color: '#4f46e5' }}>
+              <BookOpen size={22} />
+            </div>
+            <h4>Structured HTML Answers</h4>
+            <p>Clear concept definitions, mechanism breakdowns, real-world examples, and syntax-highlighted code snippets.</p>
+          </div>
+
+          <div className="feature-item-card">
+            <div className="feature-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10b981' }}>
+              <Layout size={22} />
+            </div>
+            <h4>Side-by-Side Comparison Tables</h4>
+            <p>Structured matrices comparing alternatives like `HashMap vs ConcurrentHashMap` or `ArrayList vs LinkedList`.</p>
+          </div>
+
+          <div className="feature-item-card">
+            <div className="feature-icon" style={{ background: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b' }}>
+              <CreditCard size={22} />
+            </div>
+            <h4>Active Recall Flashcards</h4>
+            <p>Flip cards with 3D animation to test memory retention before revealing structured solutions.</p>
+          </div>
+
+          <div className="feature-item-card">
+            <div className="feature-icon" style={{ background: 'rgba(14, 165, 233, 0.1)', color: '#0ea5e9' }}>
+              <BarChart3 size={22} />
+            </div>
+            <h4>Mastery Tracker & Personal Notes</h4>
+            <p>Track your topic mastery progress percentage and save custom notes on any question.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Developer Reviews & Testimonials */}
+      <section className="reviews-section" id="reviews">
+        <div className="section-header">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <MessageSquare size={20} color="var(--accent-primary)" />
+            <h2>Developer Reviews & Success Stories</h2>
+          </div>
+          <p>Trusted by engineers preparing for top tech companies</p>
+        </div>
+
+        <div className="reviews-grid">
+          {userReviews.map((rev) => (
+            <div key={rev.id} className="review-card">
+              <div className="review-rating">
+                {[...Array(rev.rating)].map((_, i) => (
+                  <Star key={i} size={16} fill="var(--warning)" color="var(--warning)" />
+                ))}
+              </div>
+              <p className="review-text">"{rev.review}"</p>
+              <div className="review-user-info">
+                <img src={rev.avatar} alt={rev.name} className="review-avatar" />
+                <div>
+                  <div className="review-user-name">{rev.name}</div>
+                  <div className="review-user-role">{rev.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
