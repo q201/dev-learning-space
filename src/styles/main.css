@@ -28,8 +28,12 @@
   --info: #3b82f6;
   --info-bg: #eff6ff;
   
-  --code-bg: #0f172a;
-  --code-text: #f8fafc;
+  --code-inline-bg: #e2e8f0;
+  --code-inline-text: #0f172a;
+  --code-inline-border: #cbd5e1;
+  --code-block-bg: #1e293b;
+  --code-block-text: #f8fafc;
+  --code-block-border: #334155;
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -69,8 +73,12 @@
   --info: #60a5fa;
   --info-bg: rgba(96, 165, 250, 0.12);
 
-  --code-bg: #070b14;
-  --code-text: #e2e8f0;
+  --code-inline-bg: rgba(99, 102, 241, 0.18);
+  --code-inline-text: #c7d2fe;
+  --code-inline-border: rgba(99, 102, 241, 0.35);
+  --code-block-bg: #070b14;
+  --code-block-text: #e2e8f0;
+  --code-block-border: #1e293b;
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
@@ -818,19 +826,59 @@ body {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1rem 1.15rem;
+  padding: 1.15rem 1.35rem;
   font-size: 0.93rem;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
+.q-answer-box p {
+  margin-bottom: 0.6rem;
+}
+
+.q-answer-box ul,
+.q-answer-box ol {
+  margin: 0.5rem 0 0.75rem 1.4rem;
+  padding: 0;
+}
+
+.q-answer-box li {
+  margin-bottom: 0.35rem;
+}
+
+/* Inline Code Badge */
 .q-answer-box code {
   font-family: 'Fira Code', monospace;
-  font-size: 0.85em;
-  background: var(--code-bg);
-  color: var(--code-text);
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 0.84em;
+  background: var(--code-inline-bg);
+  color: var(--code-inline-text);
+  border: 1px solid var(--code-inline-border);
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+/* Multi-line Code Block */
+.q-answer-box pre {
+  background: var(--code-block-bg);
+  border: 1px solid var(--code-block-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 0.85rem 0;
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.q-answer-box pre code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.86rem;
+  background: transparent;
+  color: var(--code-block-text);
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  line-height: 1.65;
+  display: block;
 }
 
 .q-answer-box strong {
