@@ -13,7 +13,7 @@ import {
   Compass,
   FileText,
   ShieldCheck,
-  Sparkles
+  ArrowLeft
 } from 'lucide-react';
 
 export const Header = () => {
@@ -39,6 +39,11 @@ export const Header = () => {
 
   const activeGuideObj = topicGuides.find((t) => t.id === selectedTopic);
 
+  // Shorten title for header badge inside guides
+  const guideBadgeTitle = activeGuideObj
+    ? activeGuideObj.title.replace('Preparation Guide', 'Guide').replace('Interview Hub', 'Hub')
+    : '';
+
   return (
     <header className="app-header">
       <div className="header-inner">
@@ -50,102 +55,116 @@ export const Header = () => {
           <div className="brand-text">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <h1 style={{ fontSize: '1.2rem', fontWeight: 800 }}>Dev Learning Space</h1>
-              {activeGuideObj && (
+              {selectedTopic && activeGuideObj && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <ChevronRight size={15} color="var(--text-muted)" />
                   <span className="brand-guide-tag">
-                    {activeGuideObj.title}
+                    {guideBadgeTitle}
                   </span>
                 </div>
               )}
             </div>
             <p className="brand-subtitle">
-              {activeGuideObj
-                ? `${totalQuestions} Interview Questions & Active Recall Flashcards`
+              {selectedTopic
+                ? `${totalQuestions} Questions & Active Recall Flashcards`
                 : 'Software Engineering Interview & Technical Knowledge Portal'}
             </p>
           </div>
         </div>
 
-        {/* Header Action Navigation */}
+        {/* Header Action Controls */}
         <div className="header-actions">
-          {/* Main Top Navigation Items */}
-          <nav className="header-nav-links">
-            <button
-              className={`header-nav-item ${currentPage === 'home' && !selectedTopic ? 'active' : ''}`}
-              onClick={() => navigateTo('home')}
-            >
-              <Compass size={15} />
-              <span>Catalog</span>
-            </button>
+          {/* Main Top Navigation (Only on non-topic pages) */}
+          {!selectedTopic && (
+            <nav className="header-nav-links">
+              <button
+                className={`header-nav-item ${currentPage === 'home' ? 'active' : ''}`}
+                onClick={() => navigateTo('home')}
+              >
+                <Compass size={15} />
+                <span>Catalog</span>
+              </button>
 
-            <button
-              className={`header-nav-item ${currentPage === 'about' ? 'active' : ''}`}
-              onClick={() => navigateTo('about')}
-            >
-              <BookOpen size={15} />
-              <span>About</span>
-            </button>
+              <button
+                className={`header-nav-item ${currentPage === 'about' ? 'active' : ''}`}
+                onClick={() => navigateTo('about')}
+              >
+                <BookOpen size={15} />
+                <span>About</span>
+              </button>
 
-            <button
-              className={`header-nav-item ${currentPage === 'privacy' ? 'active' : ''}`}
-              onClick={() => navigateTo('privacy')}
-            >
-              <ShieldCheck size={15} />
-              <span className="hide-mobile">Privacy</span>
-            </button>
+              <button
+                className={`header-nav-item ${currentPage === 'privacy' ? 'active' : ''}`}
+                onClick={() => navigateTo('privacy')}
+              >
+                <ShieldCheck size={15} />
+                <span className="hide-mobile">Privacy</span>
+              </button>
 
-            <button
-              className={`header-nav-item ${currentPage === 'terms' ? 'active' : ''}`}
-              onClick={() => navigateTo('terms')}
-            >
-              <FileText size={15} />
-              <span className="hide-mobile">Terms</span>
-            </button>
-          </nav>
-
-          {/* Dynamic Topic Mastery Pill */}
-          {selectedTopic && (
-            <div className="topic-progress-badge" title="Topic Mastery Progress">
-              <CheckCircle2 size={15} color="var(--success)" />
-              <span>{masteredCount}/{totalQuestions} ({percentage}%)</span>
-              {bookmarkedCount > 0 && (
-                <span className="bookmark-count-pill" title={`${bookmarkedCount} Bookmarked Questions`}>
-                  <Star size={13} fill="var(--warning)" color="var(--warning)" />
-                  {bookmarkedCount}
-                </span>
-              )}
-            </div>
+              <button
+                className={`header-nav-item ${currentPage === 'terms' ? 'active' : ''}`}
+                onClick={() => navigateTo('terms')}
+              >
+                <FileText size={15} />
+                <span className="hide-mobile">Terms</span>
+              </button>
+            </nav>
           )}
 
-          {/* Study Mode Switchers (Browse, Flashcards, Analytics) */}
+          {/* Guide Mode Actions (When inside a topic guide) */}
           {selectedTopic && (
-            <div className="study-mode-group">
+            <>
+              {/* Return to Catalog Button */}
               <button
-                className={`mode-btn ${viewMode === 'list' ? 'active' : ''}`}
-                onClick={() => setViewMode('list')}
-                title="Browse Questions List"
+                className="header-nav-item"
+                onClick={returnToLanding}
+                style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)' }}
+                title="Return to Catalog"
               >
-                <Layers size={15} />
-                <span className="hide-mobile">Browse</span>
+                <ArrowLeft size={15} />
+                <span>Catalog</span>
               </button>
-              <button
-                className={`mode-btn ${viewMode === 'flashcards' ? 'active' : ''}`}
-                onClick={() => setViewMode('flashcards')}
-                title="Active Recall Flashcards Mode"
-              >
-                <CreditCard size={15} />
-                <span className="hide-mobile">Flashcards</span>
-              </button>
-              <button
-                className={`mode-btn ${viewMode === 'stats' ? 'active' : ''}`}
-                onClick={() => setViewMode('stats')}
-                title="Mastery Progress Analytics"
-              >
-                <BarChart3 size={15} />
-                <span className="hide-mobile">Analytics</span>
-              </button>
-            </div>
+
+              {/* Study Mode Switchers (Browse, Flashcards, Analytics) */}
+              <div className="study-mode-group">
+                <button
+                  className={`mode-btn ${viewMode === 'list' ? 'active' : ''}`}
+                  onClick={() => setViewMode('list')}
+                  title="Browse Questions List"
+                >
+                  <Layers size={15} />
+                  <span className="hide-mobile">Browse</span>
+                </button>
+                <button
+                  className={`mode-btn ${viewMode === 'flashcards' ? 'active' : ''}`}
+                  onClick={() => setViewMode('flashcards')}
+                  title="Active Recall Flashcards Mode"
+                >
+                  <CreditCard size={15} />
+                  <span className="hide-mobile">Flashcards</span>
+                </button>
+                <button
+                  className={`mode-btn ${viewMode === 'stats' ? 'active' : ''}`}
+                  onClick={() => setViewMode('stats')}
+                  title="Mastery Progress Analytics"
+                >
+                  <BarChart3 size={15} />
+                  <span className="hide-mobile">Analytics</span>
+                </button>
+              </div>
+
+              {/* Dynamic Topic Mastery Pill */}
+              <div className="topic-progress-badge" title="Topic Mastery Progress">
+                <CheckCircle2 size={15} color="var(--success)" />
+                <span>{masteredCount}/{totalQuestions} ({percentage}%)</span>
+                {bookmarkedCount > 0 && (
+                  <span className="bookmark-count-pill" title={`${bookmarkedCount} Bookmarked Questions`}>
+                    <Star size={13} fill="var(--warning)" color="var(--warning)" />
+                    {bookmarkedCount}
+                  </span>
+                )}
+              </div>
+            </>
           )}
 
           {/* Theme Toggle Button */}
