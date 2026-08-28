@@ -19,10 +19,34 @@ export const AppProvider = ({ children }) => {
     }
   });
 
+  const [currentPage, setCurrentPage] = useState('home'); // home, about, privacy, terms
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all'); // all, mastered, learning, bookmarked
   const [difficultyFilter, setDifficultyFilter] = useState('all'); // all, Easy, Medium, Hard
+
+  const navigateTo = (page) => {
+    setCurrentPage(page);
+    if (page !== 'guide') {
+      setSelectedTopic(null);
+      localStorage.removeItem('dev_learning_selected_topic');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const returnToLanding = () => {
+    navigateTo('home');
+  };
+
+  const enterTopicGuide = (topicId, mode = 'list') => {
+    setSelectedTopic(topicId);
+    setCurrentPage('guide');
+    setViewMode(mode);
+    try {
+      localStorage.setItem('dev_learning_selected_topic', topicId);
+    } catch {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   
   const [viewMode, setViewMode] = useState('list'); // list, flashcards, stats
   const [activeFlashcardIndex, setActiveFlashcardIndex] = useState(0);
@@ -122,17 +146,6 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const enterTopicGuide = (topicId, targetViewMode = 'list') => {
-    setSelectedTopic(topicId);
-    setViewMode(targetViewMode);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const returnToLanding = () => {
-    setSelectedTopic(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   // Filter questions logic
   const filteredQuestions = questions.filter((q) => {
     // Category match
@@ -166,6 +179,9 @@ export const AppProvider = ({ children }) => {
         topicGuides,
         selectedTopic,
         setSelectedTopic,
+        currentPage,
+        setCurrentPage,
+        navigateTo,
         enterTopicGuide,
         returnToLanding,
         activeCategory,

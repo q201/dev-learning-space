@@ -3,6 +3,9 @@ import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { LandingPage } from './components/LandingPage';
+import { AboutPage } from './components/AboutPage';
+import { PrivacyPage } from './components/PrivacyPage';
+import { TermsPage } from './components/TermsPage';
 import { Sidebar } from './components/Sidebar';
 import { SearchFilterBar } from './components/SearchFilterBar';
 import { QuestionCard } from './components/QuestionCard';
@@ -56,9 +59,21 @@ const MainContent = () => {
 };
 
 const AppBody = () => {
-  const { selectedTopic } = useApp();
+  const { selectedTopic, currentPage } = useApp();
 
-  if (!selectedTopic) {
+  if (currentPage === 'about') {
+    return <AboutPage />;
+  }
+
+  if (currentPage === 'privacy') {
+    return <PrivacyPage />;
+  }
+
+  if (currentPage === 'terms') {
+    return <TermsPage />;
+  }
+
+  if (!selectedTopic || currentPage === 'home') {
     return <LandingPage />;
   }
 

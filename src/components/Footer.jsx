@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 export const Footer = () => {
-  const { returnToLanding, enterTopicGuide } = useApp();
+  const { returnToLanding, enterTopicGuide, navigateTo } = useApp();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -108,10 +108,11 @@ export const Footer = () => {
           <div className="footer-links-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><button onClick={returnToLanding}>Catalog & Guides</button></li>
-              <li><button onClick={() => enterTopicGuide('java-backend')}>Interview Preparation Guide</button></li>
+              <li><button onClick={() => navigateTo('home')}>Catalog & Guides</button></li>
+              <li><button onClick={() => navigateTo('about')}>About Platform</button></li>
+              <li><button onClick={() => navigateTo('privacy')}>Privacy Policy</button></li>
+              <li><button onClick={() => navigateTo('terms')}>Terms of Service</button></li>
               <li><a href="https://github.com/q201/dev-learning-space" target="_blank" rel="noreferrer">GitHub Repository</a></li>
-              <li><a href="#reviews">Developer Reviews</a></li>
             </ul>
           </div>
 

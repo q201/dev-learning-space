@@ -25,6 +25,8 @@ export const Header = () => {
     setViewMode,
     selectedTopic,
     returnToLanding,
+    navigateTo,
+    currentPage,
     topicGuides
   } = useApp();
 
@@ -65,15 +67,25 @@ export const Header = () => {
 
         {/* Header Action Controls */}
         <div className="header-actions">
-          {/* Catalog Navigation Button */}
-          <button
-            className={`btn-secondary ${!selectedTopic ? 'active' : ''}`}
-            onClick={returnToLanding}
-            style={{ padding: '0.45rem 0.85rem', fontSize: '0.85rem' }}
-            title="Explore All Interview Modules & Guides"
-          >
-            <Compass size={15} /> Catalog
-          </button>
+          {/* Navigation Pill Group */}
+          <div className="nav-pill-group">
+            <button
+              className={`nav-pill-btn ${currentPage === 'home' && !selectedTopic ? 'active' : ''}`}
+              onClick={() => navigateTo('home')}
+              title="Explore All Interview Modules & Guides"
+            >
+              <Compass size={15} />
+              <span>Catalog</span>
+            </button>
+            <button
+              className={`nav-pill-btn ${currentPage === 'about' ? 'active' : ''}`}
+              onClick={() => navigateTo('about')}
+              title="About Dev Learning Space"
+            >
+              <BookOpen size={15} />
+              <span className="hide-mobile">About</span>
+            </button>
+          </div>
 
           {/* Dynamic Topic Progress Pill */}
           {selectedTopic && (
