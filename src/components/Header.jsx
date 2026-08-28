@@ -9,9 +9,11 @@ import {
   Moon,
   Star,
   CheckCircle2,
-  Home,
   ChevronRight,
-  Compass
+  Compass,
+  FileText,
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react';
 
 export const Header = () => {
@@ -43,21 +45,21 @@ export const Header = () => {
         {/* Brand Logo & Dynamic Breadcrumbs */}
         <div className="brand" onClick={returnToLanding} style={{ cursor: 'pointer' }}>
           <div className="brand-icon">
-            <BookOpen size={22} />
+            <BookOpen size={20} />
           </div>
           <div className="brand-text">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-              <h1 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Dev Learning Space</h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <h1 style={{ fontSize: '1.2rem', fontWeight: 800 }}>Dev Learning Space</h1>
               {activeGuideObj && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <ChevronRight size={16} color="var(--text-muted)" />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--accent-primary)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <ChevronRight size={15} color="var(--text-muted)" />
+                  <span className="brand-guide-tag">
                     {activeGuideObj.title}
                   </span>
                 </div>
               )}
             </div>
-            <p>
+            <p className="brand-subtitle">
               {activeGuideObj
                 ? `${totalQuestions} Interview Questions & Active Recall Flashcards`
                 : 'Software Engineering Interview & Technical Knowledge Portal'}
@@ -65,80 +67,82 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Header Action Controls */}
+        {/* Header Action Navigation */}
         <div className="header-actions">
-          {/* Navigation Pill Group */}
-          <div className="nav-pill-group">
+          {/* Main Top Navigation Items */}
+          <nav className="header-nav-links">
             <button
-              className={`nav-pill-btn ${currentPage === 'home' && !selectedTopic ? 'active' : ''}`}
+              className={`header-nav-item ${currentPage === 'home' && !selectedTopic ? 'active' : ''}`}
               onClick={() => navigateTo('home')}
-              title="Explore All Interview Modules & Guides"
             >
               <Compass size={15} />
               <span>Catalog</span>
             </button>
+
             <button
-              className={`nav-pill-btn ${currentPage === 'about' ? 'active' : ''}`}
+              className={`header-nav-item ${currentPage === 'about' ? 'active' : ''}`}
               onClick={() => navigateTo('about')}
-              title="About Dev Learning Space"
             >
               <BookOpen size={15} />
               <span>About</span>
             </button>
-          </div>
 
-          {/* Dynamic Topic Progress Pill */}
+            <button
+              className={`header-nav-item ${currentPage === 'privacy' ? 'active' : ''}`}
+              onClick={() => navigateTo('privacy')}
+            >
+              <ShieldCheck size={15} />
+              <span className="hide-mobile">Privacy</span>
+            </button>
+
+            <button
+              className={`header-nav-item ${currentPage === 'terms' ? 'active' : ''}`}
+              onClick={() => navigateTo('terms')}
+            >
+              <FileText size={15} />
+              <span className="hide-mobile">Terms</span>
+            </button>
+          </nav>
+
+          {/* Dynamic Topic Mastery Pill */}
           {selectedTopic && (
-            <div className="nav-pill-group" style={{ padding: '4px 10px', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', fontWeight: 700 }}>
-                <CheckCircle2 size={16} color="var(--success)" />
-                <span>{masteredCount}/{totalQuestions} ({percentage}%)</span>
-              </div>
+            <div className="topic-progress-badge" title="Topic Mastery Progress">
+              <CheckCircle2 size={15} color="var(--success)" />
+              <span>{masteredCount}/{totalQuestions} ({percentage}%)</span>
               {bookmarkedCount > 0 && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
-                    color: 'var(--warning)',
-                    marginLeft: '8px'
-                  }}
-                  title={`${bookmarkedCount} Bookmarked Questions`}
-                >
-                  <Star size={14} fill="var(--warning)" color="var(--warning)" />
-                  <span>{bookmarkedCount}</span>
-                </div>
+                <span className="bookmark-count-pill" title={`${bookmarkedCount} Bookmarked Questions`}>
+                  <Star size={13} fill="var(--warning)" color="var(--warning)" />
+                  {bookmarkedCount}
+                </span>
               )}
             </div>
           )}
 
-          {/* View Mode Switcher (Browse, Flashcards, Analytics) */}
+          {/* Study Mode Switchers (Browse, Flashcards, Analytics) */}
           {selectedTopic && (
-            <div className="nav-pill-group">
+            <div className="study-mode-group">
               <button
-                className={`nav-pill-btn ${viewMode === 'list' ? 'active' : ''}`}
+                className={`mode-btn ${viewMode === 'list' ? 'active' : ''}`}
                 onClick={() => setViewMode('list')}
                 title="Browse Questions List"
               >
-                <Layers size={16} />
+                <Layers size={15} />
                 <span className="hide-mobile">Browse</span>
               </button>
               <button
-                className={`nav-pill-btn ${viewMode === 'flashcards' ? 'active' : ''}`}
+                className={`mode-btn ${viewMode === 'flashcards' ? 'active' : ''}`}
                 onClick={() => setViewMode('flashcards')}
                 title="Active Recall Flashcards Mode"
               >
-                <CreditCard size={16} />
+                <CreditCard size={15} />
                 <span className="hide-mobile">Flashcards</span>
               </button>
               <button
-                className={`nav-pill-btn ${viewMode === 'stats' ? 'active' : ''}`}
+                className={`mode-btn ${viewMode === 'stats' ? 'active' : ''}`}
                 onClick={() => setViewMode('stats')}
                 title="Mastery Progress Analytics"
               >
-                <BarChart3 size={16} />
+                <BarChart3 size={15} />
                 <span className="hide-mobile">Analytics</span>
               </button>
             </div>
