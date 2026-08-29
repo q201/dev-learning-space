@@ -265,5 +265,17 @@ export const INITIAL_COMPANIES = [
     description: 'Audio streaming subscription service serving over 500 million active users.',
     techStack: ['Java', 'Python', 'C++', 'React', 'GCP', 'BigQuery'],
     domain: 'Audio & Streaming Systems'
+  },
+  {
+    id: 'kobie',
+    name: 'Kobie Marketing',
+    category: 'Hybrid',
+    logo: 'https://kobie.com/wp-content/uploads/2021/04/cropped-favicon-192x192.png',
+    careersUrl: 'https://kobie.com/careers/',
+    location: 'Hybrid / Remote Options',
+    description: 'Enterprise loyalty technology platform & customer engagement solutions powering high-scale enterprise loyalty engines.',
+    techStack: ['Java', 'Spring Boot', 'Oracle', 'PostgreSQL', 'AWS', 'Microservices', 'REST APIs', 'React'],
+    domain: 'Enterprise SaaS & Loyalty Tech'
   }
 ];
+
