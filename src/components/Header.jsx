@@ -15,7 +15,8 @@ import {
   ShieldCheck,
   ArrowLeft,
   Menu,
-  X
+  X,
+  Briefcase
 } from 'lucide-react';
 
 export const Header = () => {
@@ -92,6 +93,18 @@ export const Header = () => {
               >
                 <Compass size={15} />
                 <span>Catalog</span>
+              </button>
+
+              <button
+                className={`header-nav-item ${currentPage === 'jobs' ? 'active' : ''}`}
+                onClick={() => navigateTo('jobs')}
+                style={{
+                  background: currentPage === 'jobs' ? 'var(--accent-light)' : undefined,
+                  color: currentPage === 'jobs' ? 'var(--accent-primary)' : undefined
+                }}
+              >
+                <Briefcase size={15} color="var(--accent-primary)" />
+                <span>Job Tracker</span>
               </button>
 
               <button
@@ -249,6 +262,13 @@ export const Header = () => {
                 <span>Catalog & Guides</span>
               </button>
               <button
+                className={`mobile-nav-link ${currentPage === 'jobs' ? 'active' : ''}`}
+                onClick={() => handleNavClick(() => navigateTo('jobs'))}
+              >
+                <Briefcase size={16} color="var(--accent-primary)" />
+                <span>Job Tracker Hub</span>
+              </button>
+              <button
                 className={`mobile-nav-link ${currentPage === 'about' ? 'active' : ''}`}
                 onClick={() => handleNavClick(() => navigateTo('about'))}
               >
@@ -276,4 +296,5 @@ export const Header = () => {
     </header>
   );
 };
+
 

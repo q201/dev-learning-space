@@ -11,6 +11,7 @@ import { SearchFilterBar } from './components/SearchFilterBar';
 import { QuestionCard } from './components/QuestionCard';
 import { FlashcardView } from './components/FlashcardView';
 import { ProgressStats } from './components/ProgressStats';
+import { JobsPage } from './components/JobsPage';
 import { SearchX } from 'lucide-react';
 
 const MainContent = () => {
@@ -60,6 +61,10 @@ const MainContent = () => {
 
 const AppBody = () => {
   const { selectedTopic, currentPage } = useApp();
+
+  if (currentPage === 'jobs') {
+    return <JobsPage />;
+  }
 
   if (currentPage === 'about') {
     return <AboutPage />;

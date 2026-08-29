@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import questionsData from '../data/questions.json';
 import { CATEGORIES } from '../data/categories';
 import { TOPIC_GUIDES } from '../data/topics';
+import { INITIAL_COMPANIES } from '../data/companies';
 
 const AppContext = createContext();
 
@@ -19,7 +20,7 @@ export const AppProvider = ({ children }) => {
     }
   });
 
-  const [currentPage, setCurrentPage] = useState('home'); // home, about, privacy, terms
+  const [currentPage, setCurrentPage] = useState('home'); // home, about, privacy, terms, jobs
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all'); // all, mastered, learning, bookmarked
@@ -79,6 +80,25 @@ export const AppProvider = ({ children }) => {
     }
   });
 
+  // Company Application Tracking States
+  const [customCompanies, setCustomCompanies] = useState(() => {
+    try {
+      const saved = localStorage.getItem('dev_learning_custom_companies');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [jobStatuses, setJobStatuses] = useState(() => {
+    try {
+      const saved = localStorage.getItem('dev_learning_job_statuses');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+
   const [theme, setTheme] = useState(() => {
     try {
       return localStorage.getItem('dev_learning_theme') || 'dark';
@@ -86,6 +106,9 @@ export const AppProvider = ({ children }) => {
       return 'dark';
     }
   });
+
+  // Combined list of companies
+  const allCompanies = [...INITIAL_COMPANIES, ...customCompanies];
 
   // Sync theme with document element attribute
   useEffect(() => {
@@ -102,7 +125,7 @@ export const AppProvider = ({ children }) => {
     }
   }, [selectedTopic]);
 
-  // Persist mastered, bookmarks, notes
+  // Persist mastered, bookmarks, notes, job tracker
   useEffect(() => {
     localStorage.setItem('dev_learning_mastered', JSON.stringify(masteredIds));
   }, [masteredIds]);
@@ -115,7 +138,15 @@ export const AppProvider = ({ children }) => {
     localStorage.setItem('dev_learning_notes', JSON.stringify(notes));
   }, [notes]);
 
-  // Toggle methods
+  useEffect(() => {
+    localStorage.setItem('dev_learning_custom_companies', JSON.stringify(customCompanies));
+  }, [customCompanies]);
+
+  useEffect(() => {
+    localStorage.setItem('dev_learning_job_statuses', JSON.stringify(jobStatuses));
+  }, [jobStatuses]);
+
+  // Toggle & Update methods
   const toggleMastered = (id) => {
     setMasteredIds((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
@@ -133,6 +164,46 @@ export const AppProvider = ({ children }) => {
       ...prev,
       [id]: noteText
     }));
+  };
+
+  // Job Application Tracker Handlers
+  const updateJobStatus = (companyId, newStatus) => {
+    const today = new Date().toISOString().split('T')[0];
+    setJobStatuses((prev) => ({
+      ...prev,
+      [companyId]: {
+        ...(prev[companyId] || {}),
+        status: newStatus,
+        lastChecked: today
+      }
+    }));
+  };
+
+  const updateJobNotes = (companyId, notesText) => {
+    setJobStatuses((prev) => ({
+      ...prev,
+      [companyId]: {
+        ...(prev[companyId] || {}),
+        notes: notesText
+      }
+    }));
+  };
+
+  const addCustomCompany = (companyObj) => {
+    const newComp = {
+      ...companyObj,
+      id: `custom_${Date.now()}`
+    };
+    setCustomCompanies((prev) => [newComp, ...prev]);
+  };
+
+  const deleteCustomCompany = (companyId) => {
+    setCustomCompanies((prev) => prev.filter((c) => c.id !== companyId));
+    setJobStatuses((prev) => {
+      const copy = { ...prev };
+      delete copy[companyId];
+      return copy;
+    });
   };
 
   const toggleTheme = () => {
@@ -205,7 +276,14 @@ export const AppProvider = ({ children }) => {
         toggleBookmark,
         setNoteForQuestion,
         resetProgress,
-        filteredQuestions
+        filteredQuestions,
+        // Job Application Tracker
+        allCompanies,
+        jobStatuses,
+        updateJobStatus,
+        updateJobNotes,
+        addCustomCompany,
+        deleteCustomCompany
       }}
     >
       {children}
@@ -214,3 +292,4 @@ export const AppProvider = ({ children }) => {
 };
 
 export const useApp = () => useContext(AppContext);
+

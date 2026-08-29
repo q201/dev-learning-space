@@ -109,6 +109,7 @@ export const Footer = () => {
             <h4>Quick Links</h4>
             <ul>
               <li><button onClick={() => navigateTo('home')}>Catalog & Guides</button></li>
+              <li><button onClick={() => navigateTo('jobs')}>Job Tracker Hub</button></li>
               <li><button onClick={() => navigateTo('about')}>About Platform</button></li>
               <li><button onClick={() => navigateTo('privacy')}>Privacy Policy</button></li>
               <li><button onClick={() => navigateTo('terms')}>Terms of Service</button></li>
