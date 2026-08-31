@@ -41,6 +41,10 @@ export const AppProvider = ({ children }) => {
 
   const enterTopicGuide = (topicId, mode = 'list') => {
     setSelectedTopic(topicId);
+    setActiveCategory('all');
+    setSearchQuery('');
+    setStatusFilter('all');
+    setDifficultyFilter('all');
     setCurrentPage('guide');
     setViewMode(mode);
     try {
@@ -217,8 +221,16 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const activeTopicQuestions = selectedTopic
+    ? questions.filter((q) => q.topicId === selectedTopic)
+    : questions;
+
+  const activeTopicCategories = selectedTopic
+    ? categories.filter((c) => c.id === 'all' || c.topicId === selectedTopic)
+    : categories;
+
   // Filter questions logic
-  const filteredQuestions = questions.filter((q) => {
+  const filteredQuestions = activeTopicQuestions.filter((q) => {
     // Category match
     if (activeCategory !== 'all' && q.categoryId !== activeCategory) {
       return false;
@@ -245,8 +257,10 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        questions,
-        categories,
+        questions: activeTopicQuestions,
+        categories: activeTopicCategories,
+        allQuestions: questions,
+        allCategories: categories,
         topicGuides,
         selectedTopic,
         setSelectedTopic,

@@ -8,7 +8,8 @@
     "difficulty": "Easy",
     "tags": [
       "OOP"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "difficulty": "Easy",
     "tags": [
       "Core Language"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "difficulty": "Easy",
     "tags": [
       "String"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "difficulty": "Medium",
     "tags": [
       "HashMap"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
     "difficulty": "Medium",
     "tags": [
       "String"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 6,
@@ -63,7 +68,8 @@
     "difficulty": "Medium",
     "tags": [
       "String"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 7,
@@ -74,7 +80,8 @@
     "difficulty": "Hard",
     "tags": [
       "HashMap"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 8,
@@ -85,7 +92,8 @@
     "difficulty": "Medium",
     "tags": [
       "HashMap"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 9,
@@ -97,7 +105,8 @@
     "tags": [
       "HashMap",
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 10,
@@ -108,7 +117,8 @@
     "difficulty": "Medium",
     "tags": [
       "Core Language"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 11,
@@ -119,7 +129,8 @@
     "difficulty": "Medium",
     "tags": [
       "Core Language"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 12,
@@ -130,7 +141,8 @@
     "difficulty": "Medium",
     "tags": [
       "Core Language"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 13,
@@ -141,7 +153,8 @@
     "difficulty": "Medium",
     "tags": [
       "GC"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 14,
@@ -152,7 +165,8 @@
     "difficulty": "Medium",
     "tags": [
       "Core Language"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 15,
@@ -163,7 +177,8 @@
     "difficulty": "Medium",
     "tags": [
       "Core Language"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 16,
@@ -174,7 +189,8 @@
     "difficulty": "Easy",
     "tags": [
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 17,
@@ -185,7 +201,8 @@
     "difficulty": "Medium",
     "tags": [
       "Lock"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 18,
@@ -196,7 +213,8 @@
     "difficulty": "Medium",
     "tags": [
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 19,
@@ -207,7 +225,8 @@
     "difficulty": "Hard",
     "tags": [
       "Lock"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 20,
@@ -218,7 +237,8 @@
     "difficulty": "Medium",
     "tags": [
       "Concurrency & JVM"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 21,
@@ -229,7 +249,8 @@
     "difficulty": "Medium",
     "tags": [
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 22,
@@ -240,7 +261,8 @@
     "difficulty": "Medium",
     "tags": [
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 23,
@@ -251,7 +273,8 @@
     "difficulty": "Medium",
     "tags": [
       "Concurrency & JVM"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 24,
@@ -262,7 +285,8 @@
     "difficulty": "Medium",
     "tags": [
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 25,
@@ -273,7 +297,8 @@
     "difficulty": "Hard",
     "tags": [
       "GC"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 26,
@@ -284,7 +309,8 @@
     "difficulty": "Easy",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 27,
@@ -295,7 +321,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Core"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 28,
@@ -306,7 +333,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 29,
@@ -317,7 +345,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 30,
@@ -328,7 +357,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Core"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 31,
@@ -339,7 +369,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 32,
@@ -350,7 +381,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 33,
@@ -361,7 +393,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 34,
@@ -372,7 +405,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 35,
@@ -383,7 +417,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 36,
@@ -394,7 +429,8 @@
     "difficulty": "Easy",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 37,
@@ -405,7 +441,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 38,
@@ -416,7 +453,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 39,
@@ -428,7 +466,8 @@
     "tags": [
       "Spring",
       "JPA"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 40,
@@ -439,7 +478,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 41,
@@ -450,7 +490,8 @@
     "difficulty": "Medium",
     "tags": [
       "REST"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 42,
@@ -461,7 +502,8 @@
     "difficulty": "Medium",
     "tags": [
       "JSON"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 43,
@@ -472,7 +514,8 @@
     "difficulty": "Medium",
     "tags": [
       "JSON"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 44,
@@ -483,7 +526,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 45,
@@ -494,7 +538,8 @@
     "difficulty": "Medium",
     "tags": [
       "REST"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 46,
@@ -505,7 +550,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 47,
@@ -516,7 +562,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 48,
@@ -527,7 +574,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 49,
@@ -538,7 +586,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring Boot"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 50,
@@ -549,7 +598,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 51,
@@ -560,7 +610,8 @@
     "difficulty": "Easy",
     "tags": [
       "Security & Auth"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 52,
@@ -571,7 +622,8 @@
     "difficulty": "Medium",
     "tags": [
       "JWT"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 53,
@@ -582,7 +634,8 @@
     "difficulty": "Medium",
     "tags": [
       "JWT"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 54,
@@ -593,7 +646,8 @@
     "difficulty": "Medium",
     "tags": [
       "JWT"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 55,
@@ -604,7 +658,8 @@
     "difficulty": "Hard",
     "tags": [
       "Security & Auth"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 56,
@@ -615,7 +670,8 @@
     "difficulty": "Medium",
     "tags": [
       "Security & Auth"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 57,
@@ -626,7 +682,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 58,
@@ -637,7 +694,8 @@
     "difficulty": "Medium",
     "tags": [
       "Security & Auth"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 59,
@@ -648,7 +706,8 @@
     "difficulty": "Easy",
     "tags": [
       "SQL & Databases"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 60,
@@ -659,7 +718,8 @@
     "difficulty": "Medium",
     "tags": [
       "Index"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 61,
@@ -670,7 +730,8 @@
     "difficulty": "Medium",
     "tags": [
       "Index"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 62,
@@ -681,7 +742,8 @@
     "difficulty": "Medium",
     "tags": [
       "ACID"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 63,
@@ -692,7 +754,8 @@
     "difficulty": "Medium",
     "tags": [
       "SQL & Databases"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 64,
@@ -704,7 +767,8 @@
     "tags": [
       "ACID",
       "Transaction"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 65,
@@ -715,7 +779,8 @@
     "difficulty": "Medium",
     "tags": [
       "SQL & Databases"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 66,
@@ -726,7 +791,8 @@
     "difficulty": "Medium",
     "tags": [
       "SQL & Databases"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 67,
@@ -737,7 +803,8 @@
     "difficulty": "Medium",
     "tags": [
       "SQL"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 68,
@@ -748,7 +815,8 @@
     "difficulty": "Hard",
     "tags": [
       "Lock"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 69,
@@ -761,7 +829,8 @@
       "Spring",
       "JPA",
       "Hibernate"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 70,
@@ -775,7 +844,8 @@
       "SQL",
       "JPA",
       "Transaction"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 71,
@@ -786,7 +856,8 @@
     "difficulty": "Medium",
     "tags": [
       "JPA"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 72,
@@ -797,7 +868,8 @@
     "difficulty": "Medium",
     "tags": [
       "SQL"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 73,
@@ -808,7 +880,8 @@
     "difficulty": "Medium",
     "tags": [
       "ORM & JPA"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 74,
@@ -819,7 +892,8 @@
     "difficulty": "Medium",
     "tags": [
       "ORM & JPA"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 75,
@@ -830,7 +904,8 @@
     "difficulty": "Hard",
     "tags": [
       "ORM & JPA"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 76,
@@ -843,7 +918,8 @@
       "SQL",
       "Hibernate",
       "Cache"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 77,
@@ -854,7 +930,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 78,
@@ -866,7 +943,8 @@
     "tags": [
       "Spring",
       "Transaction"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 79,
@@ -877,7 +955,8 @@
     "difficulty": "Easy",
     "tags": [
       "REST"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 80,
@@ -888,7 +967,8 @@
     "difficulty": "Medium",
     "tags": [
       "APIs & Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 81,
@@ -899,7 +979,8 @@
     "difficulty": "Medium",
     "tags": [
       "APIs & Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 82,
@@ -910,7 +991,8 @@
     "difficulty": "Medium",
     "tags": [
       "APIs & Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 83,
@@ -921,7 +1003,8 @@
     "difficulty": "Medium",
     "tags": [
       "REST"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 84,
@@ -932,7 +1015,8 @@
     "difficulty": "Medium",
     "tags": [
       "APIs & Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 85,
@@ -943,7 +1027,8 @@
     "difficulty": "Medium",
     "tags": [
       "APIs & Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 86,
@@ -954,7 +1039,8 @@
     "difficulty": "Medium",
     "tags": [
       "Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 87,
@@ -965,7 +1051,8 @@
     "difficulty": "Medium",
     "tags": [
       "Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 88,
@@ -976,7 +1063,8 @@
     "difficulty": "Medium",
     "tags": [
       "Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 89,
@@ -987,7 +1075,8 @@
     "difficulty": "Medium",
     "tags": [
       "APIs & Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 90,
@@ -998,7 +1087,8 @@
     "difficulty": "Hard",
     "tags": [
       "APIs & Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 91,
@@ -1009,7 +1099,8 @@
     "difficulty": "Easy",
     "tags": [
       "Docker"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 92,
@@ -1020,7 +1111,8 @@
     "difficulty": "Medium",
     "tags": [
       "Cloud & Containers"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 93,
@@ -1031,7 +1123,8 @@
     "difficulty": "Medium",
     "tags": [
       "Cloud & Containers"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 94,
@@ -1042,7 +1135,8 @@
     "difficulty": "Medium",
     "tags": [
       "Spring"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 95,
@@ -1053,7 +1147,8 @@
     "difficulty": "Medium",
     "tags": [
       "AWS"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 96,
@@ -1064,7 +1159,8 @@
     "difficulty": "Medium",
     "tags": [
       "Cloud & Containers"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 97,
@@ -1075,7 +1171,8 @@
     "difficulty": "Medium",
     "tags": [
       "Cloud & Containers"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 98,
@@ -1087,7 +1184,8 @@
     "tags": [
       "Spring",
       "AWS"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 99,
@@ -1099,7 +1197,8 @@
     "tags": [
       "GC",
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 100,
@@ -1112,7 +1211,8 @@
       "Spring",
       "GC",
       "Thread"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 101,
@@ -1123,7 +1223,8 @@
     "difficulty": "Medium",
     "tags": [
       "SQL"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 102,
@@ -1134,7 +1235,8 @@
     "difficulty": "Hard",
     "tags": [
       "Cache"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 103,
@@ -1145,7 +1247,8 @@
     "difficulty": "Medium",
     "tags": [
       "Transaction"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 104,
@@ -1156,7 +1259,8 @@
     "difficulty": "Medium",
     "tags": [
       "System Design & Scenarios"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 105,
@@ -1167,7 +1271,8 @@
     "difficulty": "Medium",
     "tags": [
       "System Design & Scenarios"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 106,
@@ -1178,7 +1283,8 @@
     "difficulty": "Medium",
     "tags": [
       "System Design & Scenarios"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 107,
@@ -1189,7 +1295,8 @@
     "difficulty": "Medium",
     "tags": [
       "System Design & Scenarios"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 108,
@@ -1200,7 +1307,8 @@
     "difficulty": "Hard",
     "tags": [
       "GC"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 109,
@@ -1211,7 +1319,8 @@
     "difficulty": "Medium",
     "tags": [
       "Microservices"
-    ]
+    ],
+    "topicId": "java-backend"
   },
   {
     "id": 110,
@@ -1222,6 +1331,677 @@
     "difficulty": "Hard",
     "tags": [
       "Cache"
+    ],
+    "topicId": "java-backend"
+  },
+  {
+    "id": 111,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What is Angular?",
+    "answer": "<p><strong>Angular</strong> is an open-source, TypeScript-based front-end framework developed and maintained by Google. It is designed for building scalable, enterprise-grade single-page client web applications (SPAs).</p><br/>\n\n<p><strong>Key Architectural Pillars:</strong></p>\n<ul>\n  <li><strong>Component-Based Architecture:</strong> Built using reusable, encapsulated UI components that combine TypeScript logic, HTML templates, and CSS styling.</li>\n  <li><strong>TypeScript Native:</strong> Provides static typing, early compile-time error detection, metadata decorators (<code>@Component</code>, <code>@Injectable</code>), and robust IDE autocompletion.</li>\n  <li><strong>Hierarchical Dependency Injection (DI):</strong> Decouples component logic from service implementation for enhanced testability and modularity.</li>\n  <li><strong>Reactive State & Signals:</strong> Supports both RxJS Observables and fine-grained Angular Signals for efficient view updates.</li>\n  <li><strong>Ahead-of-Time (AOT) Compilation:</strong> Converts Angular templates into executable JavaScript during build time, optimizing startup performance.</li>\n</ul><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Dimension</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Angular</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>React / Vue</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Type</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Full-fledged Framework</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>UI Library (React) / Progressive Framework (Vue)</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Language</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>TypeScript First</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>JavaScript / TypeScript Optional</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Routing & Forms</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Built-in (Router, ReactiveForms)</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Third-party libraries (React Router, Formik)</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Easy",
+    "tags": [
+      "Angular",
+      "Architecture",
+      "SPA"
+    ]
+  },
+  {
+    "id": 112,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What is the key difference between AngularJS and Angular?",
+    "answer": "<p><strong>AngularJS (1.x)</strong> and modern <strong>Angular (2+)</strong> represent two completely different architectures. Angular is a total ground-up rewrite in TypeScript, removing legacy constraints like <code>$scope</code> and Digest Cycles.</p><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>AngularJS (1.x)</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Modern Angular (2+ / v17+)</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Language</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>JavaScript (ES5/ES6)</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>TypeScript</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Architecture</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>MVC / Controllers &amp; <code>$scope</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Component-Based &amp; Standalone Architecture</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Data Binding</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Two-way binding via Digest Cycle</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>One-way default, Signals &amp; <code>[(ngModel)]</code></td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Dependency Injection</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>String-based injection</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Hierarchical typed injection (<code>inject()</code>)</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Mobile &amp; AOT</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Not designed for mobile or AOT</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Native AOT compilation &amp; SSR support</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "AngularJS",
+      "Angular",
+      "Architecture"
+    ]
+  },
+  {
+    "id": 113,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What is TypeScript, and why does Angular use it?",
+    "answer": "<p><strong>TypeScript</strong> is a strongly typed, object-oriented superset of JavaScript developed by Microsoft that compiles down to plain JavaScript compatible with any browser environment.</p><br/>\n\n<p><strong>Why Angular Chosen TypeScript:</strong></p>\n<ol>\n  <li><strong>Strong Static Typing:</strong> Catches type mismatch errors and null pointer errors at compile-time during build rather than runtime in production.</li>\n  <li><strong>Decorators &amp; Metadata:</strong> Uses ES decorators (e.g., <code>@Component</code>, <code>@Injectable</code>, <code>@Input</code>) to supply metadata to Angular compiler without polluting runtime classes.</li>\n  <li><strong>Robust IDE Autocompletion &amp; Refactoring:</strong> Enables powerful IntelliSense, automatic imports, safe renaming across large codebases, and code navigation.</li>\n  <li><strong>Modern ES Next Features:</strong> Supports async/await, optional chaining (<code>?.</code>), nullish coalescing (<code>??</code>), and class field initializers natively.</li>\n</ol>",
+    "difficulty": "Easy",
+    "tags": [
+      "TypeScript",
+      "Language"
+    ]
+  },
+  {
+    "id": 114,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What are Standalone Components?",
+    "answer": "<p>Introduced in <strong>Angular 14</strong> and made default in <strong>Angular 17</strong>, <strong>Standalone Components</strong> eliminate the mandatory requirement of <code>NgModule</code> containers. They manage their own dependencies directly via their <code>@Component({ imports: [...] })</code> metadata array.</p><br/>\n\n<p><strong>Key Advantages:</strong></p>\n<ul>\n  <li><strong>Reduced Boilerplate:</strong> Eliminates clutter of declaring components, directives, and pipes inside intermediate <code>NgModule</code> classes.</li>\n  <li><strong>Better Tree-Shaking:</strong> Angular build pipeline can prune unused components cleanly, reducing final JavaScript bundle size.</li>\n  <li><strong>Simpler Learning Curve:</strong> Modular structure is intuitive and mirrors modern component model found across web frameworks.</li>\n</ul><br/>\n\n<pre><code>import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { UserProfileComponent } from './user-profile.component';\n\n@Component({\n  selector: 'app-user-card',\n  standalone: true,\n  imports: [CommonModule, UserProfileComponent],\n  template: `\n    &lt;div className=\"user-card\"&gt;\n      &lt;app-user-profile [userId]=\"101\" /&gt;\n    &lt;/div&gt;\n  `\n})\nexport class UserCardComponent {}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Standalone",
+      "Components",
+      "NgModule"
+    ]
+  },
+  {
+    "id": 115,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What is an NgModule?",
+    "answer": "<p>An <strong>NgModule</strong> is a TypeScript class decorated with <code>@NgModule</code> that consolidates related components, directives, pipes, and providers into cohesive functional blocks.</p><br/>\n\n<p><strong>NgModule Metadata Attributes:</strong></p>\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Property</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Description</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>declarations</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Components, directives, and pipes belonging exclusively to this module.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>imports</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Other NgModules or Standalone Components required by templates in this module.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>exports</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Declarations exposed to other modules importing this module.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>providers</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Services registered for dependency injection scoped to this module.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>bootstrap</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Root component instantiated when bootstrapping the module (AppModule only).</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "NgModule",
+      "Architecture"
+    ]
+  },
+  {
+    "id": 116,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What is the purpose of main.ts?",
+    "answer": "<p><code>main.ts</code> serves as the primary <strong>execution entry point</strong> of an Angular application. It bootstraps the application into the browser DOM.</p><br/>\n\n<p><strong>Modern Standalone Application Bootstrapping (v15+):</strong></p>\n<pre><code>import { bootstrapApplication } from '@angular/platform-browser';\nimport { AppComponent } from './app/app.component';\nimport { appConfig } from './app/app.config';\n\nbootstrapApplication(AppComponent, appConfig)\n  .catch((err) =&gt; console.error(err));</code></pre><br/>\n\n<p><strong>Legacy NgModule Bootstrapping:</strong></p>\n<pre><code>import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { AppModule } from './app/app.module';\n\nplatformBrowserDynamic().bootstrapModule(AppModule)\n  .catch((err) =&gt; console.error(err));</code></pre>",
+    "difficulty": "Easy",
+    "tags": [
+      "Bootstrapping",
+      "main.ts"
+    ]
+  },
+  {
+    "id": 117,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What is the Angular CLI?",
+    "answer": "<p>The <strong>Angular CLI</strong> (Command Line Interface) is the official developer toolchain used to initialize, scaffold, develop, test, lint, and maintain Angular applications throughout their lifecycle.</p><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Command</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Purpose</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ng new &lt;project-name&gt;</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Initializes a new workspace with standard directory layout and dependencies.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ng serve</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Builds app in memory and starts local dev server with Live Reload.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ng build</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Compiles app into <code>/dist</code> folder with production optimizations (AOT, minification).</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ng generate c &lt;name&gt;</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Scaffolds components, services, directives, guards, or pipes.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ng test</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Executes unit tests using Karma / Vitest test runners.</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Easy",
+    "tags": [
+      "Angular CLI",
+      "Tooling"
+    ]
+  },
+  {
+    "id": 118,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What are the primary types of Data Binding in Angular?",
+    "answer": "<p>Data binding establishes communication between a component class logic and its HTML template view.</p><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Binding Type</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Syntax</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Direction</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Description</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Interpolation</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>{{ title }}</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Component &rarr; View</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Renders evaluated expressions as string text node.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Property Binding</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>[src]=\"imageUrl\"</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Component &rarr; View</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Binds component state directly to DOM element properties.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Event Binding</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>(click)=\"onSave()\"</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>View &rarr; Component</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Listens for user actions or custom EventEmitter triggers.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Two-Way Binding</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>[(ngModel)]=\"name\"</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Bidirectional</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Keeps model and input view synchronized (\"banana in a box\").</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Easy",
+    "tags": [
+      "Data Binding",
+      "Interpolation",
+      "Event Binding"
+    ]
+  },
+  {
+    "id": 119,
+    "topicId": "angular-framework",
+    "categoryId": "angular-core",
+    "category": "Core Fundamentals & Architecture",
+    "question": "What is String Interpolation vs Property Binding?",
+    "answer": "<p>Both are one-way data-binding mechanisms from Component logic to View template, but differ in handling target types and expression evaluation:</p><br/>\n\n<ul>\n  <li><strong>String Interpolation <code>{{ expression }}</code>:</strong> Evaluates template expressions and converts the resulting value into a string before rendering. Used for inner text contents.</li>\n  <li><strong>Property Binding <code>[property]=\"expression\"</code>:</strong> Binds raw values (booleans, objects, numbers, arrays) directly to DOM element properties or child component inputs without implicit string conversion.</li>\n</ul><br/>\n\n<pre><code>&lt;!-- String Interpolation --&gt;\n&lt;h1&gt;Welcome {{ userName }}&lt;/h1&gt;\n\n&lt;!-- Property Binding maintaining Boolean type --&gt;\n&lt;button [disabled]=\"isSubmitting\"&gt;Submit&lt;/button&gt;</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Interpolation",
+      "Property Binding"
+    ]
+  },
+  {
+    "id": 120,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "What is an Angular Component?",
+    "answer": "<p>An <strong>Angular Component</strong> is the core building block of the user interface. It combines application data &amp; business logic with a visual template.</p><br/>\n\n<p><strong>4 Pillars of a Component:</strong></p>\n<ol>\n  <li><strong>TypeScript Class:</strong> Holds component properties, state, and event handler methods.</li>\n  <li><strong>HTML Template:</strong> Defines the UI structure using Angular template syntax.</li>\n  <li><strong>CSS Stylesheet:</strong> Scoped encapsulated styles (Emulated, ShadowDom, or None).</li>\n  <li><strong>@Component Decorator:</strong> Attaches metadata (selector, template, styles, imports, providers).</li>\n</ol>",
+    "difficulty": "Easy",
+    "tags": [
+      "Component",
+      "Template"
+    ]
+  },
+  {
+    "id": 121,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "What is the difference between @Input() and @Output()?",
+    "answer": "<p><code>@Input()</code> and <code>@Output()</code> facilitate component parent-child communications.</p><br/>\n\n<ul>\n  <li><strong><code>@Input()</code>:</strong> Decorator used to pass data down from a parent component to a child component.</li>\n  <li><strong><code>@Output()</code>:</strong> Decorator used to emit custom events via an <code>EventEmitter</code> instance from a child component back up to its parent.</li>\n</ul><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Decorator</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Direction</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Mechanism</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>@Input()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Parent &rarr; Child</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Property binding <code>[item]=\"parentData\"</code></td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>@Output()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Child &rarr; Parent</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Event binding <code>(itemSelected)=\"handleSelect($event)\"</code></td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "@Input",
+      "@Output",
+      "EventEmitter"
+    ]
+  },
+  {
+    "id": 122,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "What are the primary Lifecycle Hooks in Angular?",
+    "answer": "<p>Angular manages component lifecycle from creation to destruction. Lifecycle hooks allow developers to tap into key moments during component lifecycle.</p><br/>\n\n<p><strong>Sequential Order of Execution:</strong></p>\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Hook</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Trigger Condition</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngOnChanges()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Fires before ngOnInit and whenever a bound <code>@Input()</code> property changes.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngOnInit()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Fires once after input properties are initialized. Ideal for HTTP calls &amp; setup.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngDoCheck()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Fires during every change detection run for custom change detection algorithms.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngAfterContentInit()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Fires once after external content (<code>&lt;ng-content&gt;</code>) is projected into component.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngAfterViewInit()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Fires once after component view and child views are fully initialized (<code>@ViewChild</code> ready).</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngOnDestroy()</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Fires right before component destruction. Essential for cleanup &amp; unsubscribing.</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "Lifecycle Hooks",
+      "ngOnInit",
+      "ngOnDestroy"
+    ]
+  },
+  {
+    "id": 123,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "What is the difference between constructor() and ngOnInit()?",
+    "answer": "<p>While both appear to be setup blocks, they originate from different layers of the language stack:</p><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'><code>constructor()</code></th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'><code>ngOnInit()</code></th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Origin</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Native TypeScript / ES6 Class Constructor</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Angular Lifecycle Interface Hook</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Primary Purpose</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Dependency Injection (DI) parameter resolution</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Component initialization logic &amp; API calls</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>@Input Availability</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>❌ Inputs are <code>undefined</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>✅ Inputs are fully populated</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "Constructor",
+      "ngOnInit"
+    ]
+  },
+  {
+    "id": 124,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "When does ngOnChanges() fire?",
+    "answer": "<p><code>ngOnChanges()</code> executes whenever Angular detects a change to one or more data-bound <code>@Input()</code> properties on a component or directive.</p><br/>\n\n<p><strong>Key Mechanics:</strong></p>\n<ul>\n  <li>Executes <em>before</em> <code>ngOnInit()</code> when component initializes with input values.</li>\n  <li>Receives a <code>SimpleChanges</code> object containing current and previous values.</li>\n  <li>Only triggers for <strong>reference changes</strong> (primitive value changes or new object reference assignments). Mutating object properties internally will not trigger <code>ngOnChanges()</code>.</li>\n</ul><br/>\n\n<pre><code>ngOnChanges(changes: SimpleChanges): void {\n  if (changes['productId'] &amp;&amp; !changes['productId'].isFirstChange()) {\n    const newId = changes['productId'].currentValue;\n    this.fetchProductDetails(newId);\n  }\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "ngOnChanges",
+      "SimpleChanges"
+    ]
+  },
+  {
+    "id": 125,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "What is ngOnDestroy() used for?",
+    "answer": "<p><code>ngOnDestroy()</code> is an Angular lifecycle hook that executes right before Angular destroys a component or directive instance.</p><br/>\n\n<p><strong>Crucial Cleanup Tasks:</strong></p>\n<ol>\n  <li><strong>Unsubscribing from RxJS Observables:</strong> Avoid memory leaks from long-lived singleton service streams.</li>\n  <li><strong>Clearing Timers:</strong> Cancel running <code>setInterval()</code> or <code>setTimeout()</code> handles.</li>\n  <li><strong>Detaching Event Listeners:</strong> Remove manual DOM listeners (e.g. <code>window.addEventListener('resize', ...)</code>).</li>\n  <li><strong>Closing Sockets / Connections:</strong> Terminate active WebSockets or WebRTC peers.</li>\n</ol>",
+    "difficulty": "Easy",
+    "tags": [
+      "ngOnDestroy",
+      "Cleanup",
+      "Memory Leaks"
+    ]
+  },
+  {
+    "id": 126,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "What are @ViewChild() and @ViewChildren()?",
+    "answer": "<p><code>@ViewChild()</code> and <code>@ViewChildren()</code> are property decorators used to query and access DOM elements, component instances, or directives directly from the parent component class after the view initializes.</p><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Decorator</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Return Type</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>First Available At</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>@ViewChild('inputRef')</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Single <code>ElementRef</code> or Component Instance</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngAfterViewInit()</code></td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>@ViewChildren(ItemComponent)</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>QueryList&lt;ItemComponent&gt;</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngAfterViewInit()</code></td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "@ViewChild",
+      "@ViewChildren",
+      "ElementRef"
+    ]
+  },
+  {
+    "id": 127,
+    "topicId": "angular-framework",
+    "categoryId": "angular-components",
+    "category": "Components & Templates",
+    "question": "What is Content Projection (<ng-content>)?",
+    "answer": "<p><strong>Content Projection</strong> (transclusion) is a pattern that allows developers to insert external HTML snippets or components into designated placeholders inside a component template.</p><br/>\n\n<p><strong>Single-Slot vs Multi-Slot Projection:</strong></p>\n<pre><code>&lt;!-- Card Component Template --&gt;\n&lt;div className=\"card-container\"&gt;\n  &lt;header className=\"card-header\"&gt;\n    &lt;ng-content select=\"[card-title]\" /&gt;\n  &lt;/header&gt;\n  &lt;div className=\"card-body\"&gt;\n    &lt;ng-content /&gt; &lt;!-- Default Fallback Slot --&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- Usage in Parent --&gt;\n&lt;app-card&gt;\n  &lt;h3 card-title&gt;User Info&lt;/h3&gt;\n  &lt;p&gt;Profile details projected here...&lt;/p&gt;\n&lt;/app-card&gt;</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Content Projection",
+      "ng-content"
+    ]
+  },
+  {
+    "id": 128,
+    "topicId": "angular-framework",
+    "categoryId": "angular-directives",
+    "category": "Directives & Pipes",
+    "question": "What are Directives in Angular?",
+    "answer": "<p><strong>Directives</strong> are TypeScript classes decorated with <code>@Directive</code> that add custom behavior or manipulate existing DOM elements in Angular templates.</p><br/>\n\n<p><strong>The 3 Types of Directives:</strong></p>\n<ol>\n  <li><strong>Component Directives:</strong> Directives with an attached visual template (Components are technically directives with templates).</li>\n  <li><strong>Structural Directives:</strong> Modify the DOM layout by adding, removing, or manipulating DOM elements (prefixed with asterisk <code>*ngIf</code>, <code>*ngFor</code>).</li>\n  <li><strong>Attribute Directives:</strong> Change the visual appearance or behavioral styling of an existing element (e.g. <code>ngClass</code>, <code>ngStyle</code>, or custom highlighters).</li>\n</ol>",
+    "difficulty": "Easy",
+    "tags": [
+      "Directives",
+      "DOM"
+    ]
+  },
+  {
+    "id": 129,
+    "topicId": "angular-framework",
+    "categoryId": "angular-directives",
+    "category": "Directives & Pipes",
+    "question": "What is the difference between Structural and Attribute Directives?",
+    "answer": "<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Attribute</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Structural Directive</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Attribute Directive</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>DOM Impact</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Adds or removes elements from DOM tree</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Changes appearance / style of existing node</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Syntax Prefix</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Prefixed with asterisk (<code>*ngIf</code>)</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Square brackets or attributes (<code>[ngClass]</code>)</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Examples</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>*ngIf</code>, <code>*ngFor</code>, <code>*ngSwitchCase</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>ngClass</code>, <code>ngStyle</code>, <code>routerLink</code></td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "Structural Directives",
+      "Attribute Directives"
+    ]
+  },
+  {
+    "id": 130,
+    "topicId": "angular-framework",
+    "categoryId": "angular-directives",
+    "category": "Directives & Pipes",
+    "question": "What are Angular’s Built-in Control Flow Blocks?",
+    "answer": "<p>Introduced in <strong>Angular 17</strong>, built-in control flow blocks replace legacy structural directives like <code>*ngIf</code> and <code>*ngFor</code> with modern template syntax built directly into the Angular compiler.</p><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Modern Syntax (v17+)</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Legacy Structural Directive</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>@if (isLoggedIn) { ... } @else { ... }</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>*ngIf=\"isLoggedIn; else logoutTpl\"</code></td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>@for (item of list; track item.id) { ... } @empty { ... }</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>*ngFor=\"let item of list; trackBy: trackFn\"</code></td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>@switch (status) { @case ('A') { ... } @default { ... } }</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>[ngSwitch]=\"status\" *ngSwitchCase=\"'A'\"</code></td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "Control Flow",
+      "@if",
+      "@for",
+      "Angular 17"
+    ]
+  },
+  {
+    "id": 131,
+    "topicId": "angular-framework",
+    "categoryId": "angular-directives",
+    "category": "Directives & Pipes",
+    "question": "What is the difference between <ng-template> and <ng-container>?",
+    "answer": "<p>Both are structural template helpers, but serve distinct rendering functions:</p><br/>\n\n<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Tag</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>DOM Behavior</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Primary Use Case</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>&lt;ng-template&gt;</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Not rendered by default until explicitly referenced.</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Reusable templates, modal dialog contents, structural <code>@else</code> targets.</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>&lt;ng-container&gt;</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Invisible wrapper. Does NOT pollute DOM with extra wrapper elements.</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Applying structural directives without inserting extra <code>&lt;div&gt;</code> markup.</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Hard",
+    "tags": [
+      "ng-template",
+      "ng-container"
+    ]
+  },
+  {
+    "id": 132,
+    "topicId": "angular-framework",
+    "categoryId": "angular-directives",
+    "category": "Directives & Pipes",
+    "question": "What is a Pipe in Angular?",
+    "answer": "<p>A <strong>Pipe</strong> is a function declared with the <code>@Pipe</code> decorator that transforms raw input data into a formatted display format directly inside template expressions.</p><br/>\n\n<pre><code>&lt;!-- Built-in Pipes Example --&gt;\n&lt;p&gt;Price: {{ price | currency:'USD' }}&lt;/p&gt;\n&lt;p&gt;Created: {{ createdAt | date:'longDate' }}&lt;/p&gt;\n&lt;p&gt;Title: {{ title | uppercase }}&lt;/p&gt;</code></pre>",
+    "difficulty": "Easy",
+    "tags": [
+      "Pipe",
+      "Template"
+    ]
+  },
+  {
+    "id": 133,
+    "topicId": "angular-framework",
+    "categoryId": "angular-directives",
+    "category": "Directives & Pipes",
+    "question": "What is the difference between a Pure and an Impure Pipe?",
+    "answer": "<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Type</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Re-execution Trigger</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Performance Impact</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Pure Pipe (Default)</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Only when input primitive value or object reference changes.</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Fast &amp; Optimized ✅</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Impure Pipe (<code>pure: false</code>)</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>On EVERY change detection cycle regardless of input change.</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Potentially costly if heavy ⚠️</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "Pure Pipe",
+      "Impure Pipe",
+      "Performance"
+    ]
+  },
+  {
+    "id": 134,
+    "topicId": "angular-framework",
+    "categoryId": "angular-directives",
+    "category": "Directives & Pipes",
+    "question": "What is the async pipe?",
+    "answer": "<p>The <code>async</code> pipe is a built-in Angular pipe that automatically subscribes to an <code>Observable</code> or <code>Promise</code> in the template, returns the latest emitted value, and automatically <strong>unsubscribes when component is destroyed</strong>.</p><br/>\n\n<pre><code>&lt;div *ngIf=\"user$ | async as user\"&gt;\n  &lt;p&gt;Welcome back, {{ user.name }}!&lt;/p&gt;\n&lt;/div&gt;</code></pre>",
+    "difficulty": "Easy",
+    "tags": [
+      "async pipe",
+      "RxJS",
+      "Observable"
+    ]
+  },
+  {
+    "id": 135,
+    "topicId": "angular-framework",
+    "categoryId": "angular-di",
+    "category": "Dependency Injection & Services",
+    "question": "What is Dependency Injection (DI)?",
+    "answer": "<p><strong>Dependency Injection (DI)</strong> is a design pattern in which a class requests dependencies from external injectors rather than instantiating them directly with <code>new</code>.</p><br/>\n\n<p><strong>Angular's Hierarchical Injector Tree:</strong></p>\n<ol>\n  <li><strong>NullInjector:</strong> Topmost boundary — throws error if token not found.</li>\n  <li><strong>Environment / Root Injector:</strong> Application-level singletons (e.g. <code>providedIn: 'root'</code>).</li>\n  <li><strong>Element Injector:</strong> Created for individual components providing local services via <code>providers: [...]</code>.</li>\n</ol>",
+    "difficulty": "Easy",
+    "tags": [
+      "Dependency Injection",
+      "Services",
+      "DI"
+    ]
+  },
+  {
+    "id": 136,
+    "topicId": "angular-framework",
+    "categoryId": "angular-di",
+    "category": "Dependency Injection & Services",
+    "question": "What is the purpose of @Injectable()?",
+    "answer": "<p><code>@Injectable()</code> is a decorator that marks a class as available to the Angular Dependency Injection system for instantiation and allows other dependencies to be injected into its constructor.</p><br/>\n\n<pre><code>@Injectable({\n  providedIn: 'root'\n})\nexport class AuthService {\n  constructor(private http: HttpClient) {}\n}</code></pre>",
+    "difficulty": "Easy",
+    "tags": [
+      "@Injectable",
+      "Services"
+    ]
+  },
+  {
+    "id": 137,
+    "topicId": "angular-framework",
+    "categoryId": "angular-di",
+    "category": "Dependency Injection & Services",
+    "question": "What does providedIn: 'root' mean?",
+    "answer": "<p><code>providedIn: 'root'</code> registers a service as an <strong>application-wide singleton</strong> at the root injector level.</p><br/>\n\n<p><strong>Major Benefits:</strong></p>\n<ul>\n  <li><strong>Tree-Shakable:</strong> If the service is never imported or used anywhere in the codebase, the Angular bundler completely removes it from the final production bundle.</li>\n  <li><strong>Singleton State:</strong> Ensures all components share the exact same service instance and state.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "providedIn",
+      "Singleton",
+      "Tree-shaking"
+    ]
+  },
+  {
+    "id": 138,
+    "topicId": "angular-framework",
+    "categoryId": "angular-di",
+    "category": "Dependency Injection & Services",
+    "question": "What is the difference between providing a service in root vs. in a component's providers array?",
+    "answer": "<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'><code>providedIn: 'root'</code></th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Component <code>providers: [...]</code></th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Scope</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Single app-wide singleton instance</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>New instance created for each component instantiation</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Lifecycle</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Lives as long as the application runs</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Destroyed when hosting component is destroyed</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "Providers",
+      "Singleton",
+      "Scope"
+    ]
+  },
+  {
+    "id": 139,
+    "topicId": "angular-framework",
+    "categoryId": "angular-di",
+    "category": "Dependency Injection & Services",
+    "question": "What is an InjectionToken?",
+    "answer": "<p>An <strong>InjectionToken</strong> is an object used as a lookup token for injecting dependencies that are NOT represented by a class type (such as interface definitions, primitive strings, numbers, or configuration objects).</p><br/>\n\n<pre><code>export const API_CONFIG = new InjectionToken&lt;AppConfig&gt;('app.config');\n\n// In Component / Service:\nconst config = inject(API_CONFIG);</code></pre>",
+    "difficulty": "Hard",
+    "tags": [
+      "InjectionToken",
+      "DI"
+    ]
+  },
+  {
+    "id": 140,
+    "topicId": "angular-framework",
+    "categoryId": "angular-di",
+    "category": "Dependency Injection & Services",
+    "question": "What is the inject() function?",
+    "answer": "<p>Introduced in Angular 14, <code>inject()</code> is a modern, function-based alternative to constructor-based dependency injection.</p><br/>\n\n<pre><code>// Modern Injection Context\nexport class UserComponent {\n  private productService = inject(ProductService);\n  private route = inject(ActivatedRoute);\n}</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "inject()",
+      "DI",
+      "Functional"
+    ]
+  },
+  {
+    "id": 141,
+    "topicId": "angular-framework",
+    "categoryId": "angular-di",
+    "category": "Dependency Injection & Services",
+    "question": "What are HTTP Interceptors?",
+    "answer": "<p><strong>HTTP Interceptors</strong> are middleware functions or services that inspect, modify, or handle outgoing HTTP requests and incoming responses globally.</p><br/>\n\n<p><strong>Common Use Cases:</strong> Attaching OAuth Bearer JWT tokens to headers, logging API performance metrics, handling global 401/500 HTTP status errors, and adding CSRF headers.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "HttpClient",
+      "Interceptors",
+      "Middleware"
+    ]
+  },
+  {
+    "id": 142,
+    "topicId": "angular-framework",
+    "categoryId": "angular-routing",
+    "category": "Routing & Navigation",
+    "question": "What is the Angular Router?",
+    "answer": "<p>The <strong>Angular Router</strong> is the official client-side routing library that enables navigation between different components based on browser URL paths in Single Page Applications (SPAs).</p>",
+    "difficulty": "Easy",
+    "tags": [
+      "Router",
+      "Navigation",
+      "SPA"
+    ]
+  },
+  {
+    "id": 143,
+    "topicId": "angular-framework",
+    "categoryId": "angular-routing",
+    "category": "Routing & Navigation",
+    "question": "What is <router-outlet>?",
+    "answer": "<p><code>&lt;router-outlet&gt;</code> is a router placeholder directive dynamically populated with the component active for the current URL path.</p>",
+    "difficulty": "Easy",
+    "tags": [
+      "<router-outlet>",
+      "Routing"
+    ]
+  },
+  {
+    "id": 144,
+    "topicId": "angular-framework",
+    "categoryId": "angular-routing",
+    "category": "Routing & Navigation",
+    "question": "What are Route Guards?",
+    "answer": "<p><strong>Route Guards</strong> are functions used to control routing permissions and access based on authorization or application state.</p><br/>\n\n<ul>\n  <li><code>canActivate</code>: Controls if a user can visit a route (e.g. Auth check).</li>\n  <li><code>canDeactivate</code>: Controls if a user can navigate away from a route (e.g. Unsaved forms alert).</li>\n  <li><code>canMatch</code>: Controls if a route definition can be matched during routing sweep.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "Route Guards",
+      "Auth",
+      "Security"
+    ]
+  },
+  {
+    "id": 145,
+    "topicId": "angular-framework",
+    "categoryId": "angular-routing",
+    "category": "Routing & Navigation",
+    "question": "What is Lazy Loading in Angular?",
+    "answer": "<p><strong>Lazy Loading</strong> is an optimization technique that defers loading specific feature modules or standalone component bundles until their designated route is visited by the user.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "Lazy Loading",
+      "Performance",
+      "Optimization"
+    ]
+  },
+  {
+    "id": 146,
+    "topicId": "angular-framework",
+    "categoryId": "angular-routing",
+    "category": "Routing & Navigation",
+    "question": "How do you configure Lazy Loading for standalone components?",
+    "answer": "<p>Use <code>loadComponent</code> or <code>loadChildren</code> with dynamic import syntax inside route definitions:</p><br/>\n\n<pre><code>export const routes: Routes = [\n  {\n    path: 'admin',\n    loadComponent: () =&gt; import('./admin/admin.component').then(m =&gt; m.AdminComponent)\n  }\n];</code></pre>",
+    "difficulty": "Medium",
+    "tags": [
+      "Lazy Loading",
+      "Standalone",
+      "loadComponent"
+    ]
+  },
+  {
+    "id": 147,
+    "topicId": "angular-framework",
+    "categoryId": "angular-routing",
+    "category": "Routing & Navigation",
+    "question": "How do you access route parameters?",
+    "answer": "<p>Route parameters can be accessed by injecting <code>ActivatedRoute</code> (via <code>paramMap</code> observable/snapshot) or using modern <code>withComponentInputBinding()</code> to map route params directly to component <code>@Input()</code> properties.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "ActivatedRoute",
+      "Route Parameters"
+    ]
+  },
+  {
+    "id": 148,
+    "topicId": "angular-framework",
+    "categoryId": "angular-routing",
+    "category": "Routing & Navigation",
+    "question": "What is RouterLink?",
+    "answer": "<p><code>RouterLink</code> is an attribute directive applied to anchor tags or buttons enabling navigation to specific routes without triggering a full page browser refresh.</p>",
+    "difficulty": "Easy",
+    "tags": [
+      "RouterLink",
+      "Navigation"
+    ]
+  },
+  {
+    "id": 149,
+    "topicId": "angular-framework",
+    "categoryId": "angular-forms",
+    "category": "Forms & Validation",
+    "question": "What are the two approaches to handling forms in Angular?",
+    "answer": "<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Template-Driven Forms</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Reactive Forms</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Setup</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Defined primarily in HTML template using <code>ngModel</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Explicitly defined in TypeScript class model</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Data Model</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Implicit 2-way data binding</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Explicit immutable observable state streams</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Testability</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Requires DOM rendering tests</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Easy isolated unit testing without DOM rendering</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Easy",
+    "tags": [
+      "Forms",
+      "Template-Driven",
+      "Reactive Forms"
+    ]
+  },
+  {
+    "id": 150,
+    "topicId": "angular-framework",
+    "categoryId": "angular-forms",
+    "category": "Forms & Validation",
+    "question": "What are FormControl, FormGroup, and FormArray?",
+    "answer": "<p>The core building blocks of Reactive Forms:</p><br/>\n\n<ul>\n  <li><strong>FormControl:</strong> Tracks value, validation status, and user interaction for an individual form control.</li>\n  <li><strong>FormGroup:</strong> Aggregates values and validation statuses for a key-value collection of controls.</li>\n  <li><strong>FormArray:</strong> Tracks an ordered array of FormControl or FormGroup instances dynamically.</li>\n</ul>",
+    "difficulty": "Medium",
+    "tags": [
+      "FormControl",
+      "FormGroup",
+      "FormArray"
+    ]
+  },
+  {
+    "id": 151,
+    "topicId": "angular-framework",
+    "categoryId": "angular-forms",
+    "category": "Forms & Validation",
+    "question": "What is FormBuilder?",
+    "answer": "<p><code>FormBuilder</code> is a syntactic helper service that streamlines creating <code>FormControl</code>, <code>FormGroup</code>, and <code>FormArray</code> instances with less boilerplate code.</p>",
+    "difficulty": "Easy",
+    "tags": [
+      "FormBuilder",
+      "Reactive Forms"
+    ]
+  },
+  {
+    "id": 152,
+    "topicId": "angular-framework",
+    "categoryId": "angular-forms",
+    "category": "Forms & Validation",
+    "question": "How do you write a Custom Validator in Reactive Forms?",
+    "answer": "<p>By defining a function that takes an <code>AbstractControl</code> parameter and returns <code>ValidationErrors | null</code>:</p><br/>\n\n<pre><code>function forbiddenNameValidator(control: AbstractControl): ValidationErrors | null {\n  return control.value === 'admin' ? { forbiddenName: true } : null;\n}</code></pre>",
+    "difficulty": "Hard",
+    "tags": [
+      "Custom Validator",
+      "Validation",
+      "Reactive Forms"
+    ]
+  },
+  {
+    "id": 153,
+    "topicId": "angular-framework",
+    "categoryId": "angular-forms",
+    "category": "Forms & Validation",
+    "question": "What is ControlValueAccessor?",
+    "answer": "<p><code>ControlValueAccessor</code> is an interface acting as a bridge between Angular Reactive/Template Form APIs and custom UI component widgets or native DOM elements.</p>",
+    "difficulty": "Hard",
+    "tags": [
+      "ControlValueAccessor",
+      "Custom Inputs",
+      "Forms"
+    ]
+  },
+  {
+    "id": 154,
+    "topicId": "angular-framework",
+    "categoryId": "angular-rxjs-signals",
+    "category": "RxJS, State & Signals",
+    "question": "What is the difference between an Observable and a Subject?",
+    "answer": "<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Feature</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Observable</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Subject</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Casting</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Unicast (each subscriber receives separate execution)</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Multicast (shares execution path among multiple observers)</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Type</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Passive / Cold by default</td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Active / Hot (acts as both Observable &amp; Observer)</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Medium",
+    "tags": [
+      "RxJS",
+      "Observable",
+      "Subject"
+    ]
+  },
+  {
+    "id": 155,
+    "topicId": "angular-framework",
+    "categoryId": "angular-rxjs-signals",
+    "category": "RxJS, State & Signals",
+    "question": "What is a BehaviorSubject?",
+    "answer": "<p>A <strong>BehaviorSubject</strong> is a specialized RxJS <code>Subject</code> that requires an initial seed value, stores its current value state in memory, and immediately emits its current value to any new subscriber upon subscription.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "BehaviorSubject",
+      "RxJS",
+      "State"
+    ]
+  },
+  {
+    "id": 156,
+    "topicId": "angular-framework",
+    "categoryId": "angular-rxjs-signals",
+    "category": "RxJS, State & Signals",
+    "question": "How do you prevent memory leaks from RxJS subscriptions?",
+    "answer": "<p>To prevent memory leaks from dangling subscriptions when components are destroyed:</p><br/>\n\n<ol>\n  <li><strong>Use <code>async</code> pipe in templates:</strong> Handles subscriptions and auto-unsubscribes automatically.</li>\n  <li><strong>Use <code>takeUntilDestroyed()</code>:</strong> Modern operator executing in component injection contexts.</li>\n  <li><strong>Use RxJS operators:</strong> Pipe operators like <code>take(1)</code> or <code>takeUntil(destroy$)</code>.</li>\n  <li><strong>Manual unsubscribe:</strong> Call <code>subscription.unsubscribe()</code> in <code>ngOnDestroy()</code>.</li>\n</ol>",
+    "difficulty": "Hard",
+    "tags": [
+      "RxJS",
+      "Memory Leaks",
+      "Unsubscribe"
+    ]
+  },
+  {
+    "id": 157,
+    "topicId": "angular-framework",
+    "categoryId": "angular-rxjs-signals",
+    "category": "RxJS, State & Signals",
+    "question": "What are Angular Signals?",
+    "answer": "<p><strong>Angular Signals</strong> (introduced in Angular 16) are reactive state primitives that track value dependencies and update only the specific DOM nodes that depend on them, eliminating the need for full-tree Zone.js change detection sweeps.</p>",
+    "difficulty": "Medium",
+    "tags": [
+      "Signals",
+      "Reactivity",
+      "Angular 16"
+    ]
+  },
+  {
+    "id": 158,
+    "topicId": "angular-framework",
+    "categoryId": "angular-rxjs-signals",
+    "category": "RxJS, State & Signals",
+    "question": "What are signal(), computed(), and effect()?",
+    "answer": "<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Signal Primitive</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Functionality</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>signal(val)</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Creates a writable reactive value container (<code>count.set(5)</code>).</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>computed(() =&gt; fn)</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Read-only reactive signal automatically re-evaluating when internal signal dependencies update.</td>\n  </tr>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><code>effect(() =&gt; fn)</code></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Side-effect operation running automatically whenever tracked signal values change.</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Hard",
+    "tags": [
+      "signal",
+      "computed",
+      "effect",
+      "Signals"
+    ]
+  },
+  {
+    "id": 159,
+    "topicId": "angular-framework",
+    "categoryId": "angular-rxjs-signals",
+    "category": "RxJS, State & Signals",
+    "question": "What is the difference between Default and OnPush Change Detection?",
+    "answer": "<table style='width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:8px'>\n<thead>\n  <tr style='background:var(--bg-tertiary)'>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Strategy</th>\n    <th style='padding:8px;border:1px solid var(--border-color);text-align:left'>Trigger Condition</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>Default Strategy</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Checks entire component tree whenever any async browser event, timer, or XHR resolves (Zone.js driven).</td>\n  </tr>\n  <tr style='background:var(--bg-tertiary)'>\n    <td style='padding:8px;border:1px solid var(--border-color)'><strong>OnPush Strategy</strong></td>\n    <td style='padding:8px;border:1px solid var(--border-color)'>Skips component tree checks unless an <code>@Input()</code> reference changes, an event originates inside the component, a Signal updates, or <code>markForCheck()</code> is called.</td>\n  </tr>\n</tbody>\n</table>",
+    "difficulty": "Hard",
+    "tags": [
+      "Change Detection",
+      "OnPush",
+      "Performance",
+      "Zone.js"
     ]
   }
 ]

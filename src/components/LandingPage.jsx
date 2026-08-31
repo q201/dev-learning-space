@@ -51,9 +51,10 @@ const userReviews = [
 ];
 
 export const LandingPage = () => {
-  const { topicGuides, enterTopicGuide, questions, masteredIds } = useApp();
+  const { topicGuides, enterTopicGuide, allQuestions, questions, masteredIds } = useApp();
 
-  const totalQuestions = questions.length;
+  const totalQuestionsList = allQuestions || questions;
+  const totalQuestions = totalQuestionsList.length;
   const masteredCount = masteredIds.length;
   const progressPct = Math.round((masteredCount / (totalQuestions || 1)) * 100);
 
@@ -108,6 +109,13 @@ export const LandingPage = () => {
             const IconComp = iconMap[guide.icon] || Server;
             const isFeatured = guide.status === 'active';
 
+            const guideQuestions = totalQuestionsList.filter((q) => q.topicId === guide.id);
+            const guideTotal = guideQuestions.length || guide.questionCount || 0;
+            const guideMasteredCount = masteredIds.filter((id) =>
+              guideQuestions.some((q) => q.id === id)
+            ).length;
+            const guideProgressPct = Math.round((guideMasteredCount / (guideTotal || 1)) * 100);
+
             return (
               <div
                 key={guide.id}
@@ -147,10 +155,10 @@ export const LandingPage = () => {
                     <div className="guide-progress-box">
                       <div className="guide-progress-info">
                         <span>Mastery Progress</span>
-                        <span>{masteredCount}/{totalQuestions} ({progressPct}%)</span>
+                        <span>{guideMasteredCount}/{guideTotal} ({guideProgressPct}%)</span>
                       </div>
                       <div className="progress-track" style={{ height: '6px' }}>
-                        <div className="progress-fill" style={{ width: `${progressPct}%` }} />
+                        <div className="progress-fill" style={{ width: `${guideProgressPct}%` }} />
                       </div>
                     </div>
 
